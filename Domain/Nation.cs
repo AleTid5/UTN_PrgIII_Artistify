@@ -10,7 +10,7 @@ namespace Domain
     {
         public string Code { set; get; }
         public string Name { set; get; }
-        public string PhoneCode { set; get; }
+        public int PhoneCode { set; get; }
         public Status Status { set; get; }
     }
 }
