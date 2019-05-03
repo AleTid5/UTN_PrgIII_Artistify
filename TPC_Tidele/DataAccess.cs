@@ -35,12 +35,42 @@ namespace TPC_Tidele
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
+            try {
+                NationRepository Nation = new NationRepository();
+                Random Random = new Random();
+                List<String> NationCodes = new List<String>();
+                NationCodes.Add("ARG");
+                NationCodes.Add("BRA");
+                NationCodes.Add("CAN");
+                NationCodes.Add("CHL");
+                NationCodes.Add("ECU");
+                NationCodes.Add("FRA");
+                NationCodes.Add("GRC");
+                NationCodes.Add("HTI");
+                NationCodes.Add("IRN");
+                NationCodes.Add("LBY");
 
+                String NationName = Nation.getNation(Random.Next(NationCodes.Count)).Name;
+
+                this.MessageBox.Show(NationName);
+            }
+            catch (Exception e) {
+                this.MessageBox.Show(e.ToString());
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // Txt_PhoneNumber
+            try {
+                NationRepository Nation = new NationRepository();
+                int InputCode = (int) this.Txt_PhoneNumber.ToString();
+                String NationName = Nation.getNation(InputCode).Name;
+                
+                this.MessageBox.Show(NationName);
+            }
+            catch (Exception e) {
+                this.MessageBox.Show(e.ToString());
+            }
         }
     }
 }
