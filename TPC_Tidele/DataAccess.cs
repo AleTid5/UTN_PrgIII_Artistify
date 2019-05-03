@@ -32,5 +32,15 @@ namespace TPC_Tidele
             this.Hide();
             this.LoginParent.Show();
         }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Txt_PhoneNumber
+        }
     }
 }
