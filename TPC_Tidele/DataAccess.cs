@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -50,12 +51,12 @@ namespace TPC_Tidele
                 NationCodes.Add("IRN");
                 NationCodes.Add("LBY");
 
-                String NationName = Nation.getNation(Random.Next(NationCodes.Count)).Name;
+                String NationName = Nation.getNation(NationCodes[Random.Next(NationCodes.Count) - 1]).Name;
 
-                this.MessageBox.Show(NationName);
+                MessageBox.Show(NationName);
             }
-            catch (Exception e) {
-                this.MessageBox.Show(e.ToString());
+            catch (Exception exc) {
+                MessageBox.Show(exc.ToString());
             }
         }
 
@@ -63,13 +64,13 @@ namespace TPC_Tidele
         {
             try {
                 NationRepository Nation = new NationRepository();
-                int InputCode = (int) this.Txt_PhoneNumber.ToString();
+                int InputCode = int.Parse(this.Txt_PhoneNumber.Text.ToString());
                 String NationName = Nation.getNation(InputCode).Name;
                 
-                this.MessageBox.Show(NationName);
+                MessageBox.Show(NationName);
             }
-            catch (Exception e) {
-                this.MessageBox.Show(e.ToString());
+            catch (Exception exc) {
+                MessageBox.Show(exc.ToString());
             }
         }
     }
