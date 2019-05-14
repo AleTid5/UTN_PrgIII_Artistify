@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.User
 {
-    public abstract class AbstractUser
+    public class AbstractUser
     {
         public long Id { set; get; }
         public string Name { set; get; }

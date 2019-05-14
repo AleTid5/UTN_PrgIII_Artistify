@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,10 +20,31 @@ namespace TPC_Tidele
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
-            this.Hide();
-            dashboard.LoginParent = this;
-            dashboard.ShowDialog();
+            try
+            {
+                List<String> userData = new List<String> {
+                    this.txtUser.Text.ToString(),
+                    this.txtPassword.Text.ToString()
+                };
+
+                AdministratorRepository administratorRepository = new AdministratorRepository();
+                administratorRepository.AuthenticateOrFail(userData);
+
+                Layout layout = new Layout();
+                this.Hide();
+                layout.ShowDialog();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                this.txtPassword.Text = null;
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

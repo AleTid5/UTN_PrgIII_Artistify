@@ -63,29 +63,9 @@ namespace TPC_Tidele.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap graficos {
-            get {
-                object obj = ResourceManager.GetObject("graficos", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Main_Logo {
             get {
                 object obj = ResourceManager.GetObject("Main_Logo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Main_Logo1 {
-            get {
-                object obj = ResourceManager.GetObject("Main_Logo1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

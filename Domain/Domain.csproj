@@ -45,11 +45,11 @@
     <Compile Include="MediaType.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="Gender.cs" />
-    <Compile Include="NSMedia\Book.cs" />
-    <Compile Include="NSMedia\Image.cs" />
-    <Compile Include="NSMedia\AbstractMedia.cs" />
-    <Compile Include="NSMedia\Music.cs" />
-    <Compile Include="NSMedia\Video.cs" />
+    <Compile Include="Media\Book.cs" />
+    <Compile Include="Media\Image.cs" />
+    <Compile Include="Media\AbstractMedia.cs" />
+    <Compile Include="Media\Music.cs" />
+    <Compile Include="Media\Video.cs" />
     <Compile Include="Nation.cs" />
     <Compile Include="Notification.cs" />
     <Compile Include="NotificationType.cs" />

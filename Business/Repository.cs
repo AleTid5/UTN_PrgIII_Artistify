@@ -29,5 +29,21 @@ namespace Business
             this.SqlConnection.Open();
             this.SqlDataReader = this.SqlCommand.ExecuteReader();
         }
+
+        /**
+         * Funcion para convertir String en MD5 en BD.
+         */
+        protected string STR2MD5(String String)
+        {
+            return String.Format("CONVERT(VARCHAR(32), HashBytes('MD5', '{0}'), 2)", String);
+        }
+
+        protected void AssertOrFail(String Message)
+        {
+            if (!this.SqlDataReader.HasRows)
+            {
+                throw new Exception(Message);
+            }
+        }
     }
 }
