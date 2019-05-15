@@ -12,6 +12,8 @@ namespace TPC_Tidele.Views.User
 {
     public partial class Create : UserControl
     {
+        public event EventHandler UserCreateGoBack;
+
         public Create()
         {
             InitializeComponent();
@@ -19,7 +21,10 @@ namespace TPC_Tidele.Views.User
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-
+            if (this.UserCreateGoBack != null)
+            {
+                this.UserCreateGoBack(this, EventArgs.Empty);
+            }
         }
     }
 }

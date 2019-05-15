@@ -23,6 +23,7 @@ namespace TPC_Tidele
         {
             this.FillDashboard();
             this.Dashboard.BringToFront();
+            this.LoadEvents();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
@@ -38,7 +39,7 @@ namespace TPC_Tidele
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            this.Close()  ;
+            this.Close();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -51,10 +52,26 @@ namespace TPC_Tidele
 
         private void FillDashboard()
         {
-            this.Dashboard.txtMusicAdded.Text  = (new MusicRepository()).GetRepositoryCount().ToString();
+            this.Dashboard.txtMusicAdded.Text = (new MusicRepository()).GetRepositoryCount().ToString();
             this.Dashboard.txtVideosAdded.Text = (new VideoRepository()).GetRepositoryCount().ToString();
-            this.Dashboard.txtBooksAdded.Text  = (new BookRepository()).GetRepositoryCount().ToString();
+            this.Dashboard.txtBooksAdded.Text = (new BookRepository()).GetRepositoryCount().ToString();
             this.Dashboard.txtImagesAdded.Text = (new ImageRepository()).GetRepositoryCount().ToString();
+        }
+
+        private void LoadEvents()
+        {
+            this.UserIndex.UserIndexAddUser += new EventHandler(UserIndex_AddUser);
+            this.UserCreate.UserCreateGoBack += new EventHandler(UserCreate_GoBack);
+        }
+
+        private void UserIndex_AddUser(object sender, EventArgs e)
+        {
+            this.UserCreate.BringToFront();
+        }
+
+        private void UserCreate_GoBack(object sender, EventArgs e)
+        {
+            this.UserIndex.BringToFront();
         }
     }
 }

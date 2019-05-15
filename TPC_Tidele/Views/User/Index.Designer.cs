@@ -49,6 +49,7 @@
             this.btnAddUser.TabIndex = 6;
             this.btnAddUser.Text = "Agregar Usuario";
             this.btnAddUser.UseVisualStyleBackColor = false;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // dataGridUsers
             // 
@@ -79,7 +80,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuarios";
             // 
-            // Editt
+            // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -87,7 +88,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.dataGridUsers);
             this.Controls.Add(this.panel1);
-            this.Name = "Editt";
+            this.Name = "Index";
             this.Size = new System.Drawing.Size(758, 439);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();
             this.panel1.ResumeLayout(false);
