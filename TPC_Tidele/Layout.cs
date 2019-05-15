@@ -22,18 +22,18 @@ namespace TPC_Tidele
         private void Layout_Load(object sender, EventArgs e)
         {
             this.FillDashboard();
-            //this.Dashboard.BringToFront();
+            this.Dashboard.BringToFront();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            //this.UserIndex.BringToFront();
+            this.UserIndex.BringToFront();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             this.FillDashboard();
-            //this.Dashboard.BringToFront();
+            this.Dashboard.BringToFront();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -51,10 +51,10 @@ namespace TPC_Tidele
 
         private void FillDashboard()
         {
-            //this.Dashboard.txtMusicAdded.Text  = (new MusicRepository()).GetRepositoryCount().ToString();
-            //this.Dashboard.txtVideosAdded.Text = (new VideoRepository()).GetRepositoryCount().ToString();
-            //this.Dashboard.txtBooksAdded.Text  = (new BookRepository()).GetRepositoryCount().ToString();
-            //this.Dashboard.txtImagesAdded.Text = (new ImageRepository()).GetRepositoryCount().ToString();
+            this.Dashboard.txtMusicAdded.Text  = (new MusicRepository()).GetRepositoryCount().ToString();
+            this.Dashboard.txtVideosAdded.Text = (new VideoRepository()).GetRepositoryCount().ToString();
+            this.Dashboard.txtBooksAdded.Text  = (new BookRepository()).GetRepositoryCount().ToString();
+            this.Dashboard.txtImagesAdded.Text = (new ImageRepository()).GetRepositoryCount().ToString();
         }
     }
 }
