@@ -10,6 +10,7 @@ namespace Business
 {
     public class Repository
     {
+        public String Table = null;
         public SqlConnection SqlConnection { set; get; }
         public SqlCommand SqlCommand { set; get; }
         public SqlDataReader SqlDataReader { set; get; }
@@ -43,6 +44,26 @@ namespace Business
             if (!this.SqlDataReader.HasRows)
             {
                 throw new Exception(Message);
+            }
+        }
+
+        public int GetRepositoryCount()
+        {
+            try
+            {
+                String Query = String.Format("SELECT COUNT(*) AS Count FROM {0}", this.Table);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return int.Parse(this.SqlDataReader["Count"].ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlConnection.Close();
             }
         }
     }

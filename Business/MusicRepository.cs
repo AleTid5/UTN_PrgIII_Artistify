@@ -7,24 +7,9 @@ namespace Business
 {
     public class MusicRepository : Repository
     {
-        public int GetRepositoryCount()
+       public MusicRepository()
         {
-            try
-            {
-                String Query = String.Concat("SELECT COUNT(*) AS Music FROM Media_Musics");
-                this.ExecSelect(Query);
-                this.SqlDataReader.Read();
-
-                return int.Parse(this.SqlDataReader["Music"].ToString());
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                this.SqlConnection.Close();
-            }
+            this.Table = "Media_Musics";
         }
     }
 }
