@@ -40,8 +40,8 @@ namespace TPC_Tidele
             this.btnClose = new System.Windows.Forms.Button();
             this.Dashboard = new TPC_Tidele.Views.Dashboard();
             this.UserIndex = new TPC_Tidele.Views.User.Index();
-            this.UserEdit = new TPC_Tidele.Views.User.Edit();
             this.UserCreate = new TPC_Tidele.Views.User.Create();
+            this.UserEdit = new TPC_Tidele.Views.User.Edit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -146,32 +146,32 @@ namespace TPC_Tidele
             this.Dashboard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
             this.Dashboard.Location = new System.Drawing.Point(161, 22);
             this.Dashboard.Name = "Dashboard";
-            this.Dashboard.Size = new System.Drawing.Size(760, 439);
-            this.Dashboard.TabIndex = 1;
+            this.Dashboard.Size = new System.Drawing.Size(758, 439);
+            this.Dashboard.TabIndex = 8;
             // 
             // UserIndex
             // 
             this.UserIndex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
             this.UserIndex.Location = new System.Drawing.Point(161, 22);
             this.UserIndex.Name = "UserIndex";
-            this.UserIndex.Size = new System.Drawing.Size(760, 439);
-            this.UserIndex.TabIndex = 8;
-            // 
-            // UserEdit
-            // 
-            this.UserEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
-            this.UserEdit.Location = new System.Drawing.Point(161, 22);
-            this.UserEdit.Name = "UserEdit";
-            this.UserEdit.Size = new System.Drawing.Size(760, 439);
-            this.UserEdit.TabIndex = 9;
+            this.UserIndex.Size = new System.Drawing.Size(758, 439);
+            this.UserIndex.TabIndex = 9;
             // 
             // UserCreate
             // 
             this.UserCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
             this.UserCreate.Location = new System.Drawing.Point(161, 22);
             this.UserCreate.Name = "UserCreate";
-            this.UserCreate.Size = new System.Drawing.Size(760, 439);
+            this.UserCreate.Size = new System.Drawing.Size(758, 439);
             this.UserCreate.TabIndex = 10;
+            // 
+            // UserEdit
+            // 
+            this.UserEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.UserEdit.Location = new System.Drawing.Point(161, 22);
+            this.UserEdit.Name = "UserEdit";
+            this.UserEdit.Size = new System.Drawing.Size(758, 439);
+            this.UserEdit.TabIndex = 11;
             // 
             // Layout
             // 
@@ -182,8 +182,8 @@ namespace TPC_Tidele
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.Dashboard);
-            this.Controls.Add(this.UserCreate);
             this.Controls.Add(this.UserEdit);
+            this.Controls.Add(this.UserCreate);
             this.Controls.Add(this.UserIndex);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Layout";
@@ -207,7 +207,7 @@ namespace TPC_Tidele
         private System.Windows.Forms.Button btnClose;
         private Dashboard Dashboard;
         private Views.User.Index UserIndex;
-        private Views.User.Edit UserEdit;
         private Views.User.Create UserCreate;
+        private Views.User.Edit UserEdit;
     }
 }
