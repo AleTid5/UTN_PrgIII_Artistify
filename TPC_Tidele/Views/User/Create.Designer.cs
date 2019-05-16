@@ -28,18 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtLastName = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.dateBornDate = new System.Windows.Forms.DateTimePicker();
+            this.comboNationality = new System.Windows.Forms.ComboBox();
             this.radioM = new System.Windows.Forms.RadioButton();
             this.radioF = new System.Windows.Forms.RadioButton();
             this.radioO = new System.Windows.Forms.RadioButton();
+            this.btnAccept = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.tIDELE_DBDataSet = new TPC_Tidele.TIDELE_DBDataSet();
+            this.nationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nationsTableAdapter = new TPC_Tidele.TIDELE_DBDataSetTableAdapters.NationsTableAdapter();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tIDELE_DBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nationsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,41 +88,45 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(23, 126);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(225, 20);
-            this.textBox1.TabIndex = 5;
+            this.txtName.Location = new System.Drawing.Point(23, 93);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(225, 20);
+            this.txtName.TabIndex = 5;
             // 
-            // textBox2
+            // txtLastName
             // 
-            this.textBox2.Location = new System.Drawing.Point(267, 126);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(225, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtLastName.Location = new System.Drawing.Point(267, 93);
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new System.Drawing.Size(225, 20);
+            this.txtLastName.TabIndex = 6;
             // 
-            // textBox3
+            // txtEmail
             // 
-            this.textBox3.Location = new System.Drawing.Point(510, 126);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(225, 20);
-            this.textBox3.TabIndex = 7;
+            this.txtEmail.Location = new System.Drawing.Point(510, 93);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(225, 20);
+            this.txtEmail.TabIndex = 7;
             // 
-            // dateTimePicker1
+            // dateBornDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(23, 199);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(225, 20);
-            this.dateTimePicker1.TabIndex = 8;
+            this.dateBornDate.Location = new System.Drawing.Point(23, 166);
+            this.dateBornDate.Name = "dateBornDate";
+            this.dateBornDate.Size = new System.Drawing.Size(225, 20);
+            this.dateBornDate.TabIndex = 8;
             // 
-            // comboBox1
+            // comboNationality
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(510, 197);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(225, 21);
-            this.comboBox1.TabIndex = 9;
+            this.comboNationality.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.nationsBindingSource, "Name", true));
+            this.comboNationality.DataSource = this.nationsBindingSource;
+            this.comboNationality.DisplayMember = "Name";
+            this.comboNationality.FormattingEnabled = true;
+            this.comboNationality.Location = new System.Drawing.Point(510, 164);
+            this.comboNationality.Name = "comboNationality";
+            this.comboNationality.Size = new System.Drawing.Size(225, 21);
+            this.comboNationality.TabIndex = 9;
+            this.comboNationality.ValueMember = "Code";
             // 
             // radioM
             // 
@@ -117,7 +134,7 @@
             this.radioM.Checked = true;
             this.radioM.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioM.ForeColor = System.Drawing.Color.White;
-            this.radioM.Location = new System.Drawing.Point(267, 203);
+            this.radioM.Location = new System.Drawing.Point(267, 170);
             this.radioM.Name = "radioM";
             this.radioM.Size = new System.Drawing.Size(83, 18);
             this.radioM.TabIndex = 10;
@@ -130,7 +147,7 @@
             this.radioF.AutoSize = true;
             this.radioF.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioF.ForeColor = System.Drawing.Color.White;
-            this.radioF.Location = new System.Drawing.Point(356, 203);
+            this.radioF.Location = new System.Drawing.Point(356, 170);
             this.radioF.Name = "radioF";
             this.radioF.Size = new System.Drawing.Size(81, 18);
             this.radioF.TabIndex = 11;
@@ -142,32 +159,135 @@
             this.radioO.AutoSize = true;
             this.radioO.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioO.ForeColor = System.Drawing.Color.White;
-            this.radioO.Location = new System.Drawing.Point(441, 203);
+            this.radioO.Location = new System.Drawing.Point(441, 170);
             this.radioO.Name = "radioO";
             this.radioO.Size = new System.Drawing.Size(51, 18);
             this.radioO.TabIndex = 12;
             this.radioO.Text = "Otro";
             this.radioO.UseVisualStyleBackColor = true;
             // 
+            // btnAccept
+            // 
+            this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
+            this.btnAccept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAccept.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccept.ForeColor = System.Drawing.Color.White;
+            this.btnAccept.Location = new System.Drawing.Point(600, 388);
+            this.btnAccept.Name = "btnAccept";
+            this.btnAccept.Size = new System.Drawing.Size(135, 29);
+            this.btnAccept.TabIndex = 13;
+            this.btnAccept.Text = "Aceptar";
+            this.btnAccept.UseVisualStyleBackColor = false;
+            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(20, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 15);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Nombre";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(264, 66);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 15);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Apellido";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(507, 66);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 15);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "E-Mail";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(20, 137);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(144, 15);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "Fecha de Nacimiento";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(264, 137);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(39, 15);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Sexo";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(507, 137);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(93, 15);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Nacionalidad";
+            // 
+            // tIDELE_DBDataSet
+            // 
+            this.tIDELE_DBDataSet.DataSetName = "TIDELE_DBDataSet";
+            this.tIDELE_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // nationsBindingSource
+            // 
+            this.nationsBindingSource.DataMember = "Nations";
+            this.nationsBindingSource.DataSource = this.tIDELE_DBDataSet;
+            // 
+            // nationsTableAdapter
+            // 
+            this.nationsTableAdapter.ClearBeforeFill = true;
+            // 
             // Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.radioO);
             this.Controls.Add(this.radioF);
             this.Controls.Add(this.radioM);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboNationality);
+            this.Controls.Add(this.dateBornDate);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtLastName);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.panel1);
             this.Name = "Create";
             this.Size = new System.Drawing.Size(758, 439);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tIDELE_DBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nationsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,13 +298,23 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtLastName;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.DateTimePicker dateBornDate;
+        private System.Windows.Forms.ComboBox comboNationality;
         private System.Windows.Forms.RadioButton radioM;
         private System.Windows.Forms.RadioButton radioF;
         private System.Windows.Forms.RadioButton radioO;
+        private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.BindingSource nationsBindingSource;
+        private TIDELE_DBDataSet tIDELE_DBDataSet;
+        private TIDELE_DBDataSetTableAdapters.NationsTableAdapter nationsTableAdapter;
     }
 }
