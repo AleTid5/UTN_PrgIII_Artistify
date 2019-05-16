@@ -47,12 +47,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.tIDELE_DBDataSet = new TPC_Tidele.TIDELE_DBDataSet();
-            this.nationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nationsTableAdapter = new TPC_Tidele.TIDELE_DBDataSetTableAdapters.NationsTableAdapter();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tIDELE_DBDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nationsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -118,8 +113,6 @@
             // 
             // comboNationality
             // 
-            this.comboNationality.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.nationsBindingSource, "Name", true));
-            this.comboNationality.DataSource = this.nationsBindingSource;
             this.comboNationality.DisplayMember = "Name";
             this.comboNationality.FormattingEnabled = true;
             this.comboNationality.Location = new System.Drawing.Point(510, 164);
@@ -246,20 +239,6 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Nacionalidad";
             // 
-            // tIDELE_DBDataSet
-            // 
-            this.tIDELE_DBDataSet.DataSetName = "TIDELE_DBDataSet";
-            this.tIDELE_DBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // nationsBindingSource
-            // 
-            this.nationsBindingSource.DataMember = "Nations";
-            this.nationsBindingSource.DataSource = this.tIDELE_DBDataSet;
-            // 
-            // nationsTableAdapter
-            // 
-            this.nationsTableAdapter.ClearBeforeFill = true;
-            // 
             // Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,8 +265,6 @@
             this.Size = new System.Drawing.Size(758, 439);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tIDELE_DBDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nationsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,8 +290,5 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.BindingSource nationsBindingSource;
-        private TIDELE_DBDataSet tIDELE_DBDataSet;
-        private TIDELE_DBDataSetTableAdapters.NationsTableAdapter nationsTableAdapter;
     }
 }
