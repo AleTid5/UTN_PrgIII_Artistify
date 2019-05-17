@@ -19,7 +19,7 @@ namespace Domain.User
         public Status Status { set; get; }
         public int LoginTimes { set; get; }
         public DateTime RegisterDate { set; get; }
-        public DateTime LastLoginDate { set; get; }
+        public DateTime? LastLoginDate { set; get; }
 
         protected void Login()
         {

@@ -10,5 +10,11 @@ namespace Domain
     {
         public string Code { set; get; }
         public string Name { set; get; }
+
+        override
+        public String ToString()
+        {
+            return null == this.Name ? "anda a saber" : this.Name.ToString();
+        }
     }
 }

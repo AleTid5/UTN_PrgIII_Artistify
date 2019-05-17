@@ -38,6 +38,32 @@ namespace Business
             }
         }
 
+        public int AddUser(AbstractUser user)
+        {
+            try
+            {
+                String QueryTemplate = "INSERT INTO Users (Name, LastName, Email, Password, BornDate, Gender, Nationality)";
+                QueryTemplate += "OUTPUT INSERTED.ID VALUES ('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}')";
+                String Query = String.Format(QueryTemplate,
+                                             user.Name,
+                                             user.LastName,
+                                             user.Email,
+                                             this.STR2MD5(user.Password),
+                                             user.BornDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                                             user.Gender,
+                                             user.Nationality.Code);
+
+                return this.ExecInsert(Query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
         private void FillUser()
         {
             this.AbstractUser = new AbstractUser();

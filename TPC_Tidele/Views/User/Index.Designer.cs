@@ -53,8 +53,13 @@
             // 
             // dataGridUsers
             // 
+            this.dataGridUsers.AllowUserToAddRows = false;
+            this.dataGridUsers.AllowUserToDeleteRows = false;
+            this.dataGridUsers.AllowUserToResizeColumns = false;
+            this.dataGridUsers.AllowUserToResizeRows = false;
             this.dataGridUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(19)))));
             this.dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dataGridUsers.Location = new System.Drawing.Point(23, 69);
             this.dataGridUsers.Name = "dataGridUsers";
             this.dataGridUsers.Size = new System.Drawing.Size(711, 316);

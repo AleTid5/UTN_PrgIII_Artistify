@@ -61,7 +61,7 @@ namespace TPC_Tidele
         private void LoadEvents()
         {
             this.UserIndex.UserIndexAddUser += new EventHandler(UserIndex_AddUser);
-            this.UserCreate.UserCreateGoBack += new EventHandler(UserCreate_GoBack);
+            this.UserCreate.GoBack += new EventHandler(UserCreate_GoBack);
         }
 
         private void UserIndex_AddUser(object sender, EventArgs e)

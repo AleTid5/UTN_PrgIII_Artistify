@@ -113,13 +113,11 @@
             // 
             // comboNationality
             // 
-            this.comboNationality.DisplayMember = "Name";
             this.comboNationality.FormattingEnabled = true;
             this.comboNationality.Location = new System.Drawing.Point(510, 164);
             this.comboNationality.Name = "comboNationality";
             this.comboNationality.Size = new System.Drawing.Size(225, 21);
             this.comboNationality.TabIndex = 9;
-            this.comboNationality.ValueMember = "Code";
             // 
             // radioM
             // 

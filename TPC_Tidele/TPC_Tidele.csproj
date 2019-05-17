@@ -113,6 +113,7 @@
     <EmbeddedResource Include="Views\User\Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\TPC_Tidele.Views.User.Create.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

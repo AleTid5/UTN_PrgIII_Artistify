@@ -23,12 +23,25 @@ namespace Business
 
         public void ExecSelect(String Query)
         {
-            this.SqlConnection.ConnectionString = DataAccessManager.cadenaConexion;
-            this.SqlCommand.CommandType = System.Data.CommandType.Text;
-            this.SqlCommand.CommandText = Query;
-            this.SqlCommand.Connection = this.SqlConnection;
-            this.SqlConnection.Open();
+            this.PrepareExec(Query);
             this.SqlDataReader = this.SqlCommand.ExecuteReader();
+        }
+
+        public int ExecInsert(String Query)
+        {
+            this.PrepareExec(Query);
+            return this.GetOrElse(this.SqlCommand.ExecuteScalar(), 0);
+        }
+
+        private int GetOrElse(object ToConvert, int Default)
+        {
+            try
+            {
+                return int.Parse(ToConvert.ToString());
+            } catch (Exception)
+            {
+                return Default;
+            }
         }
 
         /**
@@ -37,6 +50,15 @@ namespace Business
         protected string STR2MD5(String String)
         {
             return String.Format("CONVERT(VARCHAR(32), HashBytes('MD5', '{0}'), 2)", String);
+        }
+
+        private void PrepareExec(String Query)
+        {
+            this.SqlConnection.ConnectionString = DataAccessManager.cadenaConexion;
+            this.SqlCommand.CommandType = System.Data.CommandType.Text;
+            this.SqlCommand.CommandText = Query;
+            this.SqlCommand.Connection = this.SqlConnection;
+            this.SqlConnection.Open();
         }
 
         protected void AssertOrFail(String Message)
