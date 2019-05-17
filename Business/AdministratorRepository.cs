@@ -60,6 +60,27 @@ namespace Business
             }
         }
 
+        public void RemoveAdmin(Administrator administrator)
+        {
+            try
+            {
+                if (this.Administrator.Id == administrator.Id)
+                {
+                    throw new Exception("No está autorizado para poder eliminarse a usted mismo.");
+                }
+
+                String QueryTemplate = "DELETE FROM Users_Administrators WHERE Id = {0}";
+                String Query = String.Format(QueryTemplate, administrator.Id);
+
+                this.ExecUpdate(Query);
+                this.SqlConnection.Close();
+                this.RemoveUser((AbstractUser) administrator);
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<Administrator> FindAll()
         {
             try

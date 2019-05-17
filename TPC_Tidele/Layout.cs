@@ -15,9 +15,16 @@ namespace TPC_Tidele
 {
     public partial class Layout : Form
     {
+        AdministratorRepository AdministratorRepository = new AdministratorRepository();
+
         public Layout()
         {
             InitializeComponent();
+        }
+
+        public void SetAdminRepository(AdministratorRepository AdministratorRepository)
+        {
+            this.AdministratorRepository = AdministratorRepository;
         }
 
         private void Layout_Load(object sender, EventArgs e)
@@ -64,6 +71,7 @@ namespace TPC_Tidele
         {
             this.UserIndex.UserIndexAddUser += new EventHandler(this.UserIndex_AddUser);
             this.UserIndex.UserIndexEditUser += new EventHandler(this.UserIndex_EditUser);
+            this.UserIndex.UserIndexRemoveUser += new EventHandler(this.UserIndex_RemoveUser);
             this.UserCreate.GoBack += new EventHandler(this.btnUsers_Click);
             this.UserEdit.GoBack += new EventHandler(this.btnUsers_Click);
         }
@@ -78,6 +86,18 @@ namespace TPC_Tidele
             this.UserEdit.SetUser(sender as Administrator);
             this.UserEdit.FillForm();
             this.UserEdit.BringToFront();
+        }
+
+        private void UserIndex_RemoveUser(object sender, EventArgs e)
+        {
+            try
+            {
+                this.AdministratorRepository.RemoveAdmin(sender as Administrator);
+                this.UserIndex.UpdateList();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

@@ -108,6 +108,24 @@ namespace Business
             }
         }
 
+        public void RemoveUser(AbstractUser user)
+        {
+            try
+            {
+                String QueryTemplate = "DELETE FROM Users WHERE Id = {0}";
+                String Query = String.Format(QueryTemplate, user.Id);
+
+                this.ExecUpdate(Query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
         protected AbstractUser UserCasted()
         {
             return new AbstractUser

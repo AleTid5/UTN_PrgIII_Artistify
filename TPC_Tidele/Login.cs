@@ -31,6 +31,7 @@ namespace TPC_Tidele
                 administratorRepository.AuthenticateOrFail(userData);
 
                 Layout layout = new Layout();
+                layout.SetAdminRepository(administratorRepository);
                 this.Hide();
                 layout.ShowDialog();
                 this.Close();

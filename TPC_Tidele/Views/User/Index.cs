@@ -16,20 +16,21 @@ namespace TPC_Tidele.Views.User
     {
         public event EventHandler UserIndexAddUser;
         public event EventHandler UserIndexEditUser;
+        public event EventHandler UserIndexRemoveUser;
         private List<Administrator> administrators;
 
         public Index()
         {
             InitializeComponent();
             this.UpdateList();
-            this.dataGridUsers.DataSource = administrators;
             this.dataGridUsers.Columns[4].Visible = false;
         }
 
         public void UpdateList()
         {
             this.administrators = (new AdministratorRepository()).FindAll();
-            this.dataGridUsers.Refresh();
+            this.dataGridUsers.DataSource = administrators;
+            this.dataGridUsers.ResetBindings();
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
@@ -50,7 +51,10 @@ namespace TPC_Tidele.Views.User
 
         private void btnRemoveUser_Click(object sender, EventArgs e)
         {
-            
+            if (this.UserIndexRemoveUser != null)
+            {
+                this.UserIndexRemoveUser((Administrator)dataGridUsers.CurrentRow.DataBoundItem, EventArgs.Empty);
+            }
         }
     }
 }
