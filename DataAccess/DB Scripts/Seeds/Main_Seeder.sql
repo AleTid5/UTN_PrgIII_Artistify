@@ -249,3 +249,7 @@ INSERT INTO Nations (Code, Name, PhoneCode) VALUES
 ('WLF','Wallis y Futuna',876),
 ('YEM','Yemen',887),
 ('DJI','Yibuti',262);
+
+INSERT INTO Users (Name, LastName, Email, Password, BornDate, Gender, Nationality)
+VALUES ('Alejandro', 'Tidele', 'aleetidele@gmail.com', 'B61C5D24F4CD564FBF13BB112F846537', '1995-08-12 00:00:00.000', 'M', 'ARG'));
+INSERT INTO Users_Administrators (Id) VALUES (1)      ;  
