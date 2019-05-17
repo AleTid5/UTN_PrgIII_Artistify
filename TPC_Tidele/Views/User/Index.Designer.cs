@@ -32,6 +32,8 @@
             this.dataGridUsers = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnEditUser = new System.Windows.Forms.Button();
+            this.btnRemoveUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -43,11 +45,12 @@
             this.btnAddUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
             this.btnAddUser.ForeColor = System.Drawing.Color.White;
             this.btnAddUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAddUser.Location = new System.Drawing.Point(599, 397);
+            this.btnAddUser.Location = new System.Drawing.Point(703, 397);
             this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(135, 29);
+            this.btnAddUser.Size = new System.Drawing.Size(30, 30);
             this.btnAddUser.TabIndex = 6;
-            this.btnAddUser.Text = "Agregar Usuario";
+            this.btnAddUser.Tag = "";
+            this.btnAddUser.Text = "+";
             this.btnAddUser.UseVisualStyleBackColor = false;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
@@ -85,11 +88,43 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuarios";
             // 
+            // btnEditUser
+            // 
+            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.btnEditUser.ForeColor = System.Drawing.Color.White;
+            this.btnEditUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnEditUser.Location = new System.Drawing.Point(658, 397);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(30, 30);
+            this.btnEditUser.TabIndex = 7;
+            this.btnEditUser.Text = "✎";
+            this.btnEditUser.UseVisualStyleBackColor = false;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            // 
+            // btnRemoveUser
+            // 
+            this.btnRemoveUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
+            this.btnRemoveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.btnRemoveUser.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRemoveUser.Location = new System.Drawing.Point(613, 397);
+            this.btnRemoveUser.Name = "btnRemoveUser";
+            this.btnRemoveUser.Size = new System.Drawing.Size(30, 30);
+            this.btnRemoveUser.TabIndex = 8;
+            this.btnRemoveUser.Text = "🗑";
+            this.btnRemoveUser.UseVisualStyleBackColor = false;
+            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.Controls.Add(this.btnRemoveUser);
+            this.Controls.Add(this.btnEditUser);
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.dataGridUsers);
             this.Controls.Add(this.panel1);
@@ -108,5 +143,7 @@
         private System.Windows.Forms.DataGridView dataGridUsers;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnEditUser;
+        private System.Windows.Forms.Button btnRemoveUser;
     }
 }

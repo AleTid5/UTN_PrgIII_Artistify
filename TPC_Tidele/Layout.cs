@@ -1,4 +1,5 @@
 ﻿using Business;
+using Domain.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,13 +62,22 @@ namespace TPC_Tidele
 
         private void LoadEvents()
         {
-            this.UserIndex.UserIndexAddUser += new EventHandler(UserIndex_AddUser);
-            this.UserCreate.GoBack += new EventHandler(btnUsers_Click);
+            this.UserIndex.UserIndexAddUser += new EventHandler(this.UserIndex_AddUser);
+            this.UserIndex.UserIndexEditUser += new EventHandler(this.UserIndex_EditUser);
+            this.UserCreate.GoBack += new EventHandler(this.btnUsers_Click);
+            this.UserEdit.GoBack += new EventHandler(this.btnUsers_Click);
         }
 
         private void UserIndex_AddUser(object sender, EventArgs e)
         {
             this.UserCreate.BringToFront();
+        }
+
+        private void UserIndex_EditUser(object sender, EventArgs e)
+        {
+            this.UserEdit.SetUser(sender as Administrator);
+            this.UserEdit.FillForm();
+            this.UserEdit.BringToFront();
         }
     }
 }

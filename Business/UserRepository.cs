@@ -83,6 +83,31 @@ namespace Business
             }
         }
 
+        public void EditUser(AbstractUser user)
+        {
+            try
+            {
+                String QueryTemplate = "UPDATE Users SET Name = '{0}', LastName = '{1}', Email = '{2}', BornDate = '{3}', Gender = '{4}', Nationality = '{5}' WHERE Id = {6}";
+                String Query = String.Format(QueryTemplate,
+                                             user.Name,
+                                             user.LastName,
+                                             user.Email,
+                                             user.BornDate.ToString("yyyy-MM-dd HH:mm:ss"),
+                                             user.Gender,
+                                             user.Nationality.Code,
+                                             user.Id);
+
+                this.ExecUpdate(Query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
         protected AbstractUser UserCasted()
         {
             return new AbstractUser

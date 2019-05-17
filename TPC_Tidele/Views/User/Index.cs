@@ -15,6 +15,7 @@ namespace TPC_Tidele.Views.User
     public partial class Index : UserControl
     {
         public event EventHandler UserIndexAddUser;
+        public event EventHandler UserIndexEditUser;
         private List<Administrator> administrators;
 
         public Index()
@@ -37,6 +38,19 @@ namespace TPC_Tidele.Views.User
             {
                 this.UserIndexAddUser(this, EventArgs.Empty);
             }
+        }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            if (this.UserIndexEditUser != null)
+            {
+                this.UserIndexEditUser((Administrator)dataGridUsers.CurrentRow.DataBoundItem, EventArgs.Empty);
+            }
+        }
+
+        private void btnRemoveUser_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

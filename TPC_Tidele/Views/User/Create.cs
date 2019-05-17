@@ -26,7 +26,6 @@ namespace TPC_Tidele.Views.User
             this.comboNationality.DataSource = Nations;
             this.comboNationality.DisplayMember = "Name";
             this.comboNationality.ValueMember = "Code";
-            comboNationality.AutoCompleteMode = AutoCompleteMode.Suggest;
         }
 
         private void btnBack_Click(object sender, EventArgs e)

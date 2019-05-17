@@ -49,6 +49,17 @@ namespace Business
             }
         }
 
+        public void EditAdmin(Administrator administrator)
+        {
+            try
+            {
+                this.EditUser((AbstractUser) administrator);
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public List<Administrator> FindAll()
         {
             try
