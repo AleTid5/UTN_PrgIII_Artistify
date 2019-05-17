@@ -19,7 +19,7 @@ namespace Business
             {
                 this.CheckCredentialsOrFail(UserData);
                 this.CheckAdministratorOrFail();
-                this.FillAdministrator();
+                this.Administrator = this.Casted();
             }
             catch (Exception ex)
             {
@@ -28,6 +28,7 @@ namespace Business
             finally
             {
                 this.SqlConnection.Close();
+                this.UpdateUserLogin(this.Administrator.Id);
             }
         }
 
@@ -59,8 +60,8 @@ namespace Business
 
                 while (this.SqlDataReader.Read())
                 {
-                    Administrator Nation = this.GetCasted();
-                    administrators.Add(Nation);
+                    Administrator administrator = this.GetAdministrator();
+                    administrators.Add(administrator);
                 }
 
                 return administrators;
@@ -75,7 +76,16 @@ namespace Business
             }
         }
 
-        private Administrator GetCasted()
+        private void CheckAdministratorOrFail()
+        {
+            String QueryTemplate = "SELECT TOP 1 * FROM Users_Administrators WHERE Id = {0}";
+            String Query = String.Format(QueryTemplate, this.AbstractUser.Id);
+            this.ExecSelect(Query);
+            this.SqlDataReader.Read();
+            this.AssertOrFail("El usuario ingresado no es administrador");
+        }
+
+        private Administrator GetAdministrator()
         {
             return new Administrator
             {
@@ -88,30 +98,26 @@ namespace Business
                 Nationality = (new NationRepository()).GetNation(this.SqlDataReader["Nationality"].ToString()),
                 Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString()),
                 RegisterDate = this.GetOrNull(this.SqlDataReader["RegisterDate"]),
+                LoginTimes = int.Parse(this.SqlDataReader["LoginTimes"].ToString()),
                 LastLoginDate = this.GetOrNull(this.SqlDataReader["LastLoginDate"])
             };
         }
 
-        private void CheckAdministratorOrFail()
+        private Administrator Casted()
         {
-            String QueryTemplate = "SELECT TOP 1 * FROM Users_Administrators WHERE Id = {0}";
-            String Query = String.Format(QueryTemplate, this.AbstractUser.Id);
-            this.ExecSelect(Query);
-            this.SqlDataReader.Read();
-            this.AssertOrFail("El usuario ingresado no es administrador");
-        }
-
-        private DateTime GetOrNull(object toConvert)
-        {
-            try
+            return new Administrator
             {
-                return Convert.ToDateTime(toConvert);
-            } catch (Exception)
-            {
-                return Convert.ToDateTime(null);
-            }
+                Id = this.AbstractUser.Id,
+                Name = this.AbstractUser.Name,
+                LastName = this.AbstractUser.LastName,
+                Email = this.AbstractUser.Email,
+                BornDate = this.AbstractUser.BornDate,
+                Gender = this.AbstractUser.Gender,
+                Nationality = this.AbstractUser.Nationality,
+                Status = this.AbstractUser.Status,
+                RegisterDate = this.AbstractUser.RegisterDate,
+                LastLoginDate = this.AbstractUser.LastLoginDate
+            };
         }
-
-        private void FillAdministrator() => this.Administrator = this.AbstractUser as Administrator;
     }
 }

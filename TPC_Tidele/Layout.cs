@@ -26,15 +26,16 @@ namespace TPC_Tidele
             this.LoadEvents();
         }
 
-        private void btnUsers_Click(object sender, EventArgs e)
-        {
-            this.UserIndex.BringToFront();
-        }
-
         private void btnDashboard_Click(object sender, EventArgs e)
         {
             this.FillDashboard();
             this.Dashboard.BringToFront();
+        }
+
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            this.UserIndex.UpdateList();
+            this.UserIndex.BringToFront();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -61,17 +62,12 @@ namespace TPC_Tidele
         private void LoadEvents()
         {
             this.UserIndex.UserIndexAddUser += new EventHandler(UserIndex_AddUser);
-            this.UserCreate.GoBack += new EventHandler(UserCreate_GoBack);
+            this.UserCreate.GoBack += new EventHandler(btnUsers_Click);
         }
 
         private void UserIndex_AddUser(object sender, EventArgs e)
         {
             this.UserCreate.BringToFront();
-        }
-
-        private void UserCreate_GoBack(object sender, EventArgs e)
-        {
-            this.UserIndex.BringToFront();
         }
     }
 }

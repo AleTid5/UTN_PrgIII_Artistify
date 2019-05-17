@@ -33,6 +33,12 @@ namespace Business
             return this.GetOrElse(this.SqlCommand.ExecuteScalar(), 0);
         }
 
+        public void ExecUpdate(String Query)
+        {
+            this.PrepareExec(Query);
+            this.SqlCommand.ExecuteNonQuery();
+        }
+
         private int GetOrElse(object ToConvert, int Default)
         {
             try

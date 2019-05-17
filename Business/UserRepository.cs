@@ -26,7 +26,26 @@ namespace Business
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
                 this.AssertOrFail("Las credenciales ingresadas son incorrectas");
-                this.FillUser();
+                this.AbstractUser = this.UserCasted();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void UpdateUserLogin(long? UserId)
+        {
+            try
+            {
+                if (null == UserId) return;
+                String QueryTemplate = "UPDATE Users SET LoginTimes = LoginTimes + 1, LastLoginDate = GETDATE() WHERE Id = {0}";
+                String Query = String.Format(QueryTemplate, UserId);
+                this.ExecUpdate(Query);
             }
             catch (Exception ex)
             {
@@ -64,10 +83,34 @@ namespace Business
             }
         }
 
-        private void FillUser()
+        protected AbstractUser UserCasted()
         {
-            this.AbstractUser = new AbstractUser();
-            this.AbstractUser.Id = int.Parse(this.SqlDataReader["Id"].ToString());
+            return new AbstractUser
+            {
+                Id = int.Parse(this.SqlDataReader["Id"].ToString()),
+                Name = this.SqlDataReader["Name"].ToString(),
+                LastName = this.SqlDataReader["LastName"].ToString(),
+                Email = this.SqlDataReader["Email"].ToString(),
+                BornDate = this.GetOrNull(this.SqlDataReader["BornDate"]),
+                Gender = Convert.ToChar(this.SqlDataReader["Gender"].ToString()),
+                Nationality = (new NationRepository()).GetNation(this.SqlDataReader["Nationality"].ToString()),
+                Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString()),
+                LoginTimes = int.Parse(this.SqlDataReader["LoginTimes"].ToString()),
+                RegisterDate = this.GetOrNull(this.SqlDataReader["RegisterDate"]),
+                LastLoginDate = this.GetOrNull(this.SqlDataReader["LastLoginDate"])
+            };
+        }
+
+        protected DateTime GetOrNull(object toConvert)
+        {
+            try
+            {
+                return Convert.ToDateTime(toConvert);
+            }
+            catch (Exception)
+            {
+                return Convert.ToDateTime(null);
+            }
         }
     }
 }
