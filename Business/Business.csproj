@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MediaTypeRepository.cs" />
+    <Compile Include="GenderRepository.cs" />
+    <Compile Include="CategoryRepository.cs" />
     <Compile Include="AdministratorRepository.cs" />
     <Compile Include="NationRepository.cs" />
     <Compile Include="Repository.cs" />

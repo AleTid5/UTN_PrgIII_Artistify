@@ -21,7 +21,7 @@ namespace Business
                 }
 
                 UserData[1] = this.STR2MD5(UserData[1]);
-                String QueryTemplate = "SELECT TOP 1 * FROM Users WHERE Email = '{0}' AND Password = {1}";
+                String QueryTemplate = "SELECT TOP 1 * FROM Users WHERE Email = '{0}' AND Password = {1} AND Status = 'A'";
                 String Query = String.Format(QueryTemplate, UserData[0], UserData[1]);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
@@ -112,7 +112,7 @@ namespace Business
         {
             try
             {
-                String QueryTemplate = "DELETE FROM Users WHERE Id = {0}";
+                String QueryTemplate = "UPDATE Users SET Status = 'B' WHERE Id = {0}";
                 String Query = String.Format(QueryTemplate, user.Id);
 
                 this.ExecUpdate(Query);

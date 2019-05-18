@@ -16,10 +16,5 @@ namespace TPC_Tidele.Views
         {
             InitializeComponent();
         }
-
-        private void btnBack_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

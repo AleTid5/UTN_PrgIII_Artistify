@@ -11,5 +11,11 @@ namespace Domain
         public int Id { set; get; }
         public string Type { set; get; }
         public Status Status { set; get; }
+
+        override
+        public String ToString()
+        {
+            return this.Type.ToString();
+        }
     }
 }

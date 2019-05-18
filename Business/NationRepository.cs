@@ -54,11 +54,12 @@ namespace Business
                 this.SqlConnection.Close();
             }
         }
+
         public List<Nation> FindAll()
         {
             try
             {
-                String Query = String.Format("SELECT * FROM {0}", this.Table);
+                String Query = String.Format("SELECT * FROM {0} WHERE Status = 'A'", this.Table);
                 this.ExecSelect(Query);
 
                 List<Nation> Nations = new List<Nation>();

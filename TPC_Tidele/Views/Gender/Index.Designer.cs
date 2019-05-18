@@ -1,4 +1,4 @@
-﻿namespace TPC_Tidele.Views.User
+﻿namespace TPC_Tidele.Views.Gender
 {
     partial class Index
     {
@@ -33,46 +33,46 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnAddUser = new System.Windows.Forms.Button();
-            this.dataGridUsers = new System.Windows.Forms.DataGridView();
+            this.btnAddGender = new System.Windows.Forms.Button();
+            this.dataGridGenders = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnEditUser = new System.Windows.Forms.Button();
-            this.btnRemoveUser = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).BeginInit();
+            this.btnEditGender = new System.Windows.Forms.Button();
+            this.btnRemoveGender = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridGenders)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAddUser
+            // btnAddGender
             // 
-            this.btnAddUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
-            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.btnAddUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnAddUser.Location = new System.Drawing.Point(703, 397);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(30, 30);
-            this.btnAddUser.TabIndex = 6;
-            this.btnAddUser.Tag = "";
-            this.btnAddUser.Text = "+";
-            this.btnAddUser.UseVisualStyleBackColor = false;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            this.btnAddGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
+            this.btnAddGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddGender.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.btnAddGender.ForeColor = System.Drawing.Color.White;
+            this.btnAddGender.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnAddGender.Location = new System.Drawing.Point(703, 397);
+            this.btnAddGender.Name = "btnAddGender";
+            this.btnAddGender.Size = new System.Drawing.Size(30, 30);
+            this.btnAddGender.TabIndex = 6;
+            this.btnAddGender.Tag = "";
+            this.btnAddGender.Text = "+";
+            this.btnAddGender.UseVisualStyleBackColor = false;
+            this.btnAddGender.Click += new System.EventHandler(this.btnAddGender_Click);
             // 
-            // dataGridUsers
+            // dataGridGenders
             // 
-            this.dataGridUsers.AllowUserToAddRows = false;
-            this.dataGridUsers.AllowUserToDeleteRows = false;
-            this.dataGridUsers.AllowUserToResizeColumns = false;
-            this.dataGridUsers.AllowUserToResizeRows = false;
+            this.dataGridGenders.AllowUserToAddRows = false;
+            this.dataGridGenders.AllowUserToDeleteRows = false;
+            this.dataGridGenders.AllowUserToResizeColumns = false;
+            this.dataGridGenders.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
             dataGridViewCellStyle1.NullValue = "Sin datos";
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.dataGridUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridUsers.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
-            this.dataGridUsers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridGenders.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridGenders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.dataGridGenders.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,8 +81,8 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Red;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridGenders.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridGenders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,12 +91,12 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DimGray;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlLight;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridUsers.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridUsers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridUsers.Location = new System.Drawing.Point(23, 69);
-            this.dataGridUsers.MultiSelect = false;
-            this.dataGridUsers.Name = "dataGridUsers";
-            this.dataGridUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridGenders.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridGenders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridGenders.Location = new System.Drawing.Point(23, 69);
+            this.dataGridGenders.MultiSelect = false;
+            this.dataGridGenders.Name = "dataGridGenders";
+            this.dataGridGenders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.AppWorkspace;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -105,12 +105,12 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.GrayText;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ButtonFace;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridUsers.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridUsers.RowHeadersVisible = false;
+            this.dataGridGenders.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridGenders.RowHeadersVisible = false;
             dataGridViewCellStyle5.NullValue = "Sin datos";
-            this.dataGridUsers.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridUsers.Size = new System.Drawing.Size(711, 316);
-            this.dataGridUsers.TabIndex = 5;
+            this.dataGridGenders.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridGenders.Size = new System.Drawing.Size(711, 316);
+            this.dataGridGenders.TabIndex = 5;
             // 
             // panel1
             // 
@@ -128,53 +128,53 @@
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label1.Location = new System.Drawing.Point(17, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 32);
+            this.label1.Size = new System.Drawing.Size(134, 32);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Usuarios";
+            this.label1.Text = "Géneros";
             // 
-            // btnEditUser
+            // btnEditGender
             // 
-            this.btnEditUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
-            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.btnEditUser.ForeColor = System.Drawing.Color.White;
-            this.btnEditUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnEditUser.Location = new System.Drawing.Point(658, 397);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(30, 30);
-            this.btnEditUser.TabIndex = 7;
-            this.btnEditUser.Text = "✎";
-            this.btnEditUser.UseVisualStyleBackColor = false;
-            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            this.btnEditGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
+            this.btnEditGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditGender.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.btnEditGender.ForeColor = System.Drawing.Color.White;
+            this.btnEditGender.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnEditGender.Location = new System.Drawing.Point(658, 397);
+            this.btnEditGender.Name = "btnEditGender";
+            this.btnEditGender.Size = new System.Drawing.Size(30, 30);
+            this.btnEditGender.TabIndex = 7;
+            this.btnEditGender.Text = "✎";
+            this.btnEditGender.UseVisualStyleBackColor = false;
+            this.btnEditGender.Click += new System.EventHandler(this.btnEditGender_Click);
             // 
-            // btnRemoveUser
+            // btnRemoveGender
             // 
-            this.btnRemoveUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
-            this.btnRemoveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveUser.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
-            this.btnRemoveUser.ForeColor = System.Drawing.Color.White;
-            this.btnRemoveUser.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnRemoveUser.Location = new System.Drawing.Point(613, 397);
-            this.btnRemoveUser.Name = "btnRemoveUser";
-            this.btnRemoveUser.Size = new System.Drawing.Size(30, 30);
-            this.btnRemoveUser.TabIndex = 8;
-            this.btnRemoveUser.Text = "🗑";
-            this.btnRemoveUser.UseVisualStyleBackColor = false;
-            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            this.btnRemoveGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(30)))), ((int)(((byte)(24)))));
+            this.btnRemoveGender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveGender.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F);
+            this.btnRemoveGender.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveGender.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnRemoveGender.Location = new System.Drawing.Point(613, 397);
+            this.btnRemoveGender.Name = "btnRemoveGender";
+            this.btnRemoveGender.Size = new System.Drawing.Size(30, 30);
+            this.btnRemoveGender.TabIndex = 8;
+            this.btnRemoveGender.Text = "🗑";
+            this.btnRemoveGender.UseVisualStyleBackColor = false;
+            this.btnRemoveGender.Click += new System.EventHandler(this.btnRemoveGender_Click);
             // 
             // Index
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
-            this.Controls.Add(this.btnRemoveUser);
-            this.Controls.Add(this.btnEditUser);
-            this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.dataGridUsers);
+            this.Controls.Add(this.btnRemoveGender);
+            this.Controls.Add(this.btnEditGender);
+            this.Controls.Add(this.btnAddGender);
+            this.Controls.Add(this.dataGridGenders);
             this.Controls.Add(this.panel1);
             this.Name = "Index";
             this.Size = new System.Drawing.Size(758, 439);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridGenders)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -183,11 +183,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAddUser;
-        private System.Windows.Forms.DataGridView dataGridUsers;
+        private System.Windows.Forms.Button btnAddGender;
+        private System.Windows.Forms.DataGridView dataGridGenders;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnEditUser;
-        private System.Windows.Forms.Button btnRemoveUser;
+        private System.Windows.Forms.Button btnEditGender;
+        private System.Windows.Forms.Button btnRemoveGender;
     }
 }

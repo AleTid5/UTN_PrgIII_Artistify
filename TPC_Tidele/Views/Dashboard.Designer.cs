@@ -64,7 +64,7 @@
             this.txtImagesAdded.AutoSize = true;
             this.txtImagesAdded.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtImagesAdded.ForeColor = System.Drawing.Color.White;
-            this.txtImagesAdded.Location = new System.Drawing.Point(22, 28);
+            this.txtImagesAdded.Location = new System.Drawing.Point(3, 32);
             this.txtImagesAdded.Name = "txtImagesAdded";
             this.txtImagesAdded.Size = new System.Drawing.Size(44, 46);
             this.txtImagesAdded.TabIndex = 10;
@@ -75,11 +75,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(27, 9);
+            this.label5.Location = new System.Drawing.Point(8, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 15);
+            this.label5.Size = new System.Drawing.Size(70, 15);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Imágenes Añadidas";
+            this.label5.Text = "Imágenes";
             // 
             // panel4
             // 
@@ -96,7 +96,7 @@
             this.txtBooksAdded.AutoSize = true;
             this.txtBooksAdded.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBooksAdded.ForeColor = System.Drawing.Color.White;
-            this.txtBooksAdded.Location = new System.Drawing.Point(44, 28);
+            this.txtBooksAdded.Location = new System.Drawing.Point(3, 31);
             this.txtBooksAdded.Name = "txtBooksAdded";
             this.txtBooksAdded.Size = new System.Drawing.Size(44, 46);
             this.txtBooksAdded.TabIndex = 9;
@@ -107,11 +107,11 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(49, 9);
+            this.label4.Location = new System.Drawing.Point(8, 9);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 15);
+            this.label4.Size = new System.Drawing.Size(48, 15);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Libros Añadidos";
+            this.label4.Text = "Libros";
             // 
             // panel3
             // 
@@ -128,7 +128,7 @@
             this.txtVideosAdded.AutoSize = true;
             this.txtVideosAdded.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVideosAdded.ForeColor = System.Drawing.Color.White;
-            this.txtVideosAdded.Location = new System.Drawing.Point(41, 28);
+            this.txtVideosAdded.Location = new System.Drawing.Point(2, 32);
             this.txtVideosAdded.Name = "txtVideosAdded";
             this.txtVideosAdded.Size = new System.Drawing.Size(44, 46);
             this.txtVideosAdded.TabIndex = 8;
@@ -139,11 +139,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(46, 9);
+            this.label3.Location = new System.Drawing.Point(7, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 15);
+            this.label3.Size = new System.Drawing.Size(51, 15);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Videos Añadidos";
+            this.label3.Text = "Videos";
             // 
             // panel2
             // 
@@ -160,7 +160,7 @@
             this.txtMusicAdded.AutoSize = true;
             this.txtMusicAdded.Font = new System.Drawing.Font("Arial Rounded MT Bold", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMusicAdded.ForeColor = System.Drawing.Color.White;
-            this.txtMusicAdded.Location = new System.Drawing.Point(49, 28);
+            this.txtMusicAdded.Location = new System.Drawing.Point(3, 31);
             this.txtMusicAdded.Name = "txtMusicAdded";
             this.txtMusicAdded.Size = new System.Drawing.Size(44, 46);
             this.txtMusicAdded.TabIndex = 7;
@@ -171,11 +171,11 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(54, 9);
+            this.label2.Location = new System.Drawing.Point(8, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 15);
+            this.label2.Size = new System.Drawing.Size(53, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Musica Añadida";
+            this.label2.Text = "Musica";
             // 
             // panel1
             // 
@@ -196,7 +196,7 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Dashboard";
             // 
-            // Indexx
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -206,7 +206,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Indexx";
+            this.Name = "Dashboard";
             this.Size = new System.Drawing.Size(758, 439);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();

@@ -67,6 +67,42 @@
     <Compile Include="Views\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Gender\Create.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Gender\Create.Designer.cs">
+      <DependentUpon>Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gender\Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Gender\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Gender\Index.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Gender\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\Create.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Category\Create.Designer.cs">
+      <DependentUpon>Create.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\Edit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Category\Edit.Designer.cs">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\Index.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Category\Index.Designer.cs">
+      <DependentUpon>Index.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\User\Create.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,6 +139,24 @@
     </Compile>
     <EmbeddedResource Include="Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gender\Create.resx">
+      <DependentUpon>Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gender\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Gender\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\Create.resx">
+      <DependentUpon>Create.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\Edit.resx">
+      <DependentUpon>Edit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\Index.resx">
+      <DependentUpon>Index.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\User\Create.resx">
       <DependentUpon>Create.cs</DependentUpon>

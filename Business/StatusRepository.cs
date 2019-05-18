@@ -34,6 +34,33 @@ namespace Business
             }
         }
 
+        public List<Status> FindAll()
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0}", this.Table);
+                this.ExecSelect(Query);
+
+                List<Status> statuses = new List<Status>();
+
+                while (this.SqlDataReader.Read())
+                {
+                    Status status = this.GetCasted();
+                    statuses.Add(status);
+                }
+
+                return statuses;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
         private Status GetCasted()
         {
             return new Status

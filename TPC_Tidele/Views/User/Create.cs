@@ -56,7 +56,7 @@ namespace TPC_Tidele.Views.User
                 this.btnBack_Click(sender, e);
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
 

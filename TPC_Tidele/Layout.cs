@@ -46,6 +46,18 @@ namespace TPC_Tidele
             this.UserIndex.BringToFront();
         }
 
+        private void btnCategories_Click(object sender, EventArgs e)
+        {
+            this.CategoryIndex.UpdateList();
+            this.CategoryIndex.BringToFront();
+        }
+
+        private void btnGenders_Click(object sender, EventArgs e)
+        {
+            this.GenderIndex.UpdateList();
+            this.GenderIndex.BringToFront();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -69,11 +81,69 @@ namespace TPC_Tidele
 
         private void LoadEvents()
         {
+            this.CategoryIndex.CategoryIndexAddCategory += new EventHandler(this.CategoryIndex_AddCategory);
+            this.CategoryIndex.CategoryIndexEditCategory += new EventHandler(this.CategoryIndex_EditCategory);
+            this.CategoryIndex.CategoryIndexRemoveCategory += new EventHandler(this.CategoryIndex_RemoveCategory);
+            this.GenderIndex.GenderIndexAddGender += new EventHandler(this.GenderIndex_AddGender);
+            this.GenderIndex.GenderIndexEditGender += new EventHandler(this.GenderIndex_EditGender);
+            this.GenderIndex.GenderIndexRemoveGender += new EventHandler(this.GenderIndex_RemoveGender);
             this.UserIndex.UserIndexAddUser += new EventHandler(this.UserIndex_AddUser);
             this.UserIndex.UserIndexEditUser += new EventHandler(this.UserIndex_EditUser);
             this.UserIndex.UserIndexRemoveUser += new EventHandler(this.UserIndex_RemoveUser);
+            this.CategoryCreate.GoBack += new EventHandler(this.btnCategories_Click);
+            this.CategoryEdit.GoBack += new EventHandler(this.btnCategories_Click);
+            this.GenderCreate.GoBack += new EventHandler(this.btnGenders_Click);
+            this.GenderEdit.GoBack += new EventHandler(this.btnGenders_Click);
             this.UserCreate.GoBack += new EventHandler(this.btnUsers_Click);
             this.UserEdit.GoBack += new EventHandler(this.btnUsers_Click);
+        }
+
+        private void CategoryIndex_AddCategory(object sender, EventArgs e)
+        {
+            this.CategoryCreate.BringToFront();
+        }
+
+        private void CategoryIndex_EditCategory(object sender, EventArgs e)
+        {
+            this.CategoryEdit.SetCategory(sender as Domain.Category);
+            this.CategoryEdit.FillForm();
+            this.CategoryEdit.BringToFront();
+        }
+
+        private void CategoryIndex_RemoveCategory(object sender, EventArgs e)
+        {
+            try
+            {
+                (new CategoryRepository()).RemoveCategory(sender as Domain.Category);
+                this.CategoryIndex.UpdateList();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+        }
+
+        private void GenderIndex_AddGender(object sender, EventArgs e)
+        {
+            this.GenderCreate.BringToFront();
+        }
+
+        private void GenderIndex_EditGender(object sender, EventArgs e)
+        {
+            this.GenderEdit.SetGender(sender as Domain.Gender);
+            this.GenderEdit.FillForm();
+            this.GenderEdit.BringToFront();
+        }
+
+        private void GenderIndex_RemoveGender(object sender, EventArgs e)
+        {
+            try
+            {
+                (new GenderRepository()).RemoveGender(sender as Domain.Gender);
+                this.GenderIndex.UpdateList();
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
         }
 
         private void UserIndex_AddUser(object sender, EventArgs e)
@@ -96,7 +166,7 @@ namespace TPC_Tidele
                 this.UserIndex.UpdateList();
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message.ToString());
             }
         }
     }

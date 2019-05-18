@@ -14,7 +14,7 @@ namespace Domain
         override
         public String ToString()
         {
-            return null == this.Name ? "anda a saber" : this.Name.ToString();
+            return this.Name.ToString();
         }
     }
 }

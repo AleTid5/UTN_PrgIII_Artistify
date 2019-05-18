@@ -69,11 +69,6 @@ namespace Business
                     throw new Exception("No está autorizado para poder eliminarse a usted mismo.");
                 }
 
-                String QueryTemplate = "DELETE FROM Users_Administrators WHERE Id = {0}";
-                String Query = String.Format(QueryTemplate, administrator.Id);
-
-                this.ExecUpdate(Query);
-                this.SqlConnection.Close();
                 this.RemoveUser((AbstractUser) administrator);
             } catch (Exception ex)
             {
@@ -85,7 +80,7 @@ namespace Business
         {
             try
             {
-                String Query = String.Format("SELECT * FROM {0} A INNER JOIN Users U ON A.Id = U.Id", this.Table);
+                String Query = String.Format("SELECT * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE U.Status = 'A'", this.Table);
                 this.ExecSelect(Query);
 
                 List<Administrator> administrators = new List<Administrator>();

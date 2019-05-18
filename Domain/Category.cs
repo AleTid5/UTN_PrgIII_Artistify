@@ -12,5 +12,11 @@ namespace Domain
         public string Name { set; get; }
         public int BlockedAge { set; get; }
         public Status Status { set; get; }
+
+        override
+        public String ToString()
+        {
+            return this.Name.ToString();
+        }
     }
 }
