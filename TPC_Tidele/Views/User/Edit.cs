@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.User;
 using Domain;
-using Business;
-using Business.Rules;
 using System.Net.Mail;
+using Repository;
+using Common.Rules;
 
 namespace TPC_Tidele.Views.User
 {

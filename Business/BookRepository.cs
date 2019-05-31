@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Business
+namespace Repository
 {
     public class BookRepository : Repository
     {

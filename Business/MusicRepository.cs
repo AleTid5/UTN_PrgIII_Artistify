@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Business
+namespace Repository
 {
     public class MusicRepository : Repository
     {

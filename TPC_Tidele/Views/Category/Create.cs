@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.User;
-using Business;
+using Repository;
 using Domain;
-using Business.Rules;
 using System.Net.Mail;
+using Common.Rules;
 
 namespace TPC_Tidele.Views.Category
 {

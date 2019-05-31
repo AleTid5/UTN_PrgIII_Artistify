@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using DataAccess;
 
-namespace Business
+namespace Repository
 {
     public class Repository
     {

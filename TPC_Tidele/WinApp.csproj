@@ -191,13 +191,17 @@
     <None Include="Resources\graficos.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Business\Business.csproj">
+    <ProjectReference Include="..\Business\Repository.csproj">
       <Project>{8a957f75-67d2-4d78-956e-d7451281bc6a}</Project>
-      <Name>Business</Name>
+      <Name>Repository</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{A178BE73-899C-47FA-8637-BB14887727CB}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Entities.csproj">
       <Project>{51e8391d-13f9-4d47-a93c-be2bdc3897c8}</Project>
-      <Name>Domain</Name>
+      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

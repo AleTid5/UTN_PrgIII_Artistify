@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.User;
-using Business;
+using Repository;
 
 namespace TPC_Tidele.Views.User
 {

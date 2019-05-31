@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace Business
+namespace Repository
 {
     public abstract class UserRepository : Repository
     {

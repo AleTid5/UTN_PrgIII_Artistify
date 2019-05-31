@@ -49,7 +49,6 @@
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MusicRepository.cs" />
-    <Compile Include="Rules\NativeRules.cs" />
     <Compile Include="StatusRepository.cs" />
     <Compile Include="VideoRepository.cs" />
     <Compile Include="ImageRepository.cs" />
@@ -57,13 +56,17 @@
     <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{b87ee175-f18f-4295-bf55-e9d689091dea}</Project>
-      <Name>DataAccess</Name>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{a178be73-899c-47fa-8637-bb14887727cb}</Project>
+      <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain\Domain.csproj">
+    <ProjectReference Include="..\DataAccess\Services.csproj">
+      <Project>{b87ee175-f18f-4295-bf55-e9d689091dea}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Entities.csproj">
       <Project>{51e8391d-13f9-4d47-a93c-be2bdc3897c8}</Project>
-      <Name>Domain</Name>
+      <Name>Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

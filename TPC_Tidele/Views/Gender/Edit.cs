@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Domain.User;
 using Domain;
-using Business;
-using Business.Rules;
+using Repository;
 using System.Net.Mail;
 
 namespace TPC_Tidele.Views.Gender
