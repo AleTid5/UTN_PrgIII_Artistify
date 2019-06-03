@@ -65,10 +65,8 @@ namespace Repository
 
         protected void AssertOrFail(String Message)
         {
-            if (!this.SqlDataReader.HasRows)
-            {
-                throw new Exception(Message);
-            }
+            if (!this.SqlDataReader.HasRows)            
+                throw new Exception(Message);            
         }
 
         public int GetRepositoryCount()

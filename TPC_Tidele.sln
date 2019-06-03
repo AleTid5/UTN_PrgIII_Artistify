@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.489
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinApp", "TPC_Tidele\WinApp.csproj", "{2B26A2D1-5828-4FDB-8FEA-AD10BD22429B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Domain\Entities.csproj", "{51E8391D-13F9-4D47-A93C-BE2BDC3897C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Domain\Entity.csproj", "{51E8391D-13F9-4D47-A93C-BE2BDC3897C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "DataAccess\Services.csproj", "{B87EE175-F18F-4295-BF55-E9D689091DEA}"
 EndProject

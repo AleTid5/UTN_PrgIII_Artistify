@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.User
+namespace Entity.User
 {
     public class Administrator : AbstractUser
     {

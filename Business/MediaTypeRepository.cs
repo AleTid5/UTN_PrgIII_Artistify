@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Entity;
 using System;
 using System.Collections.Generic;
 
@@ -71,7 +71,7 @@ namespace Repository
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
-                return this.GetMediaType();
+                return this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    MediaType mediaType = this.GetMediaType();
+                    MediaType mediaType = this.GetRowCasted();
                     categories.Add(mediaType);
                 }
 
@@ -110,8 +110,11 @@ namespace Repository
             }
         }
 
-        private MediaType GetMediaType()
+        private MediaType GetRowCasted()
         {
+            if (!this.SqlDataReader.HasRows)
+                return new MediaType();
+
             return new MediaType
             {
                 Id = int.Parse(this.SqlDataReader["Id"].ToString()),

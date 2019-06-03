@@ -1,4 +1,4 @@
-﻿using Domain.User;
+﻿using Entity.User;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +19,7 @@ namespace Repository
             {
                 this.CheckCredentialsOrFail(UserData);
                 this.CheckAdministratorOrFail();
-                this.Administrator = this.Casted();
+                this.Administrator = this.GetCasted();
             }
             catch (Exception ex)
             {
@@ -87,7 +87,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    Administrator administrator = this.GetAdministrator();
+                    Administrator administrator = this.GetRowCasted();
                     administrators.Add(administrator);
                 }
 
@@ -112,25 +112,25 @@ namespace Repository
             this.AssertOrFail("El usuario ingresado no es administrador");
         }
 
-        private Administrator GetAdministrator()
+        private Administrator GetRowCasted()
         {
             return new Administrator
             {
-                Id = int.Parse(this.SqlDataReader["Id"].ToString()),
-                Name = this.SqlDataReader["Name"].ToString(),
-                LastName = this.SqlDataReader["LastName"].ToString(),
-                Email = this.SqlDataReader["Email"].ToString(),
+                Id = Convert.ToInt32(this.SqlDataReader["Id"]),
+                Name = Convert.ToString(this.SqlDataReader["Name"]),
+                LastName = Convert.ToString(this.SqlDataReader["LastName"]),
+                Email = Convert.ToString(this.SqlDataReader["Email"]),
                 BornDate = this.GetOrNull(this.SqlDataReader["BornDate"]),
                 Gender = Convert.ToChar(this.SqlDataReader["Gender"].ToString()),
-                Nationality = (new NationRepository()).GetNation(this.SqlDataReader["Nationality"].ToString()),
-                Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString()),
+                Nationality = (new NationRepository()).GetNation(Convert.ToString(this.SqlDataReader["Nationality"])),
+                Status = (new StatusRepository()).GetStatus(Convert.ToString(this.SqlDataReader["Status"])),
                 RegisterDate = this.GetOrNull(this.SqlDataReader["RegisterDate"]),
-                LoginTimes = int.Parse(this.SqlDataReader["LoginTimes"].ToString()),
+                LoginTimes = Convert.ToInt32(this.SqlDataReader["LoginTimes"]),
                 LastLoginDate = this.GetOrNull(this.SqlDataReader["LastLoginDate"])
             };
         }
 
-        private Administrator Casted()
+        private Administrator GetCasted()
         {
             return new Administrator
             {

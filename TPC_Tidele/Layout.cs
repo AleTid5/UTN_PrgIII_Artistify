@@ -1,5 +1,5 @@
 ﻿using Repository;
-using Domain.User;
+using Entity.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -105,7 +105,7 @@ namespace TPC_Tidele
 
         private void CategoryIndex_EditCategory(object sender, EventArgs e)
         {
-            this.CategoryEdit.SetCategory(sender as Domain.Category);
+            this.CategoryEdit.SetCategory(sender as Entity.Category);
             this.CategoryEdit.FillForm();
             this.CategoryEdit.BringToFront();
         }
@@ -114,7 +114,7 @@ namespace TPC_Tidele
         {
             try
             {
-                (new CategoryRepository()).RemoveCategory(sender as Domain.Category);
+                (new CategoryRepository()).RemoveCategory(sender as Entity.Category);
                 this.CategoryIndex.UpdateList();
             } catch (Exception ex)
             {
@@ -129,7 +129,7 @@ namespace TPC_Tidele
 
         private void GenderIndex_EditGender(object sender, EventArgs e)
         {
-            this.GenderEdit.SetGender(sender as Domain.Gender);
+            this.GenderEdit.SetGender(sender as Entity.Gender);
             this.GenderEdit.FillForm();
             this.GenderEdit.BringToFront();
         }
@@ -138,7 +138,7 @@ namespace TPC_Tidele
         {
             try
             {
-                (new GenderRepository()).RemoveGender(sender as Domain.Gender);
+                (new GenderRepository()).RemoveGender(sender as Entity.Gender);
                 this.GenderIndex.UpdateList();
             } catch (Exception ex)
             {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Domain.User;
+using Entity.User;
 using Repository;
 
 namespace TPC_Tidele.Views.Gender
@@ -17,7 +17,7 @@ namespace TPC_Tidele.Views.Gender
         public event EventHandler GenderIndexAddGender;
         public event EventHandler GenderIndexEditGender;
         public event EventHandler GenderIndexRemoveGender;
-        private List<Domain.Gender> genders;
+        private List<Entity.Gender> genders;
 
         public Index()
         {
@@ -44,7 +44,7 @@ namespace TPC_Tidele.Views.Gender
         {
             if (this.GenderIndexEditGender != null)
             {
-                this.GenderIndexEditGender((Domain.Gender)dataGridGenders.CurrentRow.DataBoundItem, EventArgs.Empty);
+                this.GenderIndexEditGender((Entity.Gender)dataGridGenders.CurrentRow.DataBoundItem, EventArgs.Empty);
             }
         }
 
@@ -52,7 +52,7 @@ namespace TPC_Tidele.Views.Gender
         {
             if (this.GenderIndexRemoveGender != null)
             {
-                this.GenderIndexRemoveGender((Domain.Gender)dataGridGenders.CurrentRow.DataBoundItem, EventArgs.Empty);
+                this.GenderIndexRemoveGender((Entity.Gender)dataGridGenders.CurrentRow.DataBoundItem, EventArgs.Empty);
             }
         }
     }

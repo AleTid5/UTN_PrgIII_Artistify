@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Domain.User;
+using Entity.User;
 using Repository;
-using Domain;
+using Entity;
 using System.Net.Mail;
 using Common.Rules;
 
@@ -37,7 +37,7 @@ namespace TPC_Tidele.Views.Category
         {
             try
             {
-                Domain.Category category = new Domain.Category
+                Entity.Category category = new Entity.Category
                 {
                     Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 1, 25),
                     BlockedAge = Convert.ToInt32(txtAge.Text.ToString().Trim())

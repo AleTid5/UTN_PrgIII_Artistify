@@ -1,4 +1,4 @@
-﻿using Domain;
+﻿using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +22,7 @@ namespace Repository
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
-                return this.GetCasted();
+                return this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -45,7 +45,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    Status status = this.GetCasted();
+                    Status status = this.GetRowCasted();
                     statuses.Add(status);
                 }
 
@@ -61,8 +61,11 @@ namespace Repository
             }
         }
 
-        private Status GetCasted()
+        private Status GetRowCasted()
         {
+            if (!this.SqlDataReader.HasRows)
+                return new Status();
+
             return new Status
             {
                 Code = Convert.ToString(this.SqlDataReader["Code"]),

@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using Common.Transformers;
+using Entity;
 using System;
 using System.Collections.Generic;
 
@@ -67,11 +68,17 @@ namespace Repository
         {
             try
             {
-                String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE Id = {1}", this.Table, Id);
+                String Query = String.Format(
+                    "SELECT TOP 1 {0}.*," +
+                    "(SELECT ParentGender.Id FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentId," +
+                    "(SELECT ParentGender.Name FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentName," +
+                    "(SELECT ParentGender.MediaType FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentMediaType," +
+                    "(SELECT ParentGender.Status FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentStatus " +
+                    "FROM {0} WHERE {0}.Id = {1}", this.Table, Id);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
-                return this.GetGender();
+                return this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -87,15 +94,21 @@ namespace Repository
         {
             try
             {
-                String Query = String.Format("SELECT * FROM {0} ORDER BY Status ASC, Name ASC", this.Table);
+                String Query = String.Format(
+                    "SELECT {0}.*," +
+                    "(SELECT ParentGender.Id FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentId," +
+                    "(SELECT ParentGender.Name FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentName," +
+                    "(SELECT ParentGender.MediaType FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentMediaType," +
+                    "(SELECT ParentGender.Status FROM {0} AS ParentGender WHERE ParentGender.Id = {0}.ParentGender) AS ParentStatus " +
+                    "FROM {0} ORDER BY {0}.ParentGender ASC, {0}.MediaType ASC, {0}.Name ASC", this.Table);
+
                 this.ExecSelect(Query);
 
                 List<Gender> categories = new List<Gender>();
 
                 while (this.SqlDataReader.Read())
                 {
-                    Gender gender = this.GetGender();
-                    categories.Add(gender);
+                    categories.Add(this.GetRowCasted());
                 }
 
                 return categories;
@@ -110,15 +123,29 @@ namespace Repository
             }
         }
 
-        private Gender GetGender()
+        private Gender GetRowCasted()
+        {
+            if (!this.SqlDataReader.HasRows)
+                return new Gender();
+
+            return new Gender
+            {
+                Id = (long) DBTransformer.GetOrDefault(this.SqlDataReader["Id"], 0),
+                Name = DBTransformer.GetOrDefault(this.SqlDataReader["Name"], String.Empty),
+                MediaType = new MediaTypeRepository().GetMediaType(DBTransformer.GetOrDefault(this.SqlDataReader["MediaType"], 0)),
+                Status = new StatusRepository().GetStatus(DBTransformer.GetOrDefault(this.SqlDataReader["Status"], String.Empty)),
+                ParentGender = this.GetParentGender()
+            };
+        }
+
+        private Gender GetParentGender()
         {
             return new Gender
             {
-                Id = int.Parse(this.SqlDataReader["Id"].ToString()),
-                Name = this.SqlDataReader["Name"].ToString(),
-                MediaType = (new MediaTypeRepository()).GetMediaType(int.Parse(this.SqlDataReader["MediaType"].ToString())),
-                Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString()),
-                // ParentGender = (new GenderRepository()).GetGender(int.Parse(this.SqlDataReader["ParentGender"].ToString()))
+                Id = (long) DBTransformer.GetOrDefault(this.SqlDataReader["ParentId"], 0),
+                Name = DBTransformer.GetOrDefault(this.SqlDataReader["ParentName"], String.Empty),
+                MediaType = new MediaTypeRepository().GetMediaType(DBTransformer.GetOrDefault(this.SqlDataReader["ParentMediaType"], 0)),
+                Status = new StatusRepository().GetStatus(DBTransformer.GetOrDefault(this.SqlDataReader["ParentStatus"], String.Empty)),
             };
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Media
+namespace Entity.Media
 {
     public class Video : AbstractMedia
     {

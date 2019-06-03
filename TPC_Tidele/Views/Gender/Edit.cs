@@ -1,25 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Domain.User;
-using Domain;
+using Entity;
 using Repository;
-using System.Net.Mail;
 
 namespace TPC_Tidele.Views.Gender
 {
     public partial class Edit : UserControl
     {
         public event EventHandler GoBack;
-        Domain.Gender gender = new Domain.Gender();
+        Entity.Gender gender = new Entity.Gender();
         private List<MediaType> mediaTypes = (new MediaTypeRepository()).FindAll();
-        private List<Domain.Gender> genders = (new GenderRepository()).FindAll();
+        private List<Entity.Gender> genders = (new GenderRepository()).FindAll();
         private List<Status> statuses = (new StatusRepository()).FindAll();
 
         public Edit()
@@ -36,11 +28,12 @@ namespace TPC_Tidele.Views.Gender
             this.comboStatus.ValueMember = "Code";
         }
 
-        public void SetGender(Domain.Gender gender)
+        public void SetGender(Entity.Gender gender)
         {
             this.gender = gender;
-            this.genders = (new GenderRepository()).FindAll();
-            this.statuses = (new StatusRepository()).FindAll();
+            mediaTypes = (new MediaTypeRepository()).FindAll();
+            genders = (new GenderRepository()).FindAll();
+            statuses = (new StatusRepository()).FindAll();
         }
 
         public void FillForm()

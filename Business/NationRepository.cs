@@ -1,5 +1,5 @@
 ﻿using DataAccess;
-using Domain;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Repository
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
-                return this.GetCasted();
+                return this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -43,7 +43,7 @@ namespace Repository
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
-                return this.GetCasted();
+                return this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -66,8 +66,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    Nation Nation = this.GetCasted();
-                    Nations.Add(Nation);
+                    Nations.Add(this.GetRowCasted());
                 }
 
                 return Nations;
@@ -82,23 +81,15 @@ namespace Repository
             }
         }
 
-        private Nation GetCasted()
+        private Nation GetRowCasted()
         {
-            Nation Nation = new Nation();
-
-            if (!this.SqlDataReader.HasRows)
+            return new Nation
             {
-                Nation.Name = "No se ha encontrado";
-            }
-            else
-            {
-                Nation.Code = this.SqlDataReader["Code"].ToString();
-                Nation.Name = this.SqlDataReader["Name"].ToString();
-                Nation.PhoneCode = int.Parse(this.SqlDataReader["PhoneCode"].ToString());
-                Nation.Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString());
-            }
-
-            return Nation;
+                Code = Convert.ToString(this.SqlDataReader["Code"]),
+                Name = Convert.ToString(this.SqlDataReader["Name"]),
+                PhoneCode = int.Parse(Convert.ToString(this.SqlDataReader["PhoneCode"])),
+                Status = new StatusRepository().GetStatus(Convert.ToString(this.SqlDataReader["Status"]))
+            };
         }
 
     }

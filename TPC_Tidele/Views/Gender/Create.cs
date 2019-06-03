@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Domain.User;
+using Entity.User;
 using Repository;
-using Domain;
+using Entity;
 using System.Net.Mail;
 using Common.Rules;
 
@@ -19,7 +19,7 @@ namespace TPC_Tidele.Views.Gender
     {
         public event EventHandler GoBack;
         private List<MediaType> mediaTypes = (new MediaTypeRepository()).FindAll();
-        private List<Domain.Gender> genders = (new GenderRepository()).FindAll();
+        private List<Entity.Gender> genders = (new GenderRepository()).FindAll();
 
         public Create()
         {
@@ -45,7 +45,7 @@ namespace TPC_Tidele.Views.Gender
         {
             try
             {
-                Domain.Gender gender = new Domain.Gender
+                Entity.Gender gender = new Entity.Gender
                 {
                     Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 5, 50),
                     MediaType = (new MediaTypeRepository()).GetMediaType(int.Parse(comboMediaType.SelectedValue.ToString())),

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Domain.User;
+using Entity.User;
 using Repository;
 
 namespace TPC_Tidele.Views.Category
@@ -17,7 +17,7 @@ namespace TPC_Tidele.Views.Category
         public event EventHandler CategoryIndexAddCategory;
         public event EventHandler CategoryIndexEditCategory;
         public event EventHandler CategoryIndexRemoveCategory;
-        private List<Domain.Category> categories;
+        private List<Entity.Category> categories;
 
         public Index()
         {
@@ -44,7 +44,7 @@ namespace TPC_Tidele.Views.Category
         {
             if (this.CategoryIndexEditCategory != null)
             {
-                this.CategoryIndexEditCategory((Domain.Category)dataGridCategories.CurrentRow.DataBoundItem, EventArgs.Empty);
+                this.CategoryIndexEditCategory((Entity.Category)dataGridCategories.CurrentRow.DataBoundItem, EventArgs.Empty);
             }
         }
 
@@ -52,7 +52,7 @@ namespace TPC_Tidele.Views.Category
         {
             if (this.CategoryIndexRemoveCategory != null)
             {
-                this.CategoryIndexRemoveCategory((Domain.Category)dataGridCategories.CurrentRow.DataBoundItem, EventArgs.Empty);
+                this.CategoryIndexRemoveCategory((Entity.Category)dataGridCategories.CurrentRow.DataBoundItem, EventArgs.Empty);
             }
         }
     }

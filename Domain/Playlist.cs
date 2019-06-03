@@ -1,13 +1,13 @@
-﻿using Domain;
-using Domain.User;
-using Domain.Media;
+﻿using Entity;
+using Entity.User;
+using Entity.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Entity
 {
     public class Playlist
     {

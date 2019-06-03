@@ -29,6 +29,10 @@ namespace TPC_Tidele
 
                 AdministratorRepository administratorRepository = new AdministratorRepository();
                 administratorRepository.AuthenticateOrFail(userData);
+                //AdministratorRepository administratorRepository = new AdministratorRepository();
+                //administratorRepository.Administrator = new Entity.User.Administrator {
+                //    Id = 1
+                //};
 
                 Layout layout = new Layout();
                 layout.SetAdminRepository(administratorRepository);

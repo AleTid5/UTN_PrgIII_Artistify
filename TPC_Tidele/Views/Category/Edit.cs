@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Domain.User;
-using Domain;
+using Entity.User;
+using Entity;
 using Repository;
 using System.Net.Mail;
 using Common.Rules;
@@ -18,7 +18,7 @@ namespace TPC_Tidele.Views.Category
     public partial class Edit : UserControl
     {
         public event EventHandler GoBack;
-        Domain.Category category = new Domain.Category();
+        Entity.Category category = new Entity.Category();
         private List<Status> statuses = (new StatusRepository()).FindAll();
 
         public Edit()
@@ -29,7 +29,7 @@ namespace TPC_Tidele.Views.Category
             this.comboStatus.ValueMember = "Code";
         }
 
-        public void SetCategory(Domain.Category category)
+        public void SetCategory(Entity.Category category)
         {
             this.category = category;
         }
