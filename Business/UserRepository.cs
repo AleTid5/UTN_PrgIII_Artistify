@@ -26,7 +26,7 @@ namespace Repository
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
                 this.AssertOrFail("Las credenciales ingresadas son incorrectas");
-                this.AbstractUser = this.UserCasted();
+                this.AbstractUser = this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -126,7 +126,7 @@ namespace Repository
             }
         }
 
-        protected AbstractUser UserCasted()
+        protected AbstractUser GetRowCasted()
         {
             return new AbstractUser
             {
@@ -142,18 +142,6 @@ namespace Repository
                 RegisterDate = this.GetOrNull(this.SqlDataReader["RegisterDate"]),
                 LastLoginDate = this.GetOrNull(this.SqlDataReader["LastLoginDate"])
             };
-        }
-
-        protected DateTime GetOrNull(object toConvert)
-        {
-            try
-            {
-                return Convert.ToDateTime(toConvert);
-            }
-            catch (Exception)
-            {
-                return Convert.ToDateTime(null);
-            }
         }
     }
 }

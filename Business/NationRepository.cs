@@ -35,26 +35,6 @@ namespace Repository
             }
         }
 
-        public Nation GetNation(int NationPhoneNumber)
-        {
-            try
-            {
-                String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE PhoneCode = {1}", this.Table, NationPhoneNumber);
-                this.ExecSelect(Query);
-                this.SqlDataReader.Read();
-
-                return this.GetRowCasted();
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            finally
-            {
-                this.SqlConnection.Close();
-            }
-        }
-
         public List<Nation> FindAll()
         {
             try

@@ -74,8 +74,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    Category category = this.GetCategory();
-                    categories.Add(category);
+                    categories.Add(this.GetRowCasted());
                 }
 
                 return categories;
@@ -90,7 +89,7 @@ namespace Repository
             }
         }
 
-        private Category GetCategory()
+        private Category GetRowCasted()
         {
             return new Category
             {

@@ -94,8 +94,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    MediaType mediaType = this.GetRowCasted();
-                    categories.Add(mediaType);
+                    categories.Add(this.GetRowCasted());
                 }
 
                 return categories;

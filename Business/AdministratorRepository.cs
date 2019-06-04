@@ -87,8 +87,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    Administrator administrator = this.GetRowCasted();
-                    administrators.Add(administrator);
+                    administrators.Add(this.GetRowCasted());
                 }
 
                 return administrators;

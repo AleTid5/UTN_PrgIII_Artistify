@@ -45,8 +45,7 @@ namespace Repository
 
                 while (this.SqlDataReader.Read())
                 {
-                    Status status = this.GetRowCasted();
-                    statuses.Add(status);
+                    statuses.Add(this.GetRowCasted());
                 }
 
                 return statuses;

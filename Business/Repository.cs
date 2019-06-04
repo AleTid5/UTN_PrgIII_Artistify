@@ -88,5 +88,17 @@ namespace Repository
                 this.SqlConnection.Close();
             }
         }
+
+        protected DateTime GetOrNull(object toConvert)
+        {
+            try
+            {
+                return Convert.ToDateTime(toConvert);
+            }
+            catch (Exception)
+            {
+                return Convert.ToDateTime(null);
+            }
+        }
     }
 }

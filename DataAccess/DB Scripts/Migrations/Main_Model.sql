@@ -68,6 +68,7 @@ CREATE TABLE [dbo].[Media](
 	[Status] [char](1) NOT NULL,
 	[Size] [varchar](100) NOT NULL,
 	[ReproducedTimes] [bigint] NOT NULL,
+	[Source] [varchar](500) NOT NULL,
 	[RegisterDate] [datetime] NOT NULL,
  CONSTRAINT [Media_pk] PRIMARY KEY NONCLUSTERED 
 (

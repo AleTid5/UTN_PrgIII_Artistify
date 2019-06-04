@@ -125,8 +125,8 @@ namespace Repository
 
         private Gender GetRowCasted()
         {
-            if (!this.SqlDataReader.HasRows)
-                return new Gender();
+            //if (!this.SqlDataReader.HasRows)
+            //    return new Gender();
 
             return new Gender
             {
