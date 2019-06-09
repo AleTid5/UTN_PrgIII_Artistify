@@ -80,7 +80,7 @@ namespace TPC_Tidele
             this.btnGenders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGenders.Location = new System.Drawing.Point(1, 286);
             this.btnGenders.Name = "btnGenders";
-            this.btnGenders.Size = new System.Drawing.Size(153, 34);
+            this.btnGenders.Size = new System.Drawing.Size(155, 34);
             this.btnGenders.TabIndex = 8;
             this.btnGenders.Text = "  Géneros";
             this.btnGenders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -149,7 +149,7 @@ namespace TPC_Tidele
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(155, 32);
             this.btnDashboard.TabIndex = 6;
-            this.btnDashboard.Text = "  Home";
+            this.btnDashboard.Text = "  Dashboard";
             this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDashboard.UseVisualStyleBackColor = true;
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);

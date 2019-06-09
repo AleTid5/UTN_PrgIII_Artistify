@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.chkModerator = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -237,11 +237,29 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Nacionalidad";
             // 
+            // chkModerator
+            // 
+            this.chkModerator.AutoSize = true;
+            this.chkModerator.Checked = true;
+            this.chkModerator.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkModerator.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.chkModerator.FlatAppearance.BorderSize = 0;
+            this.chkModerator.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkModerator.ForeColor = System.Drawing.Color.White;
+            this.chkModerator.Location = new System.Drawing.Point(23, 215);
+            this.chkModerator.Name = "chkModerator";
+            this.chkModerator.Size = new System.Drawing.Size(74, 17);
+            this.chkModerator.TabIndex = 20;
+            this.chkModerator.Text = "Moderador";
+            this.chkModerator.UseVisualStyleBackColor = true;
+            this.chkModerator.CheckedChanged += new System.EventHandler(this.chkModerator_CheckedChanged);
+            // 
             // Create
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.Controls.Add(this.chkModerator);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -288,5 +306,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox chkModerator;
     }
 }

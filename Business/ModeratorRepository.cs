@@ -1,18 +1,23 @@
 ﻿using Common;
+using Common.Transformers;
 using Entity.User;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Repository
 {
-    public class AdministratorRepository : UserRepository
+    public class ModeratorRepository : UserRepository
     {
-        public AdministratorRepository()
+        public ModeratorRepository()
         {
-            this.Table = "Users_Administrators";
+            this.Table = "Users_Moderators";
         }
 
-        public new void AuthenticateOrFail(String Email, String Password) {
+        public new void AuthenticateOrFail(String Email, String Password)
+        {
             try
             {
                 this.CheckCredentialsOrFail(Email, Password);
@@ -30,32 +35,14 @@ namespace Repository
             }
         }
 
-        public void Add(Administrator administrator)
+        public void Add(Moderator moderator)
         {
             try
             {
-                int lastID = this.Add((AbstractUser) administrator);
-                String QueryTemplate = "INSERT INTO Users_Administrators (Id) VALUES ({0})";
-                String Query = String.Format(QueryTemplate, lastID);
+                int lastID = this.Add((AbstractUser) moderator);
+                String QueryTemplate = "INSERT INTO Users_Moderators (Id, Administrator) VALUES ({0}, {1})";
+                String Query = String.Format(QueryTemplate, lastID, Session.user.Id);
                 this.ExecInsert(Query);
-            } catch (Exception ex)
-            {
-                throw ex;
-            } finally
-            {
-                this.SqlConnection.Close();
-            }
-        }
-
-        public Administrator FindById(int Id)
-        {
-            try
-            {
-                String Query = String.Format("SELECT TOP 1 * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE U.Status = 'A' AND A.Id = {1}", this.Table, Id);
-                this.ExecSelect(Query);
-                this.SqlDataReader.Read();
-
-                return this.GetRowCasted() as Administrator;
             }
             catch (Exception ex)
             {
@@ -67,19 +54,19 @@ namespace Repository
             }
         }
 
-        public List<Administrator> FindAll()
+        public List<Moderator> FindAll()
         {
             try
             {
                 String Query = String.Format("SELECT * FROM {0} A INNER JOIN Users U ON A.Id = U.Id", this.Table);
                 this.ExecSelect(Query);
 
-                List<Administrator> administrators = new List<Administrator>();
+                List<Moderator> moderators = new List<Moderator>();
 
                 while (this.SqlDataReader.Read())
-                    administrators.Add(new Administrator(this.GetRowCasted()));
+                    moderators.Add(new Moderator(this.GetRowCasted()));
 
-                return administrators;
+                return moderators;
             }
             catch (Exception ex)
             {
@@ -93,11 +80,14 @@ namespace Repository
 
         private void CheckOrFail()
         {
-            String QueryTemplate = "SELECT TOP 1 * FROM Users_Administrators WHERE Id = {0}";
+            String QueryTemplate = "SELECT TOP 1 Users.*" +
+                                   "FROM Users_Moderators A" +
+                                   "INNER JOIN Users ON Users.Id = A.Id" +
+                                   "WHERE A.Id = {0}";
             String Query = String.Format(QueryTemplate, Session.user.Id);
             this.ExecSelect(Query);
             this.SqlDataReader.Read();
-            this.AssertOrFail("El usuario ingresado no es administrador");
+            this.AssertOrFail("El usuario ingresado no es moderador");
         }
     }
 }

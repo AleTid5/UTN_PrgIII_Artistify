@@ -45,6 +45,7 @@
     <Compile Include="GenderRepository.cs" />
     <Compile Include="CategoryRepository.cs" />
     <Compile Include="AdministratorRepository.cs" />
+    <Compile Include="ModeratorRepository.cs" />
     <Compile Include="NationRepository.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,32 +1,31 @@
-﻿using Entity.User;
+﻿using Common;
+using Common.Generator;
+using Common.Senders;
+using Entity.User;
 using System;
 using System.Collections.Generic;
 
 
 namespace Repository
 {
-    public abstract class UserRepository : Repository
+    public class UserRepository : Repository
     {
-        protected AbstractUser AbstractUser { set; get; }
+        public void AuthenticateOrFail(String Email, String Password) {}
 
-        public abstract void AuthenticateOrFail(List<String> UserData);
-
-        public void CheckCredentialsOrFail(List<String> UserData)
+        protected void CheckCredentialsOrFail(String Email, String Password)
         {
             try
             {
-                if (UserData[0].ToString().Trim().Equals("") || UserData[1].ToString().Equals(""))
-                {
+                if (Email.ToString().Trim().Equals("") || Password.ToString().Equals(""))
                     throw new Exception("Credenciales insuficientes");
-                }
 
-                UserData[1] = this.STR2MD5(UserData[1]);
-                String QueryTemplate = "SELECT TOP 1 * FROM Users WHERE Email = '{0}' AND Password = {1} AND Status = 'A'";
-                String Query = String.Format(QueryTemplate, UserData[0], UserData[1]);
+                Password = this.STR2MD5(Password);
+                String QueryTemplate = "SELECT TOP 1 * FROM Users WHERE Email = '{0}' AND Password = {1} AND Status IN ('A', 'N')";
+                String Query = String.Format(QueryTemplate, Email, Password);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
                 this.AssertOrFail("Las credenciales ingresadas son incorrectas");
-                this.AbstractUser = this.GetRowCasted();
+                Session.user = this.GetRowCasted();
             }
             catch (Exception ex)
             {
@@ -38,7 +37,7 @@ namespace Repository
             }
         }
 
-        public void UpdateUserLogin(long? UserId)
+        protected void UpdateUserLogin(long? UserId)
         {
             try
             {
@@ -57,12 +56,13 @@ namespace Repository
             }
         }
 
-        public int AddUser(AbstractUser user)
+        protected int Add(AbstractUser user)
         {
             try
             {
-                String QueryTemplate = "INSERT INTO Users (Name, LastName, Email, Password, BornDate, Gender, Nationality)";
-                QueryTemplate += "OUTPUT INSERTED.ID VALUES ('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}')";
+                user.Password = PasswordGenerator.Generate();
+                String QueryTemplate = "INSERT INTO Users (Name, LastName, Email, Password, BornDate, Gender, Status, Nationality)";
+                QueryTemplate += "OUTPUT INSERTED.ID VALUES ('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}', '{7}')";
                 String Query = String.Format(QueryTemplate,
                                              user.Name,
                                              user.LastName,
@@ -70,9 +70,12 @@ namespace Repository
                                              this.STR2MD5(user.Password),
                                              user.BornDate.ToString("yyyy-MM-dd HH:mm:ss"),
                                              user.Gender,
+                                             user.Status.Code,
                                              user.Nationality.Code);
 
-                return this.ExecInsert(Query);
+                int insertedID = this.ExecInsert(Query);
+                EmailSender.UserAdd(user);
+                return insertedID;
             }
             catch (Exception ex)
             {
@@ -83,11 +86,29 @@ namespace Repository
             }
         }
 
-        public void EditUser(AbstractUser user)
+        public void ChangePassword(String password)
         {
             try
             {
-                String QueryTemplate = "UPDATE Users SET Name = '{0}', LastName = '{1}', Email = '{2}', BornDate = '{3}', Gender = '{4}', Nationality = '{5}' WHERE Id = {6}";
+                String QueryTemplate = "UPDATE Users SET Password = {0}, Status = 'A' WHERE Id = {1}";
+                String Query = String.Format(QueryTemplate, this.STR2MD5(password), Session.user.Id);
+
+                this.ExecUpdate(Query);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            } finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void Edit(AbstractUser user)
+        {
+            try
+            {
+                String QueryTemplate = "UPDATE Users SET Name = '{0}', LastName = '{1}', Email = '{2}', BornDate = '{3}', Gender = '{4}', Nationality = '{5}', Status = '{6}' WHERE Id = {7}";
                 String Query = String.Format(QueryTemplate,
                                              user.Name,
                                              user.LastName,
@@ -95,6 +116,7 @@ namespace Repository
                                              user.BornDate.ToString("yyyy-MM-dd HH:mm:ss"),
                                              user.Gender,
                                              user.Nationality.Code,
+                                             user.Status.Code,
                                              user.Id);
 
                 this.ExecUpdate(Query);
@@ -108,12 +130,14 @@ namespace Repository
             }
         }
 
-        public void RemoveUser(AbstractUser user)
+        public void Remove(AbstractUser user)
         {
             try
             {
-                String QueryTemplate = "UPDATE Users SET Status = 'B' WHERE Id = {0}";
-                String Query = String.Format(QueryTemplate, user.Id);
+                if (Session.user.Id == user.Id)
+                    throw new Exception("No está autorizado para poder eliminarse a usted mismo.");
+
+                String Query = String.Format("UPDATE Users SET Status = 'B' WHERE Id = {0}", user.Id);
 
                 this.ExecUpdate(Query);
             }
@@ -121,6 +145,34 @@ namespace Repository
             {
                 throw ex;
             } finally
+            {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public List<AbstractUser> FindAll(List<String> joins)
+        {
+            try
+            {
+                this.Table = "Users";
+                string leftJoin = "";
+                foreach (String join in joins) leftJoin += "LEFT JOIN Users_" + join + " ON A.Id = Users_" + join + ".Id ";
+
+                String Query = String.Format("SELECT * FROM {0} A " + leftJoin, this.Table);
+                this.ExecSelect(Query);
+
+                List<AbstractUser> users = new List<AbstractUser>();
+
+                while (this.SqlDataReader.Read())
+                    users.Add(this.GetRowCasted());
+
+                return users;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
             {
                 this.SqlConnection.Close();
             }

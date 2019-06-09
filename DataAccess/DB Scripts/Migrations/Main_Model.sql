@@ -813,3 +813,29 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Administrador 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Usuarios moderadores' , @level0type=N'SCHEMA',@level0name=N'dbo', @level1type=N'TABLE',@level1name=N'Users_Moderators'
 GO
+alter table Media_Musics drop constraint Media_Musics_Albums_Id_fk
+go
+
+alter table Media_Musics
+	add constraint Media_Musics_Albums_Id_fk
+		foreign key (Album) references Albums
+go
+
+alter table Media_Musics
+	add constraint Media_Musics_Media_Id_fk
+		foreign key (Id) references Media
+go
+
+alter table Media_Videos drop constraint Media_Videos_Albums_Id_fk
+go
+
+alter table Media_Videos
+	add constraint Media_Videos_Albums_Id_fk
+		foreign key (Album) references Albums
+go
+
+alter table Media_Videos
+	add constraint Media_Videos_Media_Id_fk
+		foreign key (Id) references Media
+go
+

@@ -22,10 +22,14 @@ namespace TPC_Tidele.Views.Category
         public Index()
         {
             InitializeComponent();
-            this.UpdateList();
+            this.UpdateView();
+            this.dataGridCategories.Columns[0].Visible = false;
+            this.dataGridCategories.Columns[1].Width = 253;
+            this.dataGridCategories.Columns[2].Width = 253;
+            this.dataGridCategories.Columns[3].Width = 251;
         }
 
-        public void UpdateList()
+        public void UpdateView()
         {
             this.categories = (new CategoryRepository()).FindAll();
             this.dataGridCategories.DataSource = categories;

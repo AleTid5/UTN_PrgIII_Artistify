@@ -46,6 +46,8 @@
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnAccept = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboStatus = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -236,11 +238,32 @@
             this.btnAccept.UseVisualStyleBackColor = false;
             this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(20, 210);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(52, 15);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Estado";
+            // 
+            // comboStatus
+            // 
+            this.comboStatus.FormattingEnabled = true;
+            this.comboStatus.Location = new System.Drawing.Point(23, 237);
+            this.comboStatus.Name = "comboStatus";
+            this.comboStatus.Size = new System.Drawing.Size(225, 21);
+            this.comboStatus.TabIndex = 35;
+            // 
             // Edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.comboStatus);
             this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -287,5 +310,7 @@
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Button btnAccept;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboStatus;
     }
 }

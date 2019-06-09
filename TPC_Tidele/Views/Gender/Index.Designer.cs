@@ -65,14 +65,15 @@
             this.dataGridGenders.AllowUserToDeleteRows = false;
             this.dataGridGenders.AllowUserToResizeColumns = false;
             this.dataGridGenders.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(65)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.NullValue = "Sin datos";
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.AppWorkspace;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(25)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridGenders.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridGenders.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
             this.dataGridGenders.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridGenders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -93,7 +94,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridGenders.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridGenders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridGenders.Location = new System.Drawing.Point(23, 69);
+            this.dataGridGenders.Location = new System.Drawing.Point(0, 69);
             this.dataGridGenders.MultiSelect = false;
             this.dataGridGenders.Name = "dataGridGenders";
             this.dataGridGenders.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -107,9 +108,15 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridGenders.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridGenders.RowHeadersVisible = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(32)))), ((int)(((byte)(22)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.NullValue = "Sin datos";
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(25)))), ((int)(((byte)(15)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
             this.dataGridGenders.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridGenders.Size = new System.Drawing.Size(711, 316);
+            this.dataGridGenders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridGenders.ShowCellErrors = false;
+            this.dataGridGenders.Size = new System.Drawing.Size(758, 316);
             this.dataGridGenders.TabIndex = 5;
             // 
             // panel1

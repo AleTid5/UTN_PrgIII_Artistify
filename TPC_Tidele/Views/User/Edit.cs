@@ -18,8 +18,9 @@ namespace TPC_Tidele.Views.User
     public partial class Edit : UserControl
     {
         public event EventHandler GoBack;
-        Administrator administrator = new Administrator();
+        AbstractUser user = new AbstractUser();
         private List<Nation> Nations = (new NationRepository()).FindAll();
+        private List<Status> statuses = (new StatusRepository()).FindAll();
 
         public Edit()
         {
@@ -27,23 +28,28 @@ namespace TPC_Tidele.Views.User
             this.comboNationality.DataSource = Nations;
             this.comboNationality.DisplayMember = "Name";
             this.comboNationality.ValueMember = "Code";
+            this.comboStatus.DataSource = statuses;
+            this.comboStatus.DisplayMember = "Name";
+            this.comboStatus.ValueMember = "Code";
         }
 
-        public void SetUser(Administrator administrator)
+        public void SetUser(AbstractUser user)
         {
-            this.administrator = administrator;
+            this.user = user;
+            statuses = (new StatusRepository()).FindAll();
         }
 
         public void FillForm()
         {
-            txtName.Text = this.administrator.Name;
-            txtLastName.Text = this.administrator.LastName;
-            txtEmail.Text = this.administrator.Email;
-            dateBornDate.Value = this.administrator.BornDate;
-            radioF.Checked = this.administrator.Gender == 'F';
-            radioM.Checked = this.administrator.Gender == 'M';
-            radioO.Checked = this.administrator.Gender == 'O';
-            comboNationality.SelectedValue = this.administrator.Nationality.Code;
+            txtName.Text = this.user.Name;
+            txtLastName.Text = this.user.LastName;
+            txtEmail.Text = this.user.Email;
+            dateBornDate.Value = this.user.BornDate;
+            radioF.Checked = this.user.Gender == 'F';
+            radioM.Checked = this.user.Gender == 'M';
+            radioO.Checked = this.user.Gender == 'O';
+            comboNationality.SelectedValue = this.user.Nationality.Code;
+            comboStatus.SelectedValue = this.user.Status.Code;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -59,17 +65,16 @@ namespace TPC_Tidele.Views.User
         {
             try
             {
-                NationRepository nationRepository = new NationRepository();
-                this.administrator.Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 5, 50);
-                this.administrator.LastName = NativeRules.CheckString(txtLastName.Text.ToString().Trim(), "Apellido inválido", 5, 50);
-                this.administrator.Email = NativeRules.CheckString((new MailAddress(txtEmail.Text.ToString().Trim())).Address, "Email inválido", int.MinValue, 100);
-                this.administrator.BornDate = dateBornDate.Value;
-                this.administrator.Gender = radioF.Checked ? 'F' : radioM.Checked ? 'M' : 'O';
-                this.administrator.Nationality = nationRepository.GetNation(comboNationality.SelectedValue.ToString());
+                this.user.Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 5, 50);
+                this.user.LastName = NativeRules.CheckString(txtLastName.Text.ToString().Trim(), "Apellido inválido", 5, 50);
+                this.user.Email = NativeRules.CheckString((new MailAddress(txtEmail.Text.ToString().Trim())).Address, "Email inválido", int.MinValue, 100);
+                this.user.BornDate = dateBornDate.Value;
+                this.user.Gender = radioF.Checked ? 'F' : radioM.Checked ? 'M' : 'O';
+                this.user.Nationality = new NationRepository().GetNation(comboNationality.SelectedValue.ToString());
+                this.user.Status = new StatusRepository().GetStatus(comboStatus.SelectedValue.ToString());
 
-                AdministratorRepository administratorRepository = new AdministratorRepository();
-                administratorRepository.EditAdmin(administrator);
-                MessageBox.Show("El Administrador se ha editado exitosamente!");
+                new UserRepository().Edit(this.user);
+                MessageBox.Show("El Usuario se ha editado exitosamente!");
                 this.btnBack_Click(sender, e);
             }
             catch (Exception ex)

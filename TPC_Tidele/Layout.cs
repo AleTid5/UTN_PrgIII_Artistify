@@ -15,46 +15,39 @@ namespace TPC_Tidele
 {
     public partial class Layout : Form
     {
-        AdministratorRepository AdministratorRepository = new AdministratorRepository();
-
         public Layout()
         {
             InitializeComponent();
         }
 
-        public void SetAdminRepository(AdministratorRepository AdministratorRepository)
-        {
-            this.AdministratorRepository = AdministratorRepository;
-        }
-
         private void Layout_Load(object sender, EventArgs e)
         {
-            this.FillDashboard();
+            this.Dashboard.UpdateView();
             this.Dashboard.BringToFront();
             this.LoadEvents();
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            this.FillDashboard();
+            this.Dashboard.UpdateView();
             this.Dashboard.BringToFront();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            this.UserIndex.UpdateList();
+            this.UserIndex.UpdateView();
             this.UserIndex.BringToFront();
         }
 
         private void btnCategories_Click(object sender, EventArgs e)
         {
-            this.CategoryIndex.UpdateList();
+            this.CategoryIndex.UpdateView();
             this.CategoryIndex.BringToFront();
         }
 
         private void btnGenders_Click(object sender, EventArgs e)
         {
-            this.GenderIndex.UpdateList();
+            this.GenderIndex.UpdateView();
             this.GenderIndex.BringToFront();
         }
 
@@ -69,14 +62,6 @@ namespace TPC_Tidele
             this.Hide();
             login.ShowDialog();
             this.Close();
-        }
-
-        private void FillDashboard()
-        {
-            this.Dashboard.txtMusicAdded.Text = (new MusicRepository()).GetRepositoryCount().ToString();
-            this.Dashboard.txtVideosAdded.Text = (new VideoRepository()).GetRepositoryCount().ToString();
-            this.Dashboard.txtBooksAdded.Text = (new BookRepository()).GetRepositoryCount().ToString();
-            this.Dashboard.txtImagesAdded.Text = (new ImageRepository()).GetRepositoryCount().ToString();
         }
 
         private void LoadEvents()
@@ -115,7 +100,7 @@ namespace TPC_Tidele
             try
             {
                 (new CategoryRepository()).RemoveCategory(sender as Entity.Category);
-                this.CategoryIndex.UpdateList();
+                this.CategoryIndex.UpdateView();
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
@@ -139,7 +124,7 @@ namespace TPC_Tidele
             try
             {
                 (new GenderRepository()).RemoveGender(sender as Entity.Gender);
-                this.GenderIndex.UpdateList();
+                this.GenderIndex.UpdateView();
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
@@ -153,7 +138,7 @@ namespace TPC_Tidele
 
         private void UserIndex_EditUser(object sender, EventArgs e)
         {
-            this.UserEdit.SetUser(sender as Administrator);
+            this.UserEdit.SetUser(sender as AbstractUser);
             this.UserEdit.FillForm();
             this.UserEdit.BringToFront();
         }
@@ -162,8 +147,8 @@ namespace TPC_Tidele
         {
             try
             {
-                this.AdministratorRepository.RemoveAdmin(sender as Administrator);
-                this.UserIndex.UpdateList();
+                new UserRepository().Remove(sender as AbstractUser);                
+                this.UserIndex.UpdateView();
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());

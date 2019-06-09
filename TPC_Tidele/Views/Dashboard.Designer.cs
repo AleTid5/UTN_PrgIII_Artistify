@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtImagesAdded = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,11 +45,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.chartMedia = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMedia)).BeginInit();
             this.SuspendLayout();
             // 
             // panel5
@@ -196,11 +201,50 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Dashboard";
             // 
+            // chartMedia
+            // 
+            this.chartMedia.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.chartMedia.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(35)))), ((int)(((byte)(27)))));
+            this.chartMedia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.chartMedia.BorderlineColor = System.Drawing.Color.Transparent;
+            this.chartMedia.BorderSkin.BackColor = System.Drawing.Color.Transparent;
+            this.chartMedia.BorderSkin.BorderColor = System.Drawing.Color.Transparent;
+            this.chartMedia.BorderSkin.PageColor = System.Drawing.Color.Transparent;
+            chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(35)))), ((int)(((byte)(27)))));
+            chartArea1.BorderColor = System.Drawing.Color.Transparent;
+            chartArea1.Name = "ChartArea1";
+            chartArea1.ShadowColor = System.Drawing.Color.White;
+            this.chartMedia.ChartAreas.Add(chartArea1);
+            this.chartMedia.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(35)))), ((int)(((byte)(27)))));
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
+            legend1.ForeColor = System.Drawing.Color.White;
+            legend1.Name = "Legend1";
+            this.chartMedia.Legends.Add(legend1);
+            this.chartMedia.Location = new System.Drawing.Point(23, 171);
+            this.chartMedia.Name = "chartMedia";
+            this.chartMedia.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            this.chartMedia.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(169)))), ((int)(((byte)(69))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(89)))), ((int)(((byte)(239))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(190)))), ((int)(((byte)(41))))),
+        System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(0)))), ((int)(((byte)(70)))))};
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.LabelForeColor = System.Drawing.Color.White;
+            series1.Legend = "Legend1";
+            series1.Name = "Count";
+            series1.YValuesPerPoint = 2;
+            this.chartMedia.Series.Add(series1);
+            this.chartMedia.Size = new System.Drawing.Size(715, 244);
+            this.chartMedia.TabIndex = 13;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(20)))), ((int)(((byte)(19)))));
+            this.Controls.Add(this.chartMedia);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -218,6 +262,7 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartMedia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,5 +283,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartMedia;
     }
 }

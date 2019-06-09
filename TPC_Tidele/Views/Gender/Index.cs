@@ -22,10 +22,15 @@ namespace TPC_Tidele.Views.Gender
         public Index()
         {
             InitializeComponent();
-            this.UpdateList();
+            this.UpdateView();
+            this.dataGridGenders.Columns[0].Visible = false;
+            this.dataGridGenders.Columns[1].Width = 190;
+            this.dataGridGenders.Columns[2].Width = 190;
+            this.dataGridGenders.Columns[3].Width = 190;
+            this.dataGridGenders.Columns[4].Width = 187;
         }
 
-        public void UpdateList()
+        public void UpdateView()
         {
             this.genders = (new GenderRepository()).FindAll();
             this.dataGridGenders.DataSource = this.genders;
