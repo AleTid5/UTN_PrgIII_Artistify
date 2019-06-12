@@ -6,6 +6,11 @@ const store = new Vuex.Store({
     playing: 0,
     songs: []
   },
+  user: {
+    id: null,
+    lastName: null,
+    name: null
+  },
   getters: {
     hasSong (state) {
       return state.songs && state.songs.length > 0;
@@ -47,6 +52,9 @@ const store = new Vuex.Store({
       const playing = store.getters.playing;
 
       return playing ? playing.image || playing.thumbnail || '' : '';
+    },
+    isUserLoggedIn (user) {
+      return user.id !== null;
     }
   },
   mutations: {
