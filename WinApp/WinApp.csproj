@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2B26A2D1-5828-4FDB-8FEA-AD10BD22429B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TPC_Tidele</RootNamespace>
-    <AssemblyName>TPC_Tidele</AssemblyName>
+    <RootNamespace>WinApp</RootNamespace>
+    <AssemblyName>WinApp</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -167,7 +167,7 @@
     <EmbeddedResource Include="Views\User\Edit.resx">
       <DependentUpon>Edit.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Properties\DataSources\TPC_Tidele.Views.User.Create.datasource" />
+    <None Include="Properties\DataSources\WinApp.Views.User.Create.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -246,5 +246,6 @@
   <ItemGroup>
     <None Include="Resources\Main_Logo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

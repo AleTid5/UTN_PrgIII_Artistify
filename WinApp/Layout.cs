@@ -9,9 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TPC_Tidele.Views;
+using WinApp.Views;
 
-namespace TPC_Tidele
+namespace WinApp
 {
     public partial class Layout : Form
     {

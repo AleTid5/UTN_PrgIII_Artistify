@@ -1,4 +1,4 @@
-﻿namespace TPC_Tidele
+﻿namespace WinApp
 {
     partial class Login
     {

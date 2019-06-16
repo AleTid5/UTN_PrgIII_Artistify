@@ -13,7 +13,7 @@ using Entity;
 using System.Net.Mail;
 using Common.Rules;
 
-namespace TPC_Tidele.Views.Category
+namespace WinApp.Views.Category
 {
     public partial class Create : UserControl
     {

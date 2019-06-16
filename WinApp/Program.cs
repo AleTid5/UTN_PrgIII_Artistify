@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TPC_Tidele
+namespace WinApp
 {
     static class Program
     {

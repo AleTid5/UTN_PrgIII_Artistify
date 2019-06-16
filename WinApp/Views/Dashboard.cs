@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Repository;
 
-namespace TPC_Tidele.Views
+namespace WinApp.Views
 {
     public partial class Dashboard : UserControl
     {

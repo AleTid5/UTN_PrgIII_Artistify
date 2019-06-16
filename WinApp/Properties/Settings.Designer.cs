@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TPC_Tidele.Properties
+namespace WinApp.Properties
 {
 
 

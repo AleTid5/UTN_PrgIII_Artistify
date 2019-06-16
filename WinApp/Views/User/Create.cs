@@ -13,7 +13,7 @@ using System.Net.Mail;
 using Repository;
 using Common.Rules;
 
-namespace TPC_Tidele.Views.User
+namespace WinApp.Views.User
 {
     public partial class Create : UserControl
     {
@@ -41,6 +41,7 @@ namespace TPC_Tidele.Views.User
         {
             try
             {
+                this.ChangeFormStatus();
                 var user = new AbstractUser();
 
                 if (this.chkModerator.Checked) {
@@ -68,6 +69,9 @@ namespace TPC_Tidele.Views.User
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+            } finally
+            {
+                this.ChangeFormStatus();
             }
         }
 
@@ -81,6 +85,21 @@ namespace TPC_Tidele.Views.User
         private void chkModerator_CheckedChanged(object sender, EventArgs e)
         {
             this.chkModerator.Text = this.chkModerator.Checked ? "Moderador" : "Administrador";
+        }
+
+        private void ChangeFormStatus()
+        {
+            this.txtName.Enabled = !this.txtName.Enabled;
+            this.txtLastName.Enabled = !this.txtLastName.Enabled;
+            this.txtEmail.Enabled = !this.txtEmail.Enabled;
+            this.dateBornDate.Enabled = !this.dateBornDate.Enabled;
+            this.radioM.Enabled = !this.radioM.Enabled;
+            this.radioF.Enabled = !this.radioF.Enabled;
+            this.radioO.Enabled = !this.radioO.Enabled;
+            this.comboNationality.Enabled = !this.comboNationality.Enabled;
+            this.chkModerator.Enabled = !this.chkModerator.Enabled;
+            this.btnBack.Enabled = !this.btnBack.Enabled;
+            this.btnAccept.Enabled = !this.btnAccept.Enabled;
         }
     }
 }

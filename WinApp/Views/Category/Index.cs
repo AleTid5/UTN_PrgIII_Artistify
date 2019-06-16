@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Entity.User;
 using Repository;
 
-namespace TPC_Tidele.Views.Category
+namespace WinApp.Views.Category
 {
     public partial class Index : UserControl
     {

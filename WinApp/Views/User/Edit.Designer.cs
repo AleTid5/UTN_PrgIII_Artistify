@@ -1,4 +1,4 @@
-﻿namespace TPC_Tidele.Views.User
+﻿namespace WinApp.Views.User
 {
     partial class Edit
     {

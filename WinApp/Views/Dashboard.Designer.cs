@@ -1,4 +1,4 @@
-﻿namespace TPC_Tidele.Views
+﻿namespace WinApp.Views
 {
     partial class Dashboard
     {

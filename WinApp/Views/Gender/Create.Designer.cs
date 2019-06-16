@@ -1,4 +1,4 @@
-﻿namespace TPC_Tidele.Views.Gender
+﻿namespace WinApp.Views.Gender
 {
     partial class Create
     {

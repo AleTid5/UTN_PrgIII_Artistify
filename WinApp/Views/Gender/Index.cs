@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Entity.User;
 using Repository;
 
-namespace TPC_Tidele.Views.Gender
+namespace WinApp.Views.Gender
 {
     public partial class Index : UserControl
     {

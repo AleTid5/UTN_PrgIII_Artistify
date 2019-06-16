@@ -1,4 +1,4 @@
-﻿namespace TPC_Tidele.Views.Category
+﻿namespace WinApp.Views.Category
 {
     partial class Index
     {

@@ -15,8 +15,8 @@ namespace Common.Senders
             {
                 Credentials = new NetworkCredential()
                 {
-                    UserName = "info@atidele.com",
-                    Password = "L+gM*ch!gws>57V&aV"
+                    UserName = "artistify@hotmail.com",
+                    Password = "Artista123artista"
                 },
 
                 EnableSsl = true
@@ -25,14 +25,20 @@ namespace Common.Senders
 
         async public static void UserAdd(AbstractUser user)
         {
-            MailMessage msg = new MailMessage("info@atidele.com", user.Email)
+            try
             {
-                Subject = "Alta de usuario",
-                IsBodyHtml = false,
-                Body = "Bienvenido al sistema de administradores y moderadores de APOLLUM! Su contraseña es: " + user.Password
-            };
+                MailMessage msg = new MailMessage("info@atidele.com", user.Email)
+                {
+                    Subject = "Alta de usuario",
+                    IsBodyHtml = false,
+                    Body = "Bienvenido al sistema de administradores y moderadores de Artistify! Su contraseña es: " + user.Password
+                };
 
-            CreateSender().Send(msg);
+                CreateSender().SendMailAsync(msg);
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ using System.Net.Mail;
 using Repository;
 using Common.Rules;
 
-namespace TPC_Tidele.Views.User
+namespace WinApp.Views.User
 {
     public partial class Edit : UserControl
     {

@@ -1,6 +1,6 @@
-﻿using TPC_Tidele.Views;
+﻿using WinApp.Views;
 
-namespace TPC_Tidele
+namespace WinApp
 {
     partial class Layout
     {
@@ -41,16 +41,16 @@ namespace TPC_Tidele
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.Dashboard = new TPC_Tidele.Views.Dashboard();
-            this.CategoryCreate = new TPC_Tidele.Views.Category.Create();
-            this.CategoryEdit = new TPC_Tidele.Views.Category.Edit();
-            this.CategoryIndex = new TPC_Tidele.Views.Category.Index();
-            this.GenderCreate = new TPC_Tidele.Views.Gender.Create();
-            this.GenderEdit = new TPC_Tidele.Views.Gender.Edit();
-            this.GenderIndex = new TPC_Tidele.Views.Gender.Index();
-            this.UserCreate = new TPC_Tidele.Views.User.Create();
-            this.UserEdit = new TPC_Tidele.Views.User.Edit();
-            this.UserIndex = new TPC_Tidele.Views.User.Index();
+            this.Dashboard = new WinApp.Views.Dashboard();
+            this.CategoryCreate = new WinApp.Views.Category.Create();
+            this.CategoryEdit = new WinApp.Views.Category.Edit();
+            this.CategoryIndex = new WinApp.Views.Category.Index();
+            this.GenderCreate = new WinApp.Views.Gender.Create();
+            this.GenderEdit = new WinApp.Views.Gender.Edit();
+            this.GenderIndex = new WinApp.Views.Gender.Index();
+            this.UserCreate = new WinApp.Views.User.Create();
+            this.UserEdit = new WinApp.Views.User.Edit();
+            this.UserIndex = new WinApp.Views.User.Index();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();

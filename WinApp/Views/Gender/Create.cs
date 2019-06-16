@@ -13,7 +13,7 @@ using Entity;
 using System.Net.Mail;
 using Common.Rules;
 
-namespace TPC_Tidele.Views.Gender
+namespace WinApp.Views.Gender
 {
     public partial class Create : UserControl
     {

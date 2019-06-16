@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using Entity;
 using Repository;
 
-namespace TPC_Tidele.Views.Gender
+namespace WinApp.Views.Gender
 {
     public partial class Edit : UserControl
     {
