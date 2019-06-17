@@ -14,4 +14,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Repository.csproj" />
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Domain\Entity.csproj" />
+  </ItemGroup>
+
 </Project>

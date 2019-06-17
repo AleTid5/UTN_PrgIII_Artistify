@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FinalUserRepository.cs" />
     <Compile Include="MediaTypeRepository.cs" />
     <Compile Include="GenderRepository.cs" />
     <Compile Include="CategoryRepository.cs" />

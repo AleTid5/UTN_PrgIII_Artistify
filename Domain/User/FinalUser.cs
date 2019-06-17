@@ -8,6 +8,8 @@ namespace Entity.User
 {
     public class FinalUser : AbstractUser
     {
+        public FinalUser(AbstractUser abstractUser = null) : base(abstractUser){ }
+
         public string ImageSource { set; get; }
         public string Telephone { set; get; }
         public FinalUser ParentUser { set; get; }

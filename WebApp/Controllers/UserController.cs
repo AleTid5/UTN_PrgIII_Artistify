@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entity.User;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Repository;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -18,7 +20,6 @@ namespace WebApp.Controllers
         [EnableCors("allowAllOrigins")]
         public string Get()
         {
-
             return new Response(true).ToJson();
         }
 
@@ -27,7 +28,8 @@ namespace WebApp.Controllers
         [EnableCors("allowAllOrigins")]
         public string Get(int id)
         {
-            return new Response(true).ToJson();
+            FinalUser finalUser = new FinalUserRepository().FindById(id);
+            return new Response(true, finalUser).ToJson();
         }
 
         // POST: api/User

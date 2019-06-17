@@ -8,6 +8,24 @@ namespace Entity.User
 {
     public class AbstractUser
     {
+        public AbstractUser(AbstractUser abstractUser = null)
+        {
+            if (null == abstractUser) return;
+
+            this.Id = abstractUser.Id;
+            this.Name = abstractUser.Name;
+            this.LastName = abstractUser.LastName;
+            this.Email = abstractUser.Email;
+            this.Password = abstractUser.Password;
+            this.BornDate = abstractUser.BornDate;
+            this.Gender = abstractUser.Gender;
+            this.Nationality = abstractUser.Nationality;
+            this.Status = abstractUser.Status;
+            this.LoginTimes = abstractUser.LoginTimes;
+            this.RegisterDate = abstractUser.RegisterDate;
+            this.LastLoginDate = abstractUser.LastLoginDate;
+        }
+
         public long Id { set; get; }
         public string Name { set; get; }
         public string LastName { set; get; }
