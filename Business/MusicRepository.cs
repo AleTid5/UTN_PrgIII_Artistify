@@ -7,7 +7,7 @@ namespace Repository
 {
     public class MusicRepository : Repository
     {
-       public MusicRepository()
+        public MusicRepository()
         {
             this.Table = "Media_Musics";
         }

@@ -17,54 +17,41 @@ namespace Repository
 
         public Nation GetNation(String NationCode)
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE Code = '{1}'", this.Table, NationCode);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
                 return this.GetRowCasted();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public List<Nation> FindAll()
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT * FROM {0} WHERE Status = 'A'", this.Table);
                 this.ExecSelect(Query);
 
                 List<Nation> Nations = new List<Nation>();
 
                 while (this.SqlDataReader.Read())
-                {
                     Nations.Add(this.GetRowCasted());
-                }
 
                 return Nations;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         private Nation GetRowCasted()
         {
-            return new Nation
-            {
+            return new Nation {
                 Code = Convert.ToString(this.SqlDataReader["Code"]),
                 Name = Convert.ToString(this.SqlDataReader["Name"]),
                 PhoneCode = int.Parse(Convert.ToString(this.SqlDataReader["PhoneCode"])),

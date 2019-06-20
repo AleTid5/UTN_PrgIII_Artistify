@@ -13,86 +13,66 @@ namespace Repository
 
         public void AddCategory(Category category)
         {
-            try
-            {
+            try {
                 String QueryTemplate = "INSERT INTO {0} (Name, BlockedAge) VALUES ('{1}', {2})";
                 String Query = String.Format(QueryTemplate, this.Table, category.Name, category.BlockedAge);
                 this.ExecInsert(Query);
-            } catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            } finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public void EditCategory(Category category)
         {
-            try
-            {
+            try {
                 String QueryTemplate = "UPDATE {0} SET Name = '{1}', BlockedAge = {2} , Status = '{3}' WHERE Id = {4}";
                 String Query = String.Format(QueryTemplate, this.Table, category.Name, category.BlockedAge, category.Status.Code, category.Id);
                 this.ExecInsert(Query);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public void RemoveCategory(Category category)
         {
-            try
-            {
+            try {
                 String QueryTemplate = "UPDATE {0} SET Status = 'B' WHERE Id = {1}";
                 String Query = String.Format(QueryTemplate, this.Table, category.Id);
                 this.ExecUpdate(Query);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public List<Category> FindAll()
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT * FROM {0} ORDER BY Status ASC, Name ASC", this.Table);
                 this.ExecSelect(Query);
 
                 List<Category> categories = new List<Category>();
 
-                while (this.SqlDataReader.Read())
-                {
+                while (this.SqlDataReader.Read()) {
                     categories.Add(this.GetRowCasted());
                 }
 
                 return categories;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         private Category GetRowCasted()
         {
-            return new Category
-            {
+            return new Category {
                 Id = int.Parse(this.SqlDataReader["Id"].ToString()),
                 Name = this.SqlDataReader["Name"].ToString(),
                 BlockedAge = int.Parse(this.SqlDataReader["BlockedAge"].ToString()),

@@ -16,46 +16,35 @@ namespace Repository
 
         public Status GetStatus(String Code)
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE Code = '{1}'", this.Table, Code);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
                 return this.GetRowCasted();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public List<Status> FindAll()
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT * FROM {0}", this.Table);
                 this.ExecSelect(Query);
 
                 List<Status> statuses = new List<Status>();
 
-                while (this.SqlDataReader.Read())
-                {
+                while (this.SqlDataReader.Read()) {
                     statuses.Add(this.GetRowCasted());
                 }
 
                 return statuses;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
@@ -65,8 +54,7 @@ namespace Repository
             if (!this.SqlDataReader.HasRows)
                 return new Status();
 
-            return new Status
-            {
+            return new Status {
                 Code = Convert.ToString(this.SqlDataReader["Code"]),
                 Name = Convert.ToString(this.SqlDataReader["Name"])
             };

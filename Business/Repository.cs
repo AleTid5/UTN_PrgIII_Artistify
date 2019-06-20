@@ -37,11 +37,9 @@ namespace Repository
 
         private int GetOrElse(object ToConvert, int Default)
         {
-            try
-            {
+            try {
                 return int.Parse(ToConvert.ToString());
-            } catch (Exception)
-            {
+            } catch (Exception) {
                 return Default;
             }
         }
@@ -65,38 +63,30 @@ namespace Repository
 
         protected void AssertOrFail(String Message)
         {
-            if (!this.SqlDataReader.HasRows)            
-                throw new Exception(Message);            
+            if (!this.SqlDataReader.HasRows)
+                throw new Exception(Message);
         }
 
         public int GetRepositoryCount()
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT COUNT(*) AS Count FROM {0}", this.Table);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
                 return int.Parse(this.SqlDataReader["Count"].ToString());
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         protected DateTime GetOrNull(object toConvert)
         {
-            try
-            {
+            try {
                 return Convert.ToDateTime(toConvert);
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
                 return Convert.ToDateTime(null);
             }
         }

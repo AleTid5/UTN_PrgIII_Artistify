@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Senders;
 using Common.Transformers;
 using Entity.User;
 using System;
@@ -18,46 +19,36 @@ namespace Repository
 
         public new void AuthenticateOrFail(String Email, String Password)
         {
-            try
-            {
+            try {
                 this.CheckCredentialsOrFail(Email, Password);
                 this.CheckOrFail();
                 this.SqlConnection.Close();
                 this.UpdateUserLogin(Session.user.Id);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public void Add(Moderator moderator)
         {
-            try
-            {
-                int lastID = this.Add((AbstractUser) moderator);
+            try {
+                int lastID = this.Add((AbstractUser)moderator);
                 String QueryTemplate = "INSERT INTO Users_Moderators (Id, Administrator) VALUES ({0}, {1})";
                 String Query = String.Format(QueryTemplate, lastID, Session.user.Id);
                 this.ExecInsert(Query);
-            }
-            catch (Exception ex)
-            {
+                EmailSender.UserAdd((AbstractUser)moderator, "Moderador");
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public List<Moderator> FindAll()
         {
-            try
-            {
+            try {
                 String Query = String.Format("SELECT * FROM {0} A INNER JOIN Users U ON A.Id = U.Id", this.Table);
                 this.ExecSelect(Query);
 
@@ -67,13 +58,9 @@ namespace Repository
                     moderators.Add(new Moderator(this.GetRowCasted()));
 
                 return moderators;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }

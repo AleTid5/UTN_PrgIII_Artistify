@@ -9,14 +9,17 @@ namespace Common.Senders
 {
     public static class EmailSender
     {
+        private static readonly string UserName = "artistify@hotmail.com";
+        private static readonly string Password = "Artista123artista";
+
         private static SmtpClient CreateSender()
         {
-            return new SmtpClient("smtp.hostinger.com.ar", 587)
+            return new SmtpClient("smtp.outlook.com", 587)
             {
                 Credentials = new NetworkCredential()
                 {
-                    UserName = "artistify@hotmail.com",
-                    Password = "Artista123artista"
+                    UserName = UserName,
+                    Password = Password
                 },
 
                 EnableSsl = true
@@ -25,16 +28,31 @@ namespace Common.Senders
 
         async public static void UserAdd(AbstractUser user)
         {
+            try {
+                MailMessage msg = new MailMessage("artistify@hotmail.com", user.Email) {
+                    Subject = "Alta de usuario",
+                    IsBodyHtml = false,
+                    Body = "Bienvenido a Artistify!"
+                };
+
+                await CreateSender().SendMailAsync(msg);
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        async public static void UserAdd(AbstractUser user, String userType)
+        {
             try
             {
-                MailMessage msg = new MailMessage("info@atidele.com", user.Email)
+                MailMessage msg = new MailMessage("artistify@hotmail.com", user.Email)
                 {
                     Subject = "Alta de usuario",
                     IsBodyHtml = false,
-                    Body = "Bienvenido al sistema de administradores y moderadores de Artistify! Su contraseña es: " + user.Password
+                    Body = "Bienvenido al sistema de " + userType + "es de Artistify! Su contraseña es: " + user.Password
                 };
 
-                CreateSender().SendMailAsync(msg);
+                await CreateSender().SendMailAsync(msg);
             } catch (Exception ex)
             {
                 throw ex;

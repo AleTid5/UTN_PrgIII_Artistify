@@ -10,12 +10,11 @@ namespace Repository
 {
     public class UserRepository : Repository
     {
-        public void AuthenticateOrFail(String Email, String Password) {}
+        public void AuthenticateOrFail(String Email, String Password) { }
 
         protected void CheckCredentialsOrFail(String Email, String Password)
         {
-            try
-            {
+            try {
                 if (Email.ToString().Trim().Equals("") || Password.ToString().Equals(""))
                     throw new Exception("Credenciales insuficientes");
 
@@ -26,41 +25,31 @@ namespace Repository
                 this.SqlDataReader.Read();
                 this.AssertOrFail("Las credenciales ingresadas son incorrectas");
                 Session.user = this.GetRowCasted();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         protected void UpdateUserLogin(long? UserId)
         {
-            try
-            {
+            try {
                 if (null == UserId) return;
                 String QueryTemplate = "UPDATE Users SET LoginTimes = LoginTimes + 1, LastLoginDate = GETDATE() WHERE Id = {0}";
                 String Query = String.Format(QueryTemplate, UserId);
                 this.ExecUpdate(Query);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         protected int Add(AbstractUser user)
         {
-            try
-            {
-                user.Password = PasswordGenerator.Generate();
+            try {
+                user.Password = user.Password ?? PasswordGenerator.Generate();
                 String QueryTemplate = "INSERT INTO Users (Name, LastName, Email, Password, BornDate, Gender, Status, Nationality)";
                 QueryTemplate += "OUTPUT INSERTED.ID VALUES ('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}', '{7}')";
                 String Query = String.Format(QueryTemplate,
@@ -73,41 +62,31 @@ namespace Repository
                                              user.Status.Code,
                                              user.Nationality.Code);
 
-                int insertedID = this.ExecInsert(Query);
-                EmailSender.UserAdd(user);
-                return insertedID;
-            }
-            catch (Exception ex)
-            {
+                return this.ExecInsert(Query); ;
+            } catch (Exception ex) {
                 throw ex;
-            } finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public void ChangePassword(String password)
         {
-            try
-            {
+            try {
                 String QueryTemplate = "UPDATE Users SET Password = {0}, Status = 'A' WHERE Id = {1}";
                 String Query = String.Format(QueryTemplate, this.STR2MD5(password), Session.user.Id);
 
                 this.ExecUpdate(Query);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            } finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public void Edit(AbstractUser user)
         {
-            try
-            {
+            try {
                 String QueryTemplate = "UPDATE Users SET Name = '{0}', LastName = '{1}', Email = '{2}', BornDate = '{3}', Gender = '{4}', Nationality = '{5}', Status = '{6}' WHERE Id = {7}";
                 String Query = String.Format(QueryTemplate,
                                              user.Name,
@@ -120,40 +99,32 @@ namespace Repository
                                              user.Id);
 
                 this.ExecUpdate(Query);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            } finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public void Remove(AbstractUser user)
         {
-            try
-            {
+            try {
                 if (Session.user.Id == user.Id)
                     throw new Exception("No está autorizado para poder eliminarse a usted mismo.");
 
                 String Query = String.Format("UPDATE Users SET Status = 'B' WHERE Id = {0}", user.Id);
 
                 this.ExecUpdate(Query);
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            } finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         public List<AbstractUser> FindAll(List<String> joins)
         {
-            try
-            {
+            try {
                 this.Table = "Users";
                 string leftJoin = "";
                 foreach (String join in joins) leftJoin += "LEFT JOIN Users_" + join + " ON A.Id = Users_" + join + ".Id ";
@@ -167,21 +138,16 @@ namespace Repository
                     users.Add(this.GetRowCasted());
 
                 return users;
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;
-            }
-            finally
-            {
+            } finally {
                 this.SqlConnection.Close();
             }
         }
 
         protected AbstractUser GetRowCasted()
         {
-            return new AbstractUser
-            {
+            return new AbstractUser {
                 Id = int.Parse(this.SqlDataReader["Id"].ToString()),
                 Name = this.SqlDataReader["Name"].ToString(),
                 LastName = this.SqlDataReader["LastName"].ToString(),
