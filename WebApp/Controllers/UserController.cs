@@ -79,18 +79,6 @@ namespace WebApp.Controllers
             }
         }
 
-        // PUT: api/User/5
-        [HttpPut("{id}")]
-        [EnableCors("allowAllOrigins")]
-        public string Put(int id, [FromBody] string value)
-        {
-            try {
-                return new Response(true, null).ToJson();
-            } catch (Exception ex) {
-                return new Response(false, ex.Message).ToJson();
-            }
-        }
-
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         [EnableCors("allowAllOrigins")]
