@@ -839,3 +839,5 @@ alter table Media_Videos
 		foreign key (Id) references Media
 go
 
+alter table Users_Artists alter column MediaType int null
+go

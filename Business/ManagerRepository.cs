@@ -36,5 +36,27 @@ namespace Repository
                 this.SqlConnection.Close();
             }
         }
+
+        public Manager FindById(int Id)
+        {
+            try {
+                String Query = String.Format("SELECT TOP 1 * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE U.Status = 'A' AND A.Id = {1}", this.Table, Id);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return this.GetRowCasted(this.GetRowCasted());
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        private Manager GetRowCasted(AbstractUser abstractUser)
+        {
+            return new Manager(abstractUser) {
+                CUIT = this.SqlDataReader["CUIT"].ToString()
+            };
+        }
     }
 }

@@ -24,6 +24,22 @@ namespace Common.Senders
             };
         }
 
+        async public static void ArtistAdd(Artist user)
+        {
+            try {
+                MailMessage msg = new MailMessage("artistify@hotmail.com", user.Email) {
+                    Subject = "Alta de usuario",
+                    IsBodyHtml = false,
+                    Body = "Bienvenido a Artistify! Su contraseña es: " + user.Password
+                };
+
+                await CreateSender().SendMailAsync(msg);
+            } catch (SmtpException) {
+            } catch (Exception ex) {
+                throw ex;
+            }
+        }
+
         async public static void ManagerAdd(Manager manager)
         {
             try {

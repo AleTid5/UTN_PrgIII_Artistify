@@ -1,4 +1,5 @@
 ﻿using Common;
+using Common.Exceptions;
 using Common.Generator;
 using Common.Senders;
 using Entity.User;
@@ -147,6 +148,9 @@ namespace Repository
 
         protected AbstractUser GetRowCasted()
         {
+            if (!this.SqlDataReader.HasRows)
+                throw new SqlParsedException(100);
+
             return new AbstractUser {
                 Id = int.Parse(this.SqlDataReader["Id"].ToString()),
                 Name = this.SqlDataReader["Name"].ToString(),

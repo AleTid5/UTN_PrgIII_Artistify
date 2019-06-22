@@ -8,6 +8,8 @@ namespace Entity.User
 {
     public class Manager : AbstractUser
     {
+        public Manager(AbstractUser abstractUser = null) : base(abstractUser) { }
+
         public string CUIT { set; get; }
     }
 }
