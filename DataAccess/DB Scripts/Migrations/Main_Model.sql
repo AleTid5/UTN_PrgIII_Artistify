@@ -841,3 +841,30 @@ go
 
 alter table Users_Artists alter column MediaType int null
 go
+
+CREATE TRIGGER AFTER_INSERT_MEDIA_CONTENT ON Media
+    AFTER INSERT AS
+BEGIN
+    BEGIN TRY
+        DECLARE @Artist BIGINT;
+        DECLARE @MediaType BIGINT;
+
+        SELECT @Artist = Artist
+        FROM INSERTED;
+
+        SELECT TOP 1 @MediaType = MT.Id
+        FROM Media M
+            INNER JOIN Genders G on M.Gender = G.Id
+            INNER JOIN MediaTypes MT on G.MediaType = MT.Id
+        WHERE Artist = 3
+        GROUP BY MT.Id
+        ORDER BY COUNT(M.Gender) DESC, MT.Id
+
+        UPDATE Users_Artists
+        SET MediaType = @MediaType
+        WHERE Id = @Artist
+    END TRY
+    BEGIN CATCH
+        PRINT ERROR_MESSAGE();
+    END CATCH
+END;
