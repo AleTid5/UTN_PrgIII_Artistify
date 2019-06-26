@@ -1,5 +1,6 @@
 ﻿using Common.Transformers;
 using Entity;
+using Entity.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,23 @@ namespace Repository
         public AlbumRepository()
         {
             this.Table = "Albums";
+        }
+
+        public Album FindById(int Id)
+        {
+            try {
+                if (0 == Id) return null;
+
+                String Query = String.Format("SELECT TOP 1 * FROM Albums A WHERE A.Status = 'A' AND A.Id = {1}", this.Table, Id);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return this.GetRowCasted();
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
         }
 
         public List<Album> FindAllByMediaType(int mediaType)

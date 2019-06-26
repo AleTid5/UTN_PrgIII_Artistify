@@ -49,7 +49,7 @@ namespace WinApp.Views.Gender
                 {
                     Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 5, 50),
                     MediaType = (new MediaTypeRepository()).FindById(int.Parse(comboMediaType.SelectedValue.ToString())),
-                    ParentGender = (new GenderRepository()).GetGender(int.Parse(comboParentGender.SelectedValue.ToString()))
+                    ParentGender = (new GenderRepository()).FindById(int.Parse(comboParentGender.SelectedValue.ToString()))
                 };
 
                 (new GenderRepository()).AddGender(gender);

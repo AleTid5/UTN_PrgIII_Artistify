@@ -59,7 +59,7 @@ namespace WinApp.Views.Gender
             {
                 this.gender.Name = txtName.Text;
                 this.gender.MediaType = (new MediaTypeRepository().FindById(int.Parse(comboMediaType.SelectedValue.ToString())));
-                this.gender.ParentGender = (new GenderRepository()).GetGender(int.Parse(comboParentGender.SelectedValue.ToString()));
+                this.gender.ParentGender = (new GenderRepository()).FindById(int.Parse(comboParentGender.SelectedValue.ToString()));
                 this.gender.Status = (new StatusRepository().FindStatusByCode(comboStatus.SelectedValue.ToString()));
 
                 (new GenderRepository()).EditGender(this.gender);

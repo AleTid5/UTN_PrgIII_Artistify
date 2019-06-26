@@ -50,6 +50,21 @@ namespace Repository
             }
         }
 
+        public Category FindById(int Id)
+        {
+            try {
+                String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE Id = {1}", this.Table, Id);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return this.GetRowCasted();
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
         public List<Category> FindAll()
         {
             try {
@@ -58,9 +73,8 @@ namespace Repository
 
                 List<Category> categories = new List<Category>();
 
-                while (this.SqlDataReader.Read()) {
+                while (this.SqlDataReader.Read()) 
                     categories.Add(this.GetRowCasted());
-                }
 
                 return categories;
             } catch (Exception ex) {

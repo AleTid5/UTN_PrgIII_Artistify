@@ -51,7 +51,7 @@ namespace Repository
             }
         }
 
-        public Gender GetGender(int Id)
+        public Gender FindById(int Id)
         {
             try {
                 String Query = String.Format(

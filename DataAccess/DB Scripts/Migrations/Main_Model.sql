@@ -953,3 +953,11 @@ BEGIN
    END CATCH
 END
 GO
+
+exec sp_rename 'Media.Artist', Album, 'COLUMN'
+
+alter table Media drop constraint Media_Users_Artists_Id_fk
+
+alter table Media
+			add constraint Media_Albums_Id_fk
+			foreign key (Album) references Albums
