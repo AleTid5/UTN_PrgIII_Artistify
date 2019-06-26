@@ -954,10 +954,25 @@ BEGIN
 END
 GO
 
-exec sp_rename 'Media.Artist', Album, 'COLUMN'
+exec sp_rename 'Media.Artist', Album, 'COLUMN';
+GO
 
-alter table Media drop constraint Media_Users_Artists_Id_fk
+alter table Media drop constraint Media_Users_Artists_Id_fk;
+GO
 
 alter table Media
 			add constraint Media_Albums_Id_fk
-			foreign key (Album) references Albums
+			foreign key (Album) references Albums;
+GO
+
+alter table Media_Musics drop constraint Media_Musics_Albums_Id_fk;
+GO
+
+alter table Media_Musics drop column Album;
+GO
+
+alter table Media_Videos drop constraint Media_Videos_Albums_Id_fk;
+GO
+
+alter table Media_Videos drop column Album;
+GO

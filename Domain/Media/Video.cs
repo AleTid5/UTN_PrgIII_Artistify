@@ -8,7 +8,6 @@ namespace Entity.Media
 {
     public class Video : AbstractMedia
     {
-        public Album Album { set; get; }
         public int Duration { set; get; }
     }
 }
