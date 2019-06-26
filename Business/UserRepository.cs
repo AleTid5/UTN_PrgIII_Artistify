@@ -159,7 +159,7 @@ namespace Repository
                 BornDate = this.GetOrNull(this.SqlDataReader["BornDate"]),
                 Gender = Convert.ToChar(this.SqlDataReader["Gender"].ToString()),
                 Nationality = (new NationRepository()).GetNation(this.SqlDataReader["Nationality"].ToString()),
-                Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString()),
+                Status = (new StatusRepository()).FindStatusByCode(this.SqlDataReader["Status"].ToString()),
                 LoginTimes = int.Parse(this.SqlDataReader["LoginTimes"].ToString()),
                 RegisterDate = this.GetOrNull(this.SqlDataReader["RegisterDate"]),
                 LastLoginDate = this.GetOrNull(this.SqlDataReader["LastLoginDate"])

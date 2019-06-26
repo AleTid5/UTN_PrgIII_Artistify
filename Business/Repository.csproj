@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumRepository.cs" />
     <Compile Include="ArtistRepository.cs" />
     <Compile Include="FinalUserRepository.cs" />
     <Compile Include="ManagerRepository.cs" />

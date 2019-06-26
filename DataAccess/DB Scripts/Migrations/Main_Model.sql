@@ -868,3 +868,40 @@ BEGIN
         PRINT ERROR_MESSAGE();
     END CATCH
 END;
+
+alter table Albums
+	add MediaType int default 1 not null
+go
+
+exec sp_addextendedproperty 'MS_Description', 'Tipo de contenido almacenado en el album', 'SCHEMA', 'dbo', 'TABLE', 'Albums', 'COLUMN', 'MediaType'
+go
+
+alter table Albums
+	add constraint Albums_MediaTypes_Id_fk
+		foreign key (MediaType) references MediaTypes
+go
+
+create table Users_Media_Rating
+(
+	UserId BIGINT not null
+		constraint Users_Media_Rating_Users_Finals_Id_fk
+			references Users_Finals,
+	MediaId BIGINT not null
+		constraint Users_Media_Rating_Media_Id_fk
+			references Media,
+	MediaRating SMALLINT not null CHECK (MediaRating >= 0 AND MediaRating <= 5),
+	RegisterDate DATETIME default GETDATE() not null,
+	constraint Users_Media_Rating_pk_2
+		primary key nonclustered (UserId, MediaId)
+)
+go
+
+exec sp_addextendedproperty 'MS_Description', 'Rating de cada usuario', 'SCHEMA', 'dbo', 'TABLE', 'Users_Media_Rating'
+go
+
+alter table Albums
+	add ImageSource varchar(500) default NULL
+go
+
+exec sp_addextendedproperty 'MS_Description', 'Imagen del album', 'SCHEMA', 'dbo', 'TABLE', 'Albums', 'COLUMN', 'ImageSource'
+go

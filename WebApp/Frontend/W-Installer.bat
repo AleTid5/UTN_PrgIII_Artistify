@@ -4,4 +4,4 @@ call npm i
 echo - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 echo Paquetes esenciales instalados exitosamente!
 echo Levantando el servidor...
-call npm run start
+call npm run dev

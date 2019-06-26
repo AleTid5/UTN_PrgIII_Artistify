@@ -71,7 +71,7 @@ namespace WinApp.Views.User
                 this.user.BornDate = dateBornDate.Value;
                 this.user.Gender = radioF.Checked ? 'F' : radioM.Checked ? 'M' : 'O';
                 this.user.Nationality = new NationRepository().GetNation(comboNationality.SelectedValue.ToString());
-                this.user.Status = new StatusRepository().GetStatus(comboStatus.SelectedValue.ToString());
+                this.user.Status = new StatusRepository().FindStatusByCode(comboStatus.SelectedValue.ToString());
 
                 new UserRepository().Edit(this.user);
                 MessageBox.Show("El Usuario se ha editado exitosamente!");

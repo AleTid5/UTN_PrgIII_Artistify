@@ -11,8 +11,10 @@ namespace Entity
     {
         public long Id { set; get; }
         public string Name { set; get; }
+        public string ImageSource { set; get; }
         public Artist Artist { set; get; }
         public Status Status { set; get; }
+        public MediaType MediaType { set; get; }
         public DateTime RegisterDate { set; get; }
         public DateTime ModificationDate { set; get; }
     }

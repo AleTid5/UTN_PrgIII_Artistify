@@ -107,8 +107,8 @@ namespace Repository
             return new Gender {
                 Id = (long)DBTransformer.GetOrDefault(this.SqlDataReader["Id"], 0),
                 Name = DBTransformer.GetOrDefault(this.SqlDataReader["Name"], String.Empty),
-                MediaType = new MediaTypeRepository().GetMediaType(DBTransformer.GetOrDefault(this.SqlDataReader["MediaType"], 0)),
-                Status = new StatusRepository().GetStatus(DBTransformer.GetOrDefault(this.SqlDataReader["Status"], String.Empty)),
+                MediaType = new MediaTypeRepository().FindById(DBTransformer.GetOrDefault(this.SqlDataReader["MediaType"], 0)),
+                Status = new StatusRepository().FindStatusByCode(DBTransformer.GetOrDefault(this.SqlDataReader["Status"], String.Empty)),
                 ParentGender = this.GetParentGender()
             };
         }
@@ -118,8 +118,8 @@ namespace Repository
             return new Gender {
                 Id = (long)DBTransformer.GetOrDefault(this.SqlDataReader["ParentId"], 0),
                 Name = DBTransformer.GetOrDefault(this.SqlDataReader["ParentName"], String.Empty),
-                MediaType = new MediaTypeRepository().GetMediaType(DBTransformer.GetOrDefault(this.SqlDataReader["ParentMediaType"], 0)),
-                Status = new StatusRepository().GetStatus(DBTransformer.GetOrDefault(this.SqlDataReader["ParentStatus"], String.Empty)),
+                MediaType = new MediaTypeRepository().FindById(DBTransformer.GetOrDefault(this.SqlDataReader["ParentMediaType"], 0)),
+                Status = new StatusRepository().FindStatusByCode(DBTransformer.GetOrDefault(this.SqlDataReader["ParentStatus"], String.Empty)),
             };
         }
     }

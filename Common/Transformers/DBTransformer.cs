@@ -29,5 +29,17 @@ namespace Common.Transformers
                 return defaultValue;
             }
         }
+
+        public static bool GetOrDefault(object row, bool defaultValue)
+        {
+            try
+            {
+                return Convert.ToBoolean(row);
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
     }
 }

@@ -76,7 +76,7 @@ namespace Repository
                 Id = int.Parse(this.SqlDataReader["Id"].ToString()),
                 Name = this.SqlDataReader["Name"].ToString(),
                 BlockedAge = int.Parse(this.SqlDataReader["BlockedAge"].ToString()),
-                Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString())
+                Status = (new StatusRepository()).FindStatusByCode(this.SqlDataReader["Status"].ToString())
             };
         }
     }

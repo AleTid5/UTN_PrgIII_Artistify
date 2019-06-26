@@ -25,16 +25,17 @@ namespace WebApp.Controllers
         public string Get(int id)
         {
             try {
-                return new Response(true, new FinalUserRepository().FindById(id)).ToJson();
+                return new Response(true/*, new FinalUserRepository().FindById(id)*/).ToJson();
             } catch (Exception ex) {
                 return new Response(false, ex.Message).ToJson();
             }
         }
 
-        // POST: api/User
+        // POST: api/User/login
         [HttpPost]
         [EnableCors("allowAllOrigins")]
-        public string ValidateUser([FromForm] string json)
+        [Route("login")]
+        public string Validate([FromForm] string json)
         {
             try {
                 this.Request = new Request(json);
@@ -66,26 +67,14 @@ namespace WebApp.Controllers
                     ImageSource = this.Request.Get("imageSource"),
                     Nationality = new NationRepository().GetNation(this.Request.Get("nation")),
                     Telephone = this.Request.Get("telephone"),
-                    Status = new StatusRepository().GetStatus("A"),
-                    ParentUser = new FinalUserRepository().FindById(Convert.ToInt32(this.Request.GetOrNull("parentUserId"))),                    
+                    Status = new StatusRepository().FindStatusByCode("A"),
+                    ParentUser = new FinalUserRepository().FindById(Convert.ToInt32(this.Request.GetOrNull("parentUserId"))),
                 };
                 new FinalUserRepository().Add(finalUser);
 
                 return new Response(true, "Usuario creado exitosamente!").ToJson();
             } catch (NullReferenceException) {
                 return new Response(false, "No se han enviado todos los parametros necesarios para crear al usuario.").ToJson();
-            }catch (Exception ex) {
-                return new Response(false, ex.Message).ToJson();
-            }
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        [EnableCors("allowAllOrigins")]
-        public string Delete(int id)
-        {
-            try {
-                return new Response(true, null).ToJson();
             } catch (Exception ex) {
                 return new Response(false, ex.Message).ToJson();
             }

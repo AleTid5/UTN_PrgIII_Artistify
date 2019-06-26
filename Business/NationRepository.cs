@@ -55,7 +55,7 @@ namespace Repository
                 Code = Convert.ToString(this.SqlDataReader["Code"]),
                 Name = Convert.ToString(this.SqlDataReader["Name"]),
                 PhoneCode = int.Parse(Convert.ToString(this.SqlDataReader["PhoneCode"])),
-                Status = new StatusRepository().GetStatus(Convert.ToString(this.SqlDataReader["Status"]))
+                Status = new StatusRepository().FindStatusByCode(Convert.ToString(this.SqlDataReader["Status"]))
             };
         }
 

@@ -8,6 +8,8 @@ namespace Entity.User
 {
     public class Artist : AbstractUser
     {
+        public Artist(AbstractUser abstractUser = null) : base(abstractUser) { }
+
         public string Alias { set; get; }
         public string ImageSource { set; get; }
         public Manager Manager { set; get; }

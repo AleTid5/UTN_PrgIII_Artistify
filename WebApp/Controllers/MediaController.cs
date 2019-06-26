@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Entity;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Repository;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -13,24 +15,19 @@ namespace WebApp.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
-        // GET: api/User
-        [HttpGet]
+        // GET: api/Media/5
+        [HttpGet("{mediaType}")]
         [EnableCors("allowAllOrigins")]
-        public string Get()
+        public string Get(int mediaType)
         {
-
-            return new Response(true).ToJson();
+            try {
+                return new Response(true, new AlbumRepository().FindAllByMediaType(mediaType)).ToJson();
+            } catch (Exception ex) {
+                return new Response(false, ex.Message).ToJson();
+            }
         }
 
-        // GET: api/User/5
-        [HttpGet("{id}")]
-        [EnableCors("allowAllOrigins")]
-        public string Get(int id)
-        {
-            return new Response(true).ToJson();
-        }
-
-        // POST: api/User
+        // POST: api/Media
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         public string Post([FromBody] string value)
@@ -38,7 +35,7 @@ namespace WebApp.Controllers
             return new Response(true).ToJson();
         }
 
-        // PUT: api/User/5
+        // PUT: api/Media/5
         [HttpPut("{id}")]
         [EnableCors("allowAllOrigins")]
         public string Put(int id, [FromBody] string value)

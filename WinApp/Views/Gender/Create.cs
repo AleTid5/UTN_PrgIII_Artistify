@@ -48,7 +48,7 @@ namespace WinApp.Views.Gender
                 Entity.Gender gender = new Entity.Gender
                 {
                     Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 5, 50),
-                    MediaType = (new MediaTypeRepository()).GetMediaType(int.Parse(comboMediaType.SelectedValue.ToString())),
+                    MediaType = (new MediaTypeRepository()).FindById(int.Parse(comboMediaType.SelectedValue.ToString())),
                     ParentGender = (new GenderRepository()).GetGender(int.Parse(comboParentGender.SelectedValue.ToString()))
                 };
 

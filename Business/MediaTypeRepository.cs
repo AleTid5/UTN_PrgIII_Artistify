@@ -50,7 +50,7 @@ namespace Repository
             }
         }
 
-        public MediaType GetMediaType(int Id)
+        public MediaType FindById(int Id)
         {
             try {
                 String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE Id = {1}", this.Table, Id);
@@ -92,7 +92,7 @@ namespace Repository
             return new MediaType {
                 Id = int.Parse(this.SqlDataReader["Id"].ToString()),
                 Type = this.SqlDataReader["Type"].ToString(),
-                Status = (new StatusRepository()).GetStatus(this.SqlDataReader["Status"].ToString())
+                Status = (new StatusRepository()).FindStatusByCode(this.SqlDataReader["Status"].ToString())
             };
         }
     }

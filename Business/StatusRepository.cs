@@ -14,7 +14,7 @@ namespace Repository
             this.Table = "Status";
         }
 
-        public Status GetStatus(String Code)
+        public Status FindStatusByCode(String Code)
         {
             try {
                 String Query = String.Format("SELECT TOP 1 * FROM {0} WHERE Code = '{1}'", this.Table, Code);

@@ -1,5 +1,6 @@
 ﻿using Common.Exceptions;
 using Common.Senders;
+using Common.Transformers;
 using Entity.User;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,34 @@ namespace Repository
             } finally {
                 this.SqlConnection.Close();
             }
+        }
+
+        public Artist FindById(int Id)
+        {
+            try {
+                if (0 == Id) return null;
+
+                String Query = String.Format("SELECT TOP 1 * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE U.Status = 'A' AND A.Id = {1}", this.Table, Id);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return this.GetRowCasted(this.GetRowCasted());
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        private Artist GetRowCasted(AbstractUser abstractUser)
+        {
+            return new Artist(abstractUser) {
+                Alias = DBTransformer.GetOrDefault(this.SqlDataReader["Alias"], ""),
+                ImageSource = DBTransformer.GetOrDefault(this.SqlDataReader["ImageSource"], ""),
+                Verified = DBTransformer.GetOrDefault(this.SqlDataReader["Verified"], false),
+                ArtistType = new MediaTypeRepository().FindById(DBTransformer.GetOrDefault(this.SqlDataReader["MediaType"], 0)),
+                Manager = new ManagerRepository().FindById(DBTransformer.GetOrDefault(this.SqlDataReader["Manager"], 0))
+            };
         }
     }
 }

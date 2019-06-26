@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using Common.Transformers;
 using DataAccess;
 
 namespace Repository
@@ -26,22 +27,13 @@ namespace Repository
         public int ExecInsert(String Query)
         {
             this.PrepareExec(Query);
-            return this.GetOrElse(this.SqlCommand.ExecuteScalar(), 0);
+            return DBTransformer.GetOrDefault(this.SqlCommand.ExecuteScalar(), 0);
         }
 
         public void ExecUpdate(String Query)
         {
             this.PrepareExec(Query);
             this.SqlCommand.ExecuteNonQuery();
-        }
-
-        private int GetOrElse(object ToConvert, int Default)
-        {
-            try {
-                return int.Parse(ToConvert.ToString());
-            } catch (Exception) {
-                return Default;
-            }
         }
 
         /**

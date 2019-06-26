@@ -56,7 +56,7 @@ namespace WinApp.Views.Category
             {
                 this.category.Name = NativeRules.CheckString(txtName.Text.ToString().Trim(), "Nombre inválido", 1, 25);
                 this.category.BlockedAge = Convert.ToInt32(txtAge.Text.ToString().Trim());
-                this.category.Status = (new StatusRepository()).GetStatus(comboStatus.SelectedValue.ToString());
+                this.category.Status = (new StatusRepository()).FindStatusByCode(comboStatus.SelectedValue.ToString());
 
                 (new CategoryRepository()).EditCategory(category);
                 MessageBox.Show("La categoría se ha editado exitosamente!");

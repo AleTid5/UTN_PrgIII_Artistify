@@ -34,7 +34,7 @@ namespace WebApp.Controllers
                     Password = this.Request.Get("password"),
                     Gender = Convert.ToChar(this.Request.Get("gender")),
                     Nationality = new NationRepository().GetNation(this.Request.Get("nation")),
-                    Status = new StatusRepository().GetStatus("A"),
+                    Status = new StatusRepository().FindStatusByCode("A"),
                     CUIT = this.Request.Get("cuit")
                 };
                 new ManagerRepository().Add(manager);

@@ -56,7 +56,7 @@ namespace WinApp.Views.User
                 user.BornDate = dateBornDate.Value;
                 user.Gender = radioF.Checked ? 'F' : radioM.Checked ? 'M' : 'O';
                 user.Nationality = new NationRepository().GetNation(comboNationality.SelectedValue.ToString());
-                user.Status = new StatusRepository().GetStatus("N");
+                user.Status = new StatusRepository().FindStatusByCode("N");
 
                 if (this.chkModerator.Checked) {
                     new ModeratorRepository().Add((Moderator)user);

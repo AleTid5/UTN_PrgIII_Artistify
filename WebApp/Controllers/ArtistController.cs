@@ -34,7 +34,7 @@ namespace WebApp.Controllers
                     Password = this.Request.Get("password"),
                     Gender = Convert.ToChar(this.Request.Get("gender")),
                     Nationality = new NationRepository().GetNation(this.Request.Get("nation")),
-                    Status = new StatusRepository().GetStatus("A"),
+                    Status = new StatusRepository().FindStatusByCode("A"),
                     Alias = this.Request.Get("alias"),
                     ImageSource = this.Request.Get("imageSource"),
                     Manager = new ManagerRepository().FindById(Convert.ToInt32(this.Request.Get("manager")))

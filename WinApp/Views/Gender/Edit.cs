@@ -58,9 +58,9 @@ namespace WinApp.Views.Gender
             try
             {
                 this.gender.Name = txtName.Text;
-                this.gender.MediaType = (new MediaTypeRepository().GetMediaType(int.Parse(comboMediaType.SelectedValue.ToString())));
+                this.gender.MediaType = (new MediaTypeRepository().FindById(int.Parse(comboMediaType.SelectedValue.ToString())));
                 this.gender.ParentGender = (new GenderRepository()).GetGender(int.Parse(comboParentGender.SelectedValue.ToString()));
-                this.gender.Status = (new StatusRepository().GetStatus(comboStatus.SelectedValue.ToString()));
+                this.gender.Status = (new StatusRepository().FindStatusByCode(comboStatus.SelectedValue.ToString()));
 
                 (new GenderRepository()).EditGender(this.gender);
                 MessageBox.Show("El género se ha editado exitosamente!");
