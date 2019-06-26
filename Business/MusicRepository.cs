@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Repository
 {
-    public class MusicRepository : Repository
+    public class MusicRepository : MediaRepository
     {
         public MusicRepository()
         {

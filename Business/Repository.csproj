@@ -45,6 +45,7 @@
     <Compile Include="ArtistRepository.cs" />
     <Compile Include="FinalUserRepository.cs" />
     <Compile Include="ManagerRepository.cs" />
+    <Compile Include="MediaRepository.cs" />
     <Compile Include="MediaTypeRepository.cs" />
     <Compile Include="GenderRepository.cs" />
     <Compile Include="CategoryRepository.cs" />

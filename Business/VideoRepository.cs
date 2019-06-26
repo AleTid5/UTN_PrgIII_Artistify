@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Repository
 {
-    public class VideoRepository : Repository
+    public class VideoRepository : MediaRepository
     {
         public VideoRepository()
         {

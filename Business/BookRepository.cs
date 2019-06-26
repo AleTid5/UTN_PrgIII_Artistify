@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Repository
 {
-    public class BookRepository : Repository
+    public class BookRepository : MediaRepository
     {
         public BookRepository()
         {

@@ -905,3 +905,51 @@ go
 
 exec sp_addextendedproperty 'MS_Description', 'Imagen del album', 'SCHEMA', 'dbo', 'TABLE', 'Albums', 'COLUMN', 'ImageSource'
 go
+
+CREATE TRIGGER AFTER_INSERT_USERS_MEDIA_RATING ON Users_Media_Rating
+AFTER INSERT AS
+BEGIN
+   BEGIN TRY
+       DECLARE @MediaId BIGINT;
+       DECLARE @Rating smallint;
+
+       SELECT @MediaId = MediaId
+       FROM INSERTED;
+
+       SELECT @Rating = AVG(MediaRating)
+       FROM Users_Media_Rating
+       WHERE MediaId = @MediaId;
+
+       UPDATE Media
+       SET Rating = @Rating
+       WHERE Id = @MediaId;
+   END TRY
+   BEGIN CATCH
+       PRINT ERROR_MESSAGE();
+   END CATCH
+END
+GO
+
+CREATE TRIGGER AFTER_UPDATE_USERS_MEDIA_RATING ON Users_Media_Rating
+AFTER UPDATE AS
+BEGIN
+   BEGIN TRY
+       DECLARE @MediaId BIGINT;
+       DECLARE @Rating smallint;
+
+       SELECT @MediaId = MediaId
+       FROM INSERTED;
+
+       SELECT @Rating = AVG(MediaRating)
+       FROM Users_Media_Rating
+       WHERE MediaId = @MediaId;
+
+       UPDATE Media
+       SET Rating = @Rating
+       WHERE Id = @MediaId;
+   END TRY
+   BEGIN CATCH
+       PRINT ERROR_MESSAGE();
+   END CATCH
+END
+GO

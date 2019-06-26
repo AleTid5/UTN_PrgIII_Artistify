@@ -15,6 +15,8 @@ namespace WebApp.Controllers
     [ApiController]
     public class MediaController : ControllerBase
     {
+        private new Request Request = null;
+
         // GET: api/Media/5
         [HttpGet("{mediaType}")]
         [EnableCors("allowAllOrigins")]
@@ -30,9 +32,29 @@ namespace WebApp.Controllers
         // POST: api/Media
         [HttpPost]
         [EnableCors("allowAllOrigins")]
-        public string Post([FromBody] string value)
+        [Route("contentReproduced")]
+        public void ContentReproduced([FromForm] string json)
         {
-            return new Response(true).ToJson();
+            try {
+                this.Request = new Request(json);
+                int mediaId = Convert.ToInt32(this.Request.Get("mediaId"));
+                new MediaRepository().AddReproducedTime(mediaId);
+            } catch { }
+        }
+
+        // POST: api/Media
+        [HttpPost]
+        [EnableCors("allowAllOrigins")]
+        [Route("setRating")]
+        public void SetRating([FromForm] string json)
+        {
+            try {
+                this.Request = new Request(json);
+                int userId = Convert.ToInt32(this.Request.Get("userId"));
+                int mediaId = Convert.ToInt32(this.Request.Get("mediaId"));
+                int rating = Convert.ToInt32(this.Request.Get("rating"));
+                new MediaRepository().SetRating(userId, mediaId, rating);
+            } catch { }
         }
 
         // PUT: api/Media/5
