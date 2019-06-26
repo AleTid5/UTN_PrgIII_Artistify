@@ -1,4 +1,5 @@
-﻿using Common.Exceptions;
+﻿using Common;
+using Common.Exceptions;
 using Common.Senders;
 using Entity.User;
 using System;
@@ -15,6 +16,20 @@ namespace Repository
         public ManagerRepository()
         {
             this.Table = "Users_Managers";
+        }
+
+        public new void AuthenticateOrFail(String Email, String Password)
+        {
+            try {
+                this.CheckCredentialsOrFail(Email, Password);
+                this.CheckOrFail();
+                this.SqlConnection.Close();
+                this.UpdateUserLogin(Session.user.Id);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
         }
 
         public void Add(Manager manager)
@@ -57,6 +72,15 @@ namespace Repository
             return new Manager(abstractUser) {
                 CUIT = this.SqlDataReader["CUIT"].ToString()
             };
+        }
+
+        private void CheckOrFail()
+        {
+            String QueryTemplate = "SELECT TOP 1 * FROM Users_Managers WHERE Id = {0}";
+            String Query = String.Format(QueryTemplate, Session.user.Id);
+            this.ExecSelect(Query);
+            this.SqlDataReader.Read();
+            this.AssertOrFail("El usuario ingresado no es Manager");
         }
     }
 }

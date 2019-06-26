@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
+using Common;
 using Entity.User;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -22,7 +23,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         [Route("register")]
-        public string RegisterArtist([FromForm] string json)
+        public string Register([FromForm] string json)
         {
             try {
                 this.Request = new Request(json);
@@ -49,10 +50,22 @@ namespace WebApp.Controllers
             }
         }
 
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // POST: api/Artist/Login
+        [HttpPost]
+        [EnableCors("allowAllOrigins")]
+        [Route("login")]
+        public string Login([FromForm] string json)
         {
+            try {
+                this.Request = new Request(json);
+                String user = this.Request.Get("email");
+                String password = this.Request.Get("password");
+                new ArtistRepository().AuthenticateOrFail(user, password);
+
+                return new Response(true, Session.user).ToJson();
+            } catch (Exception ex) {
+                return new Response(false, ex.Message).ToJson();
+            }
         }
     }
 }

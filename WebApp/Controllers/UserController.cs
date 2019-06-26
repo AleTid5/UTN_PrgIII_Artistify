@@ -35,7 +35,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         [Route("login")]
-        public string Validate([FromForm] string json)
+        public string Login([FromForm] string json)
         {
             try {
                 this.Request = new Request(json);
@@ -53,7 +53,7 @@ namespace WebApp.Controllers
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         [Route("register")]
-        public string RegisterUser([FromForm] string json)
+        public string Register([FromForm] string json)
         {
             try {
                 this.Request = new Request(json);

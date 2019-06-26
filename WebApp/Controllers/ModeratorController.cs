@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Common;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Repository;
 using WebApp.Models;
 
 namespace WebApp.Controllers
@@ -13,21 +15,24 @@ namespace WebApp.Controllers
     [ApiController]
     public class ModeratorController : ControllerBase
     {
-        // GET: api/User
-        [HttpGet]
-        [EnableCors("allowAllOrigins")]
-        public string Get()
-        {
+        private new Request Request = null;
 
-            return new Response(true).ToJson();
-        }
-
-        // GET: api/User/5
-        [HttpGet("{id}")]
+        // GET: api/Moderator/login
+        [HttpPost]
         [EnableCors("allowAllOrigins")]
-        public string Get(int id)
+        [Route("login")]
+        public string Login([FromForm] string json)
         {
-            return new Response(true).ToJson();
+            try {
+                this.Request = new Request(json);
+                String user = this.Request.Get("email");
+                String password = this.Request.Get("password");
+                new ModeratorRepository().AuthenticateOrFail(user, password);
+
+                return new Response(true, Session.user).ToJson();
+            } catch (Exception ex) {
+                return new Response(false, ex.Message).ToJson();
+            }
         }
 
         // POST: api/User
