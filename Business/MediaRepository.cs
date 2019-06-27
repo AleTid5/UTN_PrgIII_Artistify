@@ -92,8 +92,8 @@ namespace Repository
         public void Edit(AbstractMedia media)
         {
             try {
-                String QueryTemplate = "UPDATE {0} SET Album = {1}, Name = {2}, Gender = {3}, Category = {4}, Size = {5}, Source = {6} WHERE Id = {7}";
-                String Query = String.Format(QueryTemplate, this.Table, media.Album.Id, media.Name, media.Gender.Id, media.Category.Id, media.Size, media.Source, media.Id);
+                String QueryTemplate = "UPDATE {0} SET Album = {1}, Name = {2}, Gender = {3}, Category = {4}, Size = '{5}', Source = '{6}', Status = '{7}' WHERE Id = {8}";
+                String Query = String.Format(QueryTemplate, this.Table, media.Album.Id, media.Name, media.Gender.Id, media.Category.Id, media.Size, media.Source, media.Status.Code, media.Id);
                 this.ExecUpdate(Query);
             } catch (Exception ex) {
                 throw ex;

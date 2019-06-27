@@ -59,16 +59,6 @@ namespace WebApp.Controllers
             } catch { }
         }
 
-        // PUT: api/Media/5
-        [HttpPut("{id}")]
-        [EnableCors("allowAllOrigins")]
-        public string Put(int id, [FromBody] string value)
-        {
-            return new Response(true).ToJson();
-        }
-
-
-
         // POST: api/Media/add
         [HttpPost]
         [EnableCors("allowAllOrigins")]
@@ -136,7 +126,7 @@ namespace WebApp.Controllers
                     Size = fileData["fileSize"],
                     Source = fileData["fileDestination"]
                 };
-                new MediaRepository().Add(media);
+                new MediaRepository().Edit(media);
 
                 return new Response(true, "Contenido editado exitosamente!").ToJson();
             } catch (NullReferenceException) {
