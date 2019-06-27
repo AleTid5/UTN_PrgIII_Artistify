@@ -52,7 +52,7 @@ namespace WinApp.Views.Gender
                     ParentGender = (new GenderRepository()).FindById(int.Parse(comboParentGender.SelectedValue.ToString()))
                 };
 
-                (new GenderRepository()).AddGender(gender);
+                (new GenderRepository()).Add(gender);
                 MessageBox.Show("El género se ha creado exitosamente!");
                 this.btnBack_Click(sender, e);
             } catch (Exception ex)

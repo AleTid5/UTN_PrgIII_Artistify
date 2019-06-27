@@ -12,7 +12,7 @@ namespace Repository
             this.Table = "Genders";
         }
 
-        public void AddGender(Gender gender)
+        public void Add(Gender gender)
         {
             try {
                 String QueryTemplate = "INSERT INTO {0} (Name, MediaType, ParentGender) VALUES ('{1}', {2}, {3})";
@@ -25,7 +25,7 @@ namespace Repository
             }
         }
 
-        public void EditGender(Gender gender)
+        public void Edit(Gender gender)
         {
             try {
                 String QueryTemplate = "UPDATE {0} SET Name = '{1}', MediaType = {2}, ParentGender = {3}, Status = '{4}' WHERE Id = {5}";
@@ -38,7 +38,7 @@ namespace Repository
             }
         }
 
-        public void RemoveGender(Gender gender)
+        public void Remove(Gender gender)
         {
             try {
                 String QueryTemplate = "UPDATE {0} SET Status = 'B' WHERE Id = {1}";

@@ -62,7 +62,7 @@ namespace WinApp.Views.Gender
                 this.gender.ParentGender = (new GenderRepository()).FindById(int.Parse(comboParentGender.SelectedValue.ToString()));
                 this.gender.Status = (new StatusRepository().FindStatusByCode(comboStatus.SelectedValue.ToString()));
 
-                (new GenderRepository()).EditGender(this.gender);
+                (new GenderRepository()).Edit(this.gender);
                 MessageBox.Show("El género se ha editado exitosamente!");
                 this.btnBack_Click(sender, e);
             }

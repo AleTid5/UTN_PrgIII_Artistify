@@ -123,7 +123,7 @@ namespace WinApp
         {
             try
             {
-                (new GenderRepository()).RemoveGender(sender as Entity.Gender);
+                (new GenderRepository()).Remove(sender as Entity.Gender);
                 this.GenderIndex.UpdateView();
             } catch (Exception ex)
             {

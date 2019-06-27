@@ -58,6 +58,45 @@ namespace Repository
             }
         }
 
+        public void Add(Album album)
+        {
+            try {
+                String QueryTemplate = "INSERT INTO {0} (Name, Artist, MediaType, ImageSource) VALUES ('{1}', {2}, {3}, '{4}')";
+                String Query = String.Format(QueryTemplate, this.Table, album.Name, album.Artist.Id, album.MediaType.Id, album.ImageSource);
+                this.ExecInsert(Query);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void Edit(Album album)
+        {
+            try {
+                String QueryTemplate = "UPDATE {0} SET Name = '{1}', MediaType = {2}, Status = '{3}', ModificationDate = GETDATE(), ImageSource = '{4}' WHERE Id = {5}";
+                String Query = String.Format(QueryTemplate, this.Table, album.Name, album.MediaType.Id, album.Status.Code, album.ImageSource, album.Id);
+                this.ExecUpdate(Query);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void Remove(Album album)
+        {
+            try {
+                String QueryTemplate = "UPDATE {0} SET Status = 'B' WHERE Id = {1}";
+                String Query = String.Format(QueryTemplate, this.Table, album.Id);
+                this.ExecUpdate(Query);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
         private Album GetRowCasted()
         {
             return new Album() {
