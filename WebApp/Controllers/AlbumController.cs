@@ -17,7 +17,7 @@ namespace WebApp.Controllers
     {
         private new Request Request = null;
 
-        // GET: api/Media/5
+        // GET: api/Album/5
         [HttpGet("{albumId}")]
         [EnableCors("allowAllOrigins")]
         public string Get(int albumId)
@@ -29,7 +29,7 @@ namespace WebApp.Controllers
             }
         }
 
-        // POST: api/Media/add
+        // POST: api/Album/add
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         [Route("add")]
@@ -53,7 +53,7 @@ namespace WebApp.Controllers
             }
         }
 
-        // POST: api/Media/edit
+        // POST: api/Album/edit
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         [Route("edit")]
@@ -78,7 +78,7 @@ namespace WebApp.Controllers
             }
         }
 
-        // POST: api/Media/remove
+        // POST: api/Album/remove
         [HttpPost]
         [EnableCors("allowAllOrigins")]
         [Route("remove")]

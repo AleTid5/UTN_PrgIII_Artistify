@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Frontend\public\Uploads\Music\" />
+    <Folder Include="Frontend\public\Uploads\Images\" />
+    <Folder Include="Frontend\public\Uploads\Books\" />
+    <Folder Include="Frontend\public\Uploads\Videos\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
