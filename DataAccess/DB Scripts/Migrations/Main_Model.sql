@@ -964,15 +964,3 @@ alter table Media
 			add constraint Media_Albums_Id_fk
 			foreign key (Album) references Albums;
 GO
-
-alter table Media_Musics drop constraint Media_Musics_Albums_Id_fk;
-GO
-
-alter table Media_Musics drop column Album;
-GO
-
-alter table Media_Videos drop constraint Media_Videos_Albums_Id_fk;
-GO
-
-alter table Media_Videos drop column Album;
-GO

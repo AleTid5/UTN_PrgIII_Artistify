@@ -70,6 +70,51 @@ namespace Repository
             }
         }
 
+        public int Add(AbstractMedia media)
+        {
+            try {
+                String QueryTemplate = "INSERT INTO {0} (Album, Name, Gender, Category, Size, Source) VALUES ({1}, '{2}', {3}, {4}, '{5}', '{6}')";
+                String Query = String.Format(QueryTemplate, this.Table, media.Album.Id, media.Name, media.Gender.Id, media.Category.Id, media.Size, media.Source);
+                this.ExecInsert(Query);
+                this.SqlConnection.Close();
+                Query = String.Format("SELECT MAX(Id) AS Id FROM {0}", this.Table);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return DBTransformer.GetOrDefault(this.SqlDataReader["Id"], 0);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void Edit(AbstractMedia media)
+        {
+            try {
+                String QueryTemplate = "UPDATE {0} SET Album = {1}, Name = {2}, Gender = {3}, Category = {4}, Size = {5}, Source = {6} WHERE Id = {7}";
+                String Query = String.Format(QueryTemplate, this.Table, media.Album.Id, media.Name, media.Gender.Id, media.Category.Id, media.Size, media.Source, media.Id);
+                this.ExecUpdate(Query);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void Remove(AbstractMedia media)
+        {
+            try {
+                String QueryTemplate = "UPDATE {0} SET Status = 'B' WHERE Id = {1}";
+                String Query = String.Format(QueryTemplate, this.Table, media.Id);
+                this.ExecUpdate(Query);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
         protected AbstractMedia GetRowCasted()
         {
             if (!this.SqlDataReader.HasRows)

@@ -127,6 +127,7 @@ namespace WebApp.Controllers
                 Dictionary<String, String> fileData = this.Request.GetValidatedFile(httpRequest, mediaType);
 
                 AbstractMedia media = new AbstractMedia {
+                    Id = int.Parse(this.Request.Get("id")),
                     Name = this.Request.Get("name"),
                     Album = new AlbumRepository().FindById(int.Parse(this.Request.Get("album"))),
                     Gender = new GenderRepository().FindById(int.Parse(this.Request.Get("gender"))),
