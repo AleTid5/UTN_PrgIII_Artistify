@@ -7,5 +7,7 @@ export default new Vuex.Store({
     state: {
         user: null,
         userType: null,
+        mediaTypeSelected: null,
+        albumSelected: null
     }
 });

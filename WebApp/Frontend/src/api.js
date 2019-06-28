@@ -77,9 +77,17 @@ export default {
     albumRemove(data) {
         return this.execute("POST", "/album/remove", data);
     },
+
+    albumFindById(id) {
+        return this.execute("GET", "/album/" + id);
+    },
     // *****************************************************************************************************************
     // Media
     // *****************************************************************************************************************
+    mediaFindById(id) {
+        return this.execute("GET", "/media/" + id);
+    },
+
     mediaAdd(data) {
         return this.execute("POST", "/media/add", data);
     },

@@ -1,12 +1,20 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import DashboardLayout from '@/layout/DashboardLayout'
+import DashboardLayoutArtist from '@/layout/DashboardLayoutArtist'
+import DashboardLayoutManager from '@/layout/DashboardLayoutManager'
 import AuthLayout from '@/layout/AuthLayout'
 import Store from '@/store/index.js'
 Vue.use(Router);
 
 const validateRouteUser = (to, from, next) => {
   Store.state.user && Store.state.userType === 1 ? next() : next('/');
+};
+const validateRouteArtist = (to, from, next) => {
+  Store.state.user && Store.state.userType === 2 ? next() : next('/artist/login');
+};
+const validateRouteManager = (to, from, next) => {
+  Store.state.user && Store.state.userType === 3 ? next() : next('/manager/login');
 };
 
 const route = new Router({
@@ -20,27 +28,27 @@ const route = new Router({
         {
           path: '/login',
           name: 'login',
-          component: () => import(/* webpackChunkName: "demo" */ './views/User/Login.vue')
+          component: () => import('./views/User/Login.vue')
         },
         {
           path: '/register',
           name: 'register',
-          component: () => import(/* webpackChunkName: "demo" */ './views/User/Register.vue')
+          component: () => import('./views/User/Register.vue')
         },
         {
           path: '/artist/login',
-          name: 'loginArtist',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Artist/Login.vue')
+          name: 'login Artist',
+          component: () => import('./views/Artist/Login.vue')
         },
         {
           path: '/manager/login',
-          name: 'loginManager',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Manager/Login.vue')
+          name: 'login Manager',
+          component: () => import('./views/Manager/Login.vue')
         },
         {
           path: '/manager/register',
-          name: 'loginManager',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Manager/Register.vue')
+          name: 'register Manager',
+          component: () => import('./views/Manager/Register.vue')
         }
       ]
     },
@@ -51,55 +59,48 @@ const route = new Router({
       children: [
         {
           path: '/user/dashboard',
-          name: 'dashboardUser',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "demo" */ './views/User/Dashboard.vue'),
+          name: 'dashboard',
+          component: () => import('./views/User/Dashboard.vue'),
           beforeEnter: validateRouteUser
         },
+        {
+          path: '/user/albums',
+          name: 'Albums',
+          component: () => import('./views/User/Albums.vue'),
+          beforeEnter: validateRouteUser
+        },
+        {
+          path: '/user/albums/mediaContent',
+          name: 'Media Content',
+          component: () => import('./views/User/MediaContent.vue'),
+          beforeEnter: validateRouteUser
+        },
+      ]
+    },
+    {
+      path: '/',
+      redirect: 'dashboard',
+      component: DashboardLayoutArtist,
+      children: [
         {
           path: '/artist/dashboard',
-          name: 'dashboardArtist',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "demo" */ './views/Artist/Dashboard.vue'),
-          beforeEnter: validateRouteUser
+          name: 'dashboard Artist',
+          component: () => import('./views/Artist/Dashboard.vue'),
+          beforeEnter: validateRouteArtist
         },
+      ]
+    },
+    {
+      path: '/',
+      redirect: 'dashboard',
+      component: DashboardLayoutManager,
+      children: [
         {
           path: '/manager/dashboard',
-          name: 'dashboardManager',
-          // route level code-splitting
-          // this generates a separate chunk (about.[hash].js) for this route
-          // which is lazy-loaded when the route is visited.
-          component: () => import(/* webpackChunkName: "demo" */ './views/Manager/Dashboard.vue'),
-          beforeEnter: validateRouteUser
+          name: 'dashboard Manager',
+          component: () => import('./views/Manager/Dashboard.vue'),
+          beforeEnter: validateRouteManager
         },
-        {
-          path: '/icons',
-          name: 'icons',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Icons.vue'),
-          beforeEnter: validateRouteUser
-        },
-        {
-          path: '/profile',
-          name: 'profile',
-          component: () => import(/* webpackChunkName: "demo" */ './views/UserProfile.vue'),
-          beforeEnter: validateRouteUser
-        },
-        {
-          path: '/maps',
-          name: 'maps',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Maps.vue'),
-          beforeEnter: validateRouteUser
-        },
-        {
-          path: '/tables',
-          name: 'tables',
-          component: () => import(/* webpackChunkName: "demo" */ './views/Tables.vue'),
-          beforeEnter: validateRouteUser
-        }
       ]
     }
   ]
