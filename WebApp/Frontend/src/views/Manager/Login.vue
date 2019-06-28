@@ -4,7 +4,7 @@
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Or sign in with credentials</small>
+                        <small>Inicio de sesión para <b>Managers</b></small>
                     </div>
                     <form role="form">
                         <base-input class="input-group-alternative mb-3"
@@ -24,17 +24,9 @@
                             <span class="text-muted">Remember me</span>
                         </base-checkbox>
                         <div class="text-center">
-                            <base-button type="primary" class="my-4" @click="login()">Sign in</base-button>
+                            <base-button type="primary" class="my-4" @click="login()">Iniciar sesión</base-button>
                         </div>
                     </form>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-6">
-                    <a href="#" class="text-light"><small>¿Olvidaste tu contraseña?</small></a>
-                </div>
-                <div class="col-6 text-right">
-                    <router-link to="/register" class="text-light"><small>Registrarme!</small></router-link>
                 </div>
             </div>
         </div>
@@ -45,7 +37,7 @@
     import store from '@/store/index';
 
     export default {
-        name: 'login',
+        name: 'login-manager',
         data() {
             return {
                 model: {
@@ -56,7 +48,7 @@
         },
         methods: {
             async login() {
-                const response = await api.userLogin(this.model);
+                const response = await api.managerLogin(this.model);
 
                 if (! response.Status) {
                     // Todo: Error
@@ -64,8 +56,9 @@
                 }
 
                 store.state.user = response.Data;
+                store.state.userType = 3;
 
-                this.$router.push('/dashboard');
+                this.$router.push('/manager/dashboard');
             }
         }
     }

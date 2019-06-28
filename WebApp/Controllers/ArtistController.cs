@@ -34,7 +34,7 @@ namespace WebApp.Controllers
                     Email = new MailAddress(this.Request.Get("email")).Address,
                     Password = this.Request.Get("password"),
                     Gender = Convert.ToChar(this.Request.Get("gender")),
-                    Nationality = new NationRepository().GetNation(this.Request.Get("nation")),
+                    Nationality = new NationRepository().GetNation("ARG"/*this.Request.Get("nation")*/),
                     Status = new StatusRepository().FindStatusByCode("A"),
                     Alias = this.Request.Get("alias"),
                     ImageSource = this.Request.Get("imageSource"),

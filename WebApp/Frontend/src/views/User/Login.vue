@@ -4,36 +4,32 @@
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Or sign in with credentials</small>
+                        <small>Inicio de sesión</small>
                     </div>
                     <form role="form">
-                        <base-input class="input-group-alternative mb-3"
+                        <base-input :required="true"
+                                    class="input-group-alternative mb-3"
                                     placeholder="Email"
                                     addon-left-icon="ni ni-email-83"
                                     v-model="model.email">
                         </base-input>
 
-                        <base-input class="input-group-alternative"
+                        <base-input :required="true"
+                                    class="input-group-alternative"
                                     placeholder="Password"
                                     type="password"
                                     addon-left-icon="ni ni-lock-circle-open"
                                     v-model="model.password">
                         </base-input>
 
-                        <base-checkbox class="custom-control-alternative">
-                            <span class="text-muted">Remember me</span>
-                        </base-checkbox>
                         <div class="text-center">
-                            <base-button type="primary" class="my-4" @click="login()">Sign in</base-button>
+                            <base-button type="primary" class="my-4" @click="login()">Entrar!</base-button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-6">
-                    <a href="#" class="text-light"><small>¿Olvidaste tu contraseña?</small></a>
-                </div>
-                <div class="col-6 text-right">
+                <div class="col-12 text-right">
                     <router-link to="/register" class="text-light"><small>Registrarme!</small></router-link>
                 </div>
             </div>
@@ -64,8 +60,9 @@
                 }
 
                 store.state.user = response.Data;
+                store.state.userType = 1;
 
-                this.$router.push('/dashboard');
+                this.$router.push('/user/dashboard');
             }
         }
     }

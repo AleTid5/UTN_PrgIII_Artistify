@@ -1,9 +1,7 @@
 ﻿using Entity.User;
 using System;
-using System.Collections.Generic;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
 
 namespace Common.Senders
 {
@@ -28,10 +26,12 @@ namespace Common.Senders
         {
             try {
                 MailMessage msg = new MailMessage("artistify@hotmail.com", user.Email) {
-                    Subject = "Alta de usuario",
-                    IsBodyHtml = false,
-                    Body = "Bienvenido a Artistify! Su contraseña es: " + user.Password
+                    Subject = "Artistify | Registro exitoso de Artista",
+                    IsBodyHtml = true,
+                    Body = GetBody("7C0h7Fs/Artistify-Artist")
                 };
+
+                msg.Body += "Su contraseña es: " + user.Password;
 
                 await CreateSender().SendMailAsync(msg);
             } catch (SmtpException) {
@@ -44,9 +44,9 @@ namespace Common.Senders
         {
             try {
                 MailMessage msg = new MailMessage("artistify@hotmail.com", manager.Email) {
-                    Subject = "Alta de Manager",
-                    IsBodyHtml = false,
-                    Body = "Bienvenido a Artistify!"
+                    Subject = "Artistify | Registro exitoso de Manager",
+                    IsBodyHtml = true,
+                    Body = GetBody("QH5RSYH/Artistify-Manager")
                 };
 
                 await CreateSender().SendMailAsync(msg);
@@ -60,9 +60,9 @@ namespace Common.Senders
         {
             try {
                 MailMessage msg = new MailMessage("artistify@hotmail.com", user.Email) {
-                    Subject = "Alta de usuario",
-                    IsBodyHtml = false,
-                    Body = "Bienvenido a Artistify!"
+                    Subject = "Artistify | Registro exitoso!",
+                    IsBodyHtml = true,
+                    Body = GetBody("kGP5JmT/Artistify-Final-User")
                 };
 
                 await CreateSender().SendMailAsync(msg);
@@ -76,16 +76,33 @@ namespace Common.Senders
         {
             try {
                 MailMessage msg = new MailMessage("artistify@hotmail.com", user.Email) {
-                    Subject = "Alta de usuario",
-                    IsBodyHtml = false,
-                    Body = "Bienvenido al sistema de " + userType + "es de Artistify! Su contraseña es: " + user.Password
+                    Subject = "Artistify | Registro exitoso de " + userType,
+                    IsBodyHtml = true,
+                    Body = GetBody("Administrador" == userType ? "vszGwYj/Artistify-Admin" : "pJwz0W2/Artistify-Moderator")
                 };
+
+                msg.Body += "Su contraseña es: " + user.Password;
 
                 await CreateSender().SendMailAsync(msg);
             } catch (SmtpException) {
             } catch (Exception ex) {
                 throw ex;
             }
+        }
+
+        private static string GetBody(string type)
+        {
+            return
+                "<!DOCTYPE html>" +
+                "<html>" +
+                "<body>" +
+                "<table>" +
+                "	<tr>" +
+                "		<img src='https://i.ibb.co/" + type + ".jpg'>" +
+                "	</tr>" +
+                "</table>" +
+                "</body>" +
+                "</html>";
         }
     }
 }

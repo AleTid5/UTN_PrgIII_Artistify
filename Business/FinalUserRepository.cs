@@ -41,7 +41,8 @@ namespace Repository
                                        "VALUES ({1}, '{2}', '{3}', {4})";
                 String Query = String.Format(QueryTemplate, this.Table,
                                                             lastID,
-                                                            finalUser.ImageSource,
+                                                            //finalUser.ImageSource,
+                                                            "",
                                                             finalUser.Telephone,
                                                             this.GetUserIdOrNull(finalUser.ParentUser));
                 this.ExecInsert(Query);

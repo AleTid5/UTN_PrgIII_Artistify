@@ -63,7 +63,7 @@
                                     <i class="ni location_pin mr-2"></i>Bucharest, Romania
                                 </div>
                                 <div class="h5 mt-4">
-                                    <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer
+                                    <i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Artistify Officer
                                 </div>
                                 <div>
                                     <i class="ni education_hat mr-2"></i>University of Computer Science

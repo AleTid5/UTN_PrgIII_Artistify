@@ -61,7 +61,7 @@ If you want to get inspiration or just show something directly to your clients, 
 ## Quick start
 
 - [Download from Github](https://github.com/creativetimofficial/vue-argon-dashboard/archive/master.zip).
-- [Download from Creative Tim](https://www.creative-tim.com/product/vue-argon-dashboard?ref=ada-github-readme).
+- [Download from Artistify](https://www.creative-tim.com/product/vue-argon-dashboard?ref=ada-github-readme).
 - Clone the repo: `git clone https://github.com/creativetimofficial/vue-argon-dashboard.git`.
 
 
