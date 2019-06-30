@@ -40,7 +40,8 @@ namespace WebApp.Models
             var filePath = Path.GetTempFileName();
 
             string extension = file.FileName.Substring(file.FileName.IndexOf(".") + 1, 3).ToLower();
-            string savePath = @Directory.GetCurrentDirectory() + "\\Frontend\\public\\Uploads\\";
+            string saveRoot = @Directory.GetCurrentDirectory() + "\\Frontend\\public\\";
+            string savePath = "Uploads\\";
 
             switch (mediaType) {
                 case 1: // Musica
@@ -73,13 +74,13 @@ namespace WebApp.Models
 
             savePath += file.FileName;
 
-            using (FileStream DestinationStream = new FileStream(savePath, FileMode.OpenOrCreate)) {
+            using (FileStream DestinationStream = new FileStream(saveRoot + savePath, FileMode.OpenOrCreate)) {
                 file.CopyTo(DestinationStream);
             }
 
             Dictionary<String, String> toReturn = new Dictionary<String, String>();
             toReturn["fileSize"] = file.Length.ToString();
-            toReturn["fileDestination"] = savePath;
+            toReturn["fileDestination"] = savePath.Replace("\\", "/");
 
             return toReturn;
         }

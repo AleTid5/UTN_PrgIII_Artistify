@@ -8,20 +8,26 @@ const client = axios.create({
 });
 
 export default {
-    async execute(method, resource, data) {
-        if ('POST' === method)
-            data = {form: data};
+    async execute(method, resource, data, special = false) {
+        let sendData = data;
+
+        if (! special) {
+            if ('POST' === method)
+                data = {form: data};
+
+            sendData = 'POST' === method ? 'json=' + JSON.stringify(data) : data;
+        }
 
         const config = {
             method,
             url: resource,
-            data: 'POST' === method ? 'json=' + JSON.stringify(data) : data,
+            data: sendData,
             handlerEnabled: true,
             headers: {
                 "Access-Control-Allow-Origin": "http://localhost:8080",
                 "Access-Control-Allow-Methods": "GET, POST, OPTIONS, PUT, PATCH, DELETE",
                 "Access-Control-Allow-Headers": "Access-Control-Allow-Origin, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization",
-                'Content-Type': 'application/x-www-form-urlencoded',
+                'Content-Type': special ? 'multipart/form-data' : 'application/x-www-form-urlencoded',
             }
         };
 
@@ -113,17 +119,8 @@ export default {
     },
 
     mediaAdd(data) {
-        return this.execute("POST", "/media/add", data);
+        return this.execute("POST", "/media/add", data, true);
     },
-
-    mediaEdit(data) {
-        return this.execute("POST", "/media/edit", data);
-    },
-
-    mediaRemove(data) {
-        return this.execute("POST", "/media/remove", data);
-    },
-
     mediaAddReproducedTime(data) {
         return this.execute("POST", "/media/contentReproduced", data);
     },
@@ -134,5 +131,14 @@ export default {
 
     getUserMediaRating(userId, mediaId) {
         return this.execute("GET", "/media/" + userId + "/" + mediaId);
-    }
+    },
+    // *****************************************************************************************************************
+    // Media
+    // *****************************************************************************************************************
+    gendersFindAll() {
+        return this.execute("GET", "/gender");
+    },
+    categoriesFindAll() {
+        return this.execute("GET", "/category");
+    },
 };
