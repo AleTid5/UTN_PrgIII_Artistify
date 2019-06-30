@@ -1,12 +1,10 @@
 <template>
-    <div class="main-content bg-default">
+    <div class="main-content bg-artistify">
         <!-- Navbar -->
         <base-nav class="navbar-top navbar-horizontal navbar-dark"
                   containerClasses="container"
                   expand>
-            <router-link slot="brand" class="navbar-brand" to="/">
-                <img src="img/brand/white.png" style="width: 75px; height: 75px"/>
-            </router-link>
+            <span slot="brand"></span>
 
             <template v-slot="{closeMenu}">
                 <!-- Collapse header -->
@@ -58,24 +56,7 @@
             </template>
         </base-nav>
         <!-- Header -->
-        <div class="header bg-gradient-success py-7 py-lg-8">
-            <!--<div class="container">
-                <div class="header-body text-center mb-7">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-5 col-md-6">
-                            <h1 class="text-white">Welcome!</h1>
-                            <p class="text-lead text-white">Use these awesome forms to login or create new account in
-                                your project for free.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="separator separator-bottom separator-skew zindex-100">
-                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                     xmlns="http://www.w3.org/2000/svg">
-                    <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
-                </svg>
-            </div>-->
+        <div class="header bg-gradient-success py-7">
         </div>
         <!-- Page content -->
         <div class="container mt--8 pb-5">
@@ -83,31 +64,13 @@
                 <router-view></router-view>
             </slide-y-up-transition>
         </div>
-        <footer class="py-5">
+        <footer>
             <div class="container">
                 <div class="row align-items-center justify-content-xl-between">
                     <div class="col-xl-6">
-                        <div class="copyright text-center text-xl-left text-muted">
-                            &copy; {{year}} <a href="#" class="font-weight-bold ml-1" target="_blank">Artistify</a>
+                        <div class="copyright text-center text-xl-left text-success">
+                            &copy; {{year}} <a href="#" class="font-weight-bold ml-1 text-success" target="_blank">Artistify</a>
                         </div>
-                    </div>
-                    <div class="col-xl-6">
-                        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Artistify</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About
-                                    Us</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
-                                   class="nav-link" target="_blank">MIT License</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -136,4 +99,7 @@
     }
 </script>
 <style>
+    html {
+        background-color: #181413;
+    }
 </style>

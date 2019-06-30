@@ -4,7 +4,9 @@
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Or sign up with credentials</small>
+                        <router-link slot="brand" class="navbar-brand" to="/">
+                            <img src="img/brand/white.png" style="width: 75px; height: 75px"/>
+                        </router-link>
                     </div>
                     <form role="form" @submit="register()">
                         <base-input class="input-group-alternative mb-3"
@@ -31,16 +33,22 @@
                             </flat-picker>
                         </base-input>
 
-                        <div>
+                        <div class="row">
+                            <div class="col-4">
                             <base-radio :inline="true" name="M" class="mb-3" v-model="model.gender">
                                 Masculino
                             </base-radio>
+                            </div>
+                            <div class="col-4">
                             <base-radio :inline="true" name="F" class="mb-3" v-model="model.gender">
                                 Femenino
                             </base-radio>
+                            </div>
+                            <div class="col-4">
                             <base-radio :inline="true" name="O" class="mb-3" v-model="model.gender">
                                 Otro
                             </base-radio>
+                            </div>
                         </div>
 
                         <base-input class="input-group-alternative mb-3"
@@ -61,29 +69,16 @@
                                     addon-left-icon="ni ni-lock-circle-open"
                                     v-model="model.password">
                         </base-input>
-
-                        <div class="row my-4">
-                            <div class="col-12">
-                                <base-checkbox class="custom-control-alternative">
-                                    <span class="text-muted">I agree with the <a href="#!">Privacy Policy</a></span>
-                                </base-checkbox>
-                            </div>
-                        </div>
                         <div class="text-center">
-                            <base-button native-type="submit" type="primary" class="my-4">Create account</base-button>
+                            <base-button native-type="submit" type="success" class="my-4">¡Crear cuenta!</base-button>
                         </div>
                     </form>
                 </div>
             </div>
             <div class="row mt-3">
-                <div class="col-6">
-                    <a href="#" class="text-light">
-                        <small>Forgot password?</small>
-                    </a>
-                </div>
-                <div class="col-6 text-right">
+                <div class="col-12 text-right">
                     <router-link to="/login" class="text-light">
-                        <small>Login into your account</small>
+                        <small>¡Iniciar sesión!</small>
                     </router-link>
                 </div>
             </div>

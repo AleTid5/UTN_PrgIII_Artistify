@@ -4,7 +4,9 @@
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Inicio de sesión</small>
+                        <router-link slot="brand" class="navbar-brand" to="/">
+                            <img src="img/brand/white.png" style="width: 75px; height: 75px"/>
+                        </router-link>
                     </div>
                     <form role="form">
                         <base-input :required="true"
@@ -23,7 +25,7 @@
                         </base-input>
 
                         <div class="text-center">
-                            <base-button type="primary" class="my-4" @click="login()">Entrar!</base-button>
+                            <base-button type="success" class="my-4" @click="login()">Entrar!</base-button>
                         </div>
                     </form>
                 </div>

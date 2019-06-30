@@ -1,72 +1,48 @@
 <template>
     <div>
-        <base-header type="gradient-success" class="pb-6 pb-8 pt-5 pt-md-8">
-            <!-- Card stats -->
-            <div class="row">
-                <div class="col-xl-3 col-lg-6"
-                     style="cursor: pointer"
-                     @click="onMediaSelected(1)">
-                    <stats-card title=""
-                                type="gradient-red"
-                                sub-title="Música"
-                                icon="fa fa-music"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6"
-                     style="cursor: pointer"
-                     @click="onMediaSelected(2)">
-                    <stats-card title=""
-                                type="gradient-orange"
-                                sub-title="Videos"
-                                icon="fa fa-video"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-                </div>
-                <div class="col-xl-3 col-lg-6"
-                     style="cursor: pointer"
-                     @click="onMediaSelected(3)">
-                    <stats-card title=""
-                                type="gradient-green"
-                                sub-title="Libros"
-                                icon="fa fa-book"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-
-                </div>
-                <div class="col-xl-3 col-lg-6"
-                     style="cursor: pointer"
-                     @click="onMediaSelected(4)">
-                    <stats-card title=""
-                                type="gradient-info"
-                                sub-title="Imágenes"
-                                icon="fa fa-camera"
-                                class="mb-4 mb-xl-0"
-                    >
-                    </stats-card>
-                </div>
+        <div class="row">
+            <div class="col-3"
+                 style="cursor: pointer"
+                 @click="onMediaSelected(1)">
+                <stats-card-custom style="height: 50vh;background: rgb(55, 89, 239);">
+                    <div slot="type">Musica</div>
+                </stats-card-custom>
             </div>
-        </base-header>
+            <div class="col-3"
+                 style="cursor: pointer"
+                 @click="onMediaSelected(2)">
+                <stats-card-custom style="height: 50vh;background: rgb(0, 169, 69);">
+                    <div slot="type">Videos</div>
+                </stats-card-custom>
+            </div>
+            <div class="col-3"
+                 style="cursor: pointer"
+                 @click="onMediaSelected(3)">
+                <stats-card-custom style="height: 50vh;background: rgb(248, 190, 41);">
+                    <div slot="type">Libros</div>
+                </stats-card-custom>
+
+            </div>
+            <div class="col-3"
+                 style="cursor: pointer"
+                 @click="onMediaSelected(4)">
+                <stats-card-custom style="height: 50vh;background: rgb(223, 0, 70);">
+                    <div slot="type">Imagenes</div>
+                </stats-card-custom>
+            </div>
+        </div>
     </div>
 </template>
 <script>
     import store from "@/store/index";
+    import StatsCardCustom from "../../components/StatsCardCustom";
     export default {
-        data() {
-            return {
-            };
-        },
+        components: {StatsCardCustom},
         methods: {
             onMediaSelected(id) {
                 store.state.mediaTypeSelected = id;
                 this.$router.push('albums');
             }
-        },
-        mounted() {
-
         }
     };
 </script>

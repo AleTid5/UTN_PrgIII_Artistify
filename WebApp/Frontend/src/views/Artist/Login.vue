@@ -4,7 +4,9 @@
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Inicio de sesión para <b>Artistas</b></small>
+                        <router-link slot="brand" class="navbar-brand" to="/">
+                            <img src="img/brand/white.png" style="width: 75px; height: 75px"/>
+                        </router-link>
                     </div>
                     <form role="form">
                         <base-input class="input-group-alternative mb-3"

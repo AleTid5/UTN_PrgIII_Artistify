@@ -2,14 +2,14 @@
   <div class="wrapper" :class="{ 'nav-open': $sidebar.showSidebar }">
     <div class="main-content" :data="sidebarBackground">
       <dashboard-navbar></dashboard-navbar>
-
+      <base-header type="artistify" class="pb-6 pb-8 pt-5 pt-md-8">
       <div @click="toggleSidebar">
         <fade-transition :duration="200" origin="center top" mode="out-in">
           <!-- your content here -->
           <router-view></router-view>
         </fade-transition>
-        <content-footer v-if="!$route.meta.hideFooter"></content-footer>
       </div>
+      </base-header>
     </div>
   </div>
 </template>

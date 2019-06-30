@@ -4,7 +4,9 @@
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
                     <div class="text-center text-muted mb-4">
-                        <small>Inicio de sesión para <b>Managers</b></small>
+                        <router-link slot="brand" class="navbar-brand" to="/">
+                            <img src="img/brand/white.png" style="width: 75px; height: 75px"/>
+                        </router-link>
                     </div>
                     <form role="form">
                         <base-input class="input-group-alternative mb-3"
@@ -21,12 +23,17 @@
                         </base-input>
 
                         <base-checkbox class="custom-control-alternative">
-                            <span class="text-muted">Remember me</span>
+                            <span class="text-muted">Recuérdame</span>
                         </base-checkbox>
                         <div class="text-center">
-                            <base-button type="primary" class="my-4" @click="login()">Iniciar sesión</base-button>
+                            <base-button type="success" class="my-4" @click="login()">Iniciar sesión</base-button>
                         </div>
                     </form>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-right">
+                    <router-link to="/manager/register" class="text-light"><small>¿Querés ser un Manager? ¡Registrate!</small></router-link>
                 </div>
             </div>
         </div>
