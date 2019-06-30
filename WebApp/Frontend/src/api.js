@@ -91,11 +91,19 @@ export default {
     },
 
     albumRemove(data) {
-        return this.execute("POST", "/album/remove", data);
+        return this.execute("DELETE", "/album/" + data);
     },
 
     albumFindById(id) {
         return this.execute("GET", "/album/" + id);
+    },
+
+    albumArtistFindById(id) {
+        return this.execute("GET", "/album/edit/" + id);
+    },
+
+    albumFindAllByArtistId(id) {
+        return this.execute("GET", "/album/artist/" + id);
     },
     // *****************************************************************************************************************
     // Media

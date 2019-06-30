@@ -17,6 +17,32 @@ namespace WebApp.Controllers
     {
         private new Request Request = null;
 
+        // GET: api/Album
+        [HttpGet("artist/{artistId}")]
+        [EnableCors("allowAllOrigins")]
+        public string GetAll(int artistId)
+        {
+            try {
+                return new Response(true, new AlbumRepository().FindAllByArtistId(artistId)).ToJson();
+            } catch (Exception ex) {
+                return new Response(false, ex.Message).ToJson();
+            }
+        }
+        
+
+        // GET: api/Album/edit/5
+        [HttpGet("edit/{albumId}")]
+        [EnableCors("allowAllOrigins")]
+        public string GetAlbumArtist(int albumId)
+        {
+            try {
+                return new Response(true, new AlbumRepository().FindById(albumId, null)).ToJson();
+            } catch (Exception ex) {
+                return new Response(false, ex.Message).ToJson();
+            }
+        }
+        
+
         // GET: api/Album/5
         [HttpGet("{albumId}")]
         [EnableCors("allowAllOrigins")]
@@ -79,21 +105,13 @@ namespace WebApp.Controllers
         }
 
         // POST: api/Album/remove
-        [HttpPost]
+        [HttpDelete("{AlbumId}")]
         [EnableCors("allowAllOrigins")]
-        [Route("remove")]
-        public string Remove([FromForm] string json)
+        public string Delete(int AlbumId)
         {
             try {
-                this.Request = new Request(json);
-                Album album = new Album {
-                    Id = int.Parse(this.Request.Get("id"))
-                };
-                new AlbumRepository().Remove(album);
-
-                return new Response(true, "Album eliminado exitosamente!").ToJson();
-            } catch (NullReferenceException) {
-                return new Response(false, "No se han enviado todos los parametros necesarios para eliminar al album.").ToJson();
+                new AlbumRepository().Remove(new Album { Id = AlbumId });
+                return new Response(true).ToJson();
             } catch (Exception ex) {
                 return new Response(false, ex.Message).ToJson();
             }

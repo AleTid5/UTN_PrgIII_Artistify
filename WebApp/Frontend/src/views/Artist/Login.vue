@@ -29,7 +29,7 @@
                             <span class="text-muted">Remember me</span>
                         </base-checkbox>
                         <div class="text-center">
-                            <base-button type="primary" class="my-4" @click="login()">Iniciar sesión</base-button>
+                            <base-button type="success" class="my-4" @click="login()">Iniciar sesión</base-button>
                         </div>
                     </form>
                 </div>

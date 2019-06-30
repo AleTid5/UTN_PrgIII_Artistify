@@ -16,16 +16,41 @@ namespace Repository
             this.Table = "Albums";
         }
 
-        public Album FindById(int Id)
+        public Album FindById(int Id, string Status = "A")
         {
             try {
                 if (0 == Id) return null;
 
-                String Query = String.Format("SELECT TOP 1 * FROM Albums A WHERE A.Status = 'A' AND A.Id = {1}", this.Table, Id);
+                String condition = Status == null ? "1=1" : "A.Status = 'A'";
+                String Query = String.Format(("SELECT TOP 1 * FROM Albums A WHERE " + condition + " AND A.Id = {1}"), this.Table, Id);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 
                 return this.GetRowCasted();
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public List<Album> FindAllByArtistId(int artistId)
+        {
+            try {
+                if (0 == artistId) return null;
+
+                String Query = String.Format("SELECT * " +
+                                             "FROM {0} A " +
+                                             "WHERE A.Artist = {1}",
+                                             this.Table,
+                                             artistId);
+                this.ExecSelect(Query);
+                List<Album> albums = new List<Album>();
+
+                while (this.SqlDataReader.Read())
+                    albums.Add(this.GetRowCasted());
+
+                return albums;
             } catch (Exception ex) {
                 throw ex;
             } finally {

@@ -18,7 +18,7 @@
                             </div>
                         </div>
                         <template>
-                            <form @submit.prevent @submit="edit()">
+                            <form @submit.prevent @submit="register()">
                                 <h6 class="heading-small text-muted mb-4">Información básica del Artista</h6>
                                 <div class="pl-lg-4">
                                     <div class="row">
@@ -91,25 +91,19 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <div class="col-4">
-                                                    <base-radio :inline="true" name="A" class="mb-3" v-model="model.status">
-                                                        Activo
-                                                    </base-radio>
-                                                </div>
-                                                <div class="col-4">
-                                                    <base-radio :inline="true" name="B" class="mb-3" v-model="model.status">
-                                                        Baja
-                                                    </base-radio>
-                                                </div>
-                                            </div>
+                                        <div class="col-md-12">
+                                            <base-input class="input-group-alternative"
+                                                        placeholder="Password"
+                                                        type="password"
+                                                        addon-left-icon="ni ni-lock-circle-open"
+                                                        v-model="model.password">
+                                            </base-input>
                                         </div>
                                     </div>
                                 </div>
                                 <hr class="my-4">
                                 <div class="text-center">
-                                    <base-button native-type="submit" type="success" class="my-4"><i class="fa fa-user"></i> Editar cuenta</base-button>
+                                    <base-button native-type="submit" type="success" class="my-4"><i class="fa fa-user-plus"></i> Crear cuenta</base-button>
                                 </div>
                             </form>
                         </template>
@@ -127,18 +121,18 @@
     import "flatpickr/dist/flatpickr.css";
 
     export default {
-        name: 'artist-edit',
+        name: 'artist-add',
         components: {MessageError, flatPicker},
         data() {
             return {
                 model: {
-                    id: null,
                     name: null,
                     lastname: null,
                     borndate: null,
                     gender: null,
                     email: null,
-                    status: null,
+                    password: null,
+                    manager: store.state.user.Id,
                     alias: null
                 },
                 response: {
@@ -147,25 +141,9 @@
                 }
             }
         },
-        async created() {
-            this.response = await api.artistFindById(store.state.user.Id, this.$route.params.artistId);
-
-            if (! this.response.Status) {
-                return;
-            }
-
-            this.model.id = this.$route.params.artistId;
-            this.model.name = this.response.Data.Name;
-            this.model.lastname = this.response.Data.LastName;
-            this.model.borndate = this.response.Data.BornDate;
-            this.model.gender = this.response.Data.Gender;
-            this.model.email = this.response.Data.Email;
-            this.model.status = this.response.Data.Status.Code;
-            this.model.alias = this.response.Data.Alias;
-        },
         methods: {
-            async edit() {
-                this.response = await api.artistEdit(this.model);
+            async register() {
+                this.response = await api.artistRegister(this.model);
 
                 if (! this.response.Status) {
                     return;

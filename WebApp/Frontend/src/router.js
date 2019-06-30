@@ -84,8 +84,32 @@ const route = new Router({
       children: [
         {
           path: '/artist/dashboard',
-          name: 'dashboard Artist',
+          name: 'Dashboard',
           component: () => import('./views/Artist/Dashboard.vue'),
+          beforeEnter: validateRouteArtist
+        },
+        {
+          path: '/artist/albums',
+          name: 'Albumes',
+          component: () => import('./views/Artist/Albums/List'),
+          beforeEnter: validateRouteArtist
+        },
+        {
+          path: '/artist/albums/add',
+          name: 'Agregar álbum',
+          component: () => import('./views/Artist/Albums/Add'),
+          beforeEnter: validateRouteArtist
+        },
+        {
+          path: '/artist/albums/edit/:albumId',
+          name: 'Editar álbum',
+          component: () => import('./views/Artist/Albums/Edit'),
+          beforeEnter: validateRouteArtist
+        },
+        {
+          path: '/artist/media/add',
+          name: 'Agregar contenido digital',
+          component: () => import('./views/Artist/Media/Add'),
           beforeEnter: validateRouteArtist
         },
       ]

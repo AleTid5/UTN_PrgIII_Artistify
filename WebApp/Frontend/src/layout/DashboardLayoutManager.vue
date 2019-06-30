@@ -9,12 +9,12 @@
         <sidebar-item
           :link="{
             name: 'Dashboard',
-            icon: 'ni ni-tv-2 text-primary',
+            icon: 'ni ni-tv-2 text-success',
             path: '/manager/dashboard'
           }"
         />
 
-        <sidebar-item :link="{name: 'ABM Artistas', icon: 'ni ni-planet text-blue', path: '/manager/artists'}"/>
+        <sidebar-item :link="{name: 'ABM Artistas', icon: 'ni ni-archive-2 text-success', path: '/manager/artists'}"/>
       </template>
     </side-bar>
     <div class="main-content" :data="sidebarBackground">
