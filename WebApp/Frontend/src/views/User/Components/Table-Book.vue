@@ -26,7 +26,9 @@
                         {{ book.Name }}
                     </th>
                     <td class="budget">
-                        {{book.Rating}}
+                        <rating @change="$emit('change')"
+                                :rating="book.Rating"
+                                :mediaId="book.Id"></rating>
                     </td>
                     <td class="budget">
                         {{book.Gender.Name}}
@@ -34,7 +36,7 @@
                     <td>{{ book.Category.Name }}</td>
                     <td>{{ book.ReproducedTimes }}</td>
                     <td>
-                        <base-button type="primary" icon="ni ni-bag-17" @click="onPlay(book)">With icon</base-button>
+                        <base-button type="primary" icon="ni ni-cloud-download-95" @click="onPlay(book)"></base-button>
                     </td>
                 </tr>
                 </tbody>
@@ -44,9 +46,13 @@
 </template>
 <script>
     import api from "@/api";
+    import rating from "./Rating";
 
     export default {
         name: 'table-book',
+        components: {
+            rating
+        },
         props: {
             type: {
                 type: String

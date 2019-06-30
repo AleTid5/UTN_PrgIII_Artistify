@@ -20,7 +20,9 @@
                         </tr>
                         <tr>
                             <th>Rating</th>
-                            <th>{{ curImage.Rating }}</th>
+                            <th><rating @change="$emit('change')"
+                                        :rating="curImage.Rating"
+                                        :mediaId="curImage.Id"></rating></th>
                         </tr>
                         <tr>
                             <th>Genero</th>
@@ -39,14 +41,30 @@
                 </div>
             </div>
             <div class="col-8">
-                <siema ref="siema" class="siema"
-                       :current.sync="curSlide" auto-play
-                       @init="init" @change="change"
-                       :ready="true">
-                    <div class="slide text-center" v-for="image in images">
-                        <img :src="image.Source" style="min-height: 550px;max-height: 550px">
+                <div class="row">
+                    <div class="col-2">
+                        <base-button type="success" icon="ni ni-bold-left"
+                                     style="margin-top: 35vh;"
+                                     @click="prev()"
+                                     :rounded="true" class="float-right"></base-button>
                     </div>
-                </siema>
+                    <div class="col-8">
+                        <siema ref="siema" class="siema"
+                               :current.sync="curSlide" auto-play
+                               @init="init" @change="change"
+                               :ready="true">
+                            <div class="slide text-center" v-for="image in images">
+                                <img :src="image.Source" style="min-height: 550px;max-height: 550px">
+                            </div>
+                        </siema>
+                    </div>
+                    <div class="col-2">
+                        <base-button type="success" icon="ni ni-bold-right"
+                                     style="margin-top: 35vh;"
+                                     @click="next()"
+                                     :rounded="true" class="float-left"></base-button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -55,11 +73,15 @@
     import api from "@/api";
     import Vue from 'vue';
     import Siema from 'vue2-siema';
+    import rating from "./Rating";
 
     Vue.use(Siema);
 
     export default {
         name: 'table-image',
+        components: {
+            rating
+        },
         props: {
             type: {
                 type: String
@@ -117,5 +139,14 @@
         }
     }
 </script>
-<style>
+<style scoped>
+    >>> .rounded-circle {
+        height: 50px;
+        width: 50px;
+    }
+
+    >>> .btn.rounded-circle > i {
+        line-height: 25px;
+        margin-left: -2px;
+    }
 </style>

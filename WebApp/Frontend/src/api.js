@@ -104,7 +104,11 @@ export default {
         return this.execute("POST", "/media/contentReproduced", data);
     },
 
-    mediaSetRating(data) {
+    setUserMediaRating(data) {
         return this.execute("POST", "/media/setRating", data);
     },
+
+    getUserMediaRating(userId, mediaId) {
+        return this.execute("GET", "/media/" + userId + "/" + mediaId);
+    }
 };

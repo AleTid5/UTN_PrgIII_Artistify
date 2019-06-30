@@ -4,30 +4,46 @@
             <div class="col-3"
                  style="cursor: pointer"
                  @click="onMediaSelected(1)">
-                <stats-card-custom style="height: 50vh;background: rgb(55, 89, 239);">
-                    <div slot="type">Musica</div>
+                <stats-card-custom style="height: 50vh;background-color: #5e72e4ed">
+                    <div slot="type">
+                        <base-button outline :rounded="true" type="primary">
+                            <i class="fa fa-music"></i>
+                        </base-button>
+                    </div>
                 </stats-card-custom>
             </div>
             <div class="col-3"
                  style="cursor: pointer"
                  @click="onMediaSelected(2)">
-                <stats-card-custom style="height: 50vh;background: rgb(0, 169, 69);">
-                    <div slot="type">Videos</div>
+                <stats-card-custom style="height: 50vh;background-color: #2dce89ed">
+                    <div slot="type">
+                        <base-button outline :rounded="true" type="success">
+                            <i class="fa fa-video"></i>
+                        </base-button>
+                    </div>
                 </stats-card-custom>
             </div>
             <div class="col-3"
                  style="cursor: pointer"
                  @click="onMediaSelected(3)">
-                <stats-card-custom style="height: 50vh;background: rgb(248, 190, 41);">
-                    <div slot="type">Libros</div>
+                <stats-card-custom style="height: 50vh;background-color: #fb6340ed">
+                    <div slot="type">
+                        <base-button outline :rounded="true" type="warning">
+                            <i class="fa fa-book"></i>
+                        </base-button>
+                    </div>
                 </stats-card-custom>
 
             </div>
             <div class="col-3"
                  style="cursor: pointer"
                  @click="onMediaSelected(4)">
-                <stats-card-custom style="height: 50vh;background: rgb(223, 0, 70);">
-                    <div slot="type">Imagenes</div>
+                <stats-card-custom style="height: 50vh;background-color: #f5365ced">
+                    <div slot="type">
+                        <base-button outline :rounded="true" type="danger">
+                            <i class="fa fa-image"></i>
+                        </base-button>
+                    </div>
                 </stats-card-custom>
             </div>
         </div>
@@ -46,4 +62,15 @@
         }
     };
 </script>
-<style></style>
+<style scoped>
+    >>> .rounded-circle {
+        height: 10em;
+        width: 10em;
+    }
+
+    >>> .btn.rounded-circle > i {
+        line-height: 85px;
+        margin-left: -6px;
+        font-size: 90px;
+    }
+</style>

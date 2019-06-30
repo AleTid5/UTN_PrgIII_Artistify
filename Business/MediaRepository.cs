@@ -36,6 +36,21 @@ namespace Repository
             }
         }
 
+        public int FindRatingByUserIdAndMediaId(int userId, int mediaId)
+        {
+            try {
+                String Query = String.Format("SELECT MediaRating FROM Users_Media_Rating WHERE UserId = {0} AND MediaId = {1}", userId, mediaId);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return int.Parse(this.SqlDataReader["MediaRating"].ToString());
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
         public void AddReproducedTime(int mediaId)
         {
             try {

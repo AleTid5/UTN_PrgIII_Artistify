@@ -1,7 +1,7 @@
 <template>
   <card class="card-stats card card-block d-flex" :show-footer-line="true">
     <div class="row">
-      <div class="card-body align-items-center d-flex justify-content-center text-uppercase text-white mt-7"
+      <div class="card-body align-items-center d-flex justify-content-center text-uppercase text-white mt-6"
            style="padding: 1rem 0.5rem;">
         <div style="font-size: 2em;">
           <slot name="type"></slot>

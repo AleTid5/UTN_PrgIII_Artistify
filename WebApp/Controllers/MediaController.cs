@@ -31,6 +31,18 @@ namespace WebApp.Controllers
             }
         }
 
+        // GET: api/Media/5/1
+        [HttpGet("{userId}/{mediaId}")]
+        [EnableCors("allowAllOrigins")]
+        public string GetRating(int userId, int mediaId)
+        {
+            try {
+                return new Response(true, new MediaRepository().FindRatingByUserIdAndMediaId(userId, mediaId)).ToJson();
+            } catch (Exception ex) {
+                return new Response(false, ex.Message).ToJson();
+            }
+        }
+
         // POST: api/Media
         [HttpPost]
         [EnableCors("allowAllOrigins")]

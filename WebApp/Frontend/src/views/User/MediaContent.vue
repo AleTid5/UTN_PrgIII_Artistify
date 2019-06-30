@@ -7,10 +7,10 @@
         </div>
         <div class="row mt-5">
             <div class="col">
-                <table-music v-if="mediaSelected === 1" title="Musica" :data="media"></table-music>
-                <table-video v-if="mediaSelected === 2" title="Videos" :data="media"></table-video>
-                <table-book v-if="mediaSelected === 3" title="Libros" :data="media"></table-book>
-                <table-image v-if="mediaSelected === 4" title="Imagenes" :data="media"></table-image>
+                <table-music v-if="mediaSelected === 1" title="Musica" :data="media" @change="fillData"></table-music>
+                <table-video v-if="mediaSelected === 2" title="Videos" :data="media" @change="fillData"></table-video>
+                <table-book v-if="mediaSelected === 3" title="Libros" :data="media" @change="fillData"></table-book>
+                <table-image v-if="mediaSelected === 4" title="Galería de Imagenes" :data="media" @change="fillData"></table-image>
             </div>
         </div>
     </div>
@@ -37,19 +37,20 @@
             };
         },
         methods: {
+            async fillData() {
+                const response = await api.albumFindById(store.state.albumSelected);
+
+                if (! response.Status) {
+                    // ToDo: Error..
+                    return;
+                }
+
+                this.media = response.Data;
+            }
         },
 
-        async created() {
-            const response = await api.albumFindById(store.state.albumSelected);
-
-            if (! response.Status) {
-                // ToDo: Error..
-                return;
-            }
-
-            this.media = response.Data;
-
-            console.log(this.media)
+        created() {
+            this.fillData();
         },
     };
 </script>

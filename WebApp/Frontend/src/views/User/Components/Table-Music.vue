@@ -26,7 +26,9 @@
                         {{ song.Name }}
                     </th>
                     <td class="budget">
-                        {{song.Rating}}
+                        <rating @change="$emit('change')"
+                                :rating="song.Rating"
+                                :mediaId="song.Id"></rating>
                     </td>
                     <td class="budget">
                         {{song.Gender.Name}}
@@ -48,9 +50,13 @@
 </template>
 <script>
     import api from "@/api";
+    import rating from "./Rating";
 
     export default {
         name: 'table-music',
+        components: {
+            rating
+        },
         props: {
             type: {
                 type: String

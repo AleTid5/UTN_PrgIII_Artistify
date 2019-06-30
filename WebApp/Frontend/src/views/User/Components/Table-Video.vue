@@ -26,7 +26,9 @@
                         {{ video.Name }}
                     </th>
                     <td class="budget">
-                        {{video.Rating}}
+                        <rating @change="$emit('change')"
+                                :rating="video.Rating"
+                                :mediaId="video.Id"></rating>
                     </td>
                     <td class="budget">
                         {{video.Gender.Name}}
@@ -35,7 +37,7 @@
                     <td>{{ video.ReproducedTimes }}</td>
                     <td>
                         <video :src="video.Source" controls
-                               width="20"
+                               width="250"
                                v-if="getVideos[video.Id]"
                                @play="onPlay(video)">
                             <p>If you are reading this, it is because your browser does not support the audio element.</p>
@@ -49,9 +51,13 @@
 </template>
 <script>
     import api from "@/api";
+    import rating from "./Rating";
 
     export default {
         name: 'table-video',
+        components: {
+            rating
+        },
         props: {
             type: {
                 type: String
