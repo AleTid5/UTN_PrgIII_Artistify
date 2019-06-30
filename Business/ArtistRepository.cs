@@ -37,15 +37,31 @@ namespace Repository
         {
             try {
                 int lastID = this.Add((AbstractUser)artist);
-                String QueryTemplate = "INSERT INTO {0} (Id, Alias, ImageSource, Manager) " +
-                                       "VALUES ({1}, '{2}', '{3}', {4})";
+                String QueryTemplate = "INSERT INTO {0} (Id, Alias, Manager) " +
+                                       "VALUES ({1}, '{2}', {3})";
                 String Query = String.Format(QueryTemplate, this.Table,
                                                             lastID,
                                                             artist.Alias,
-                                                            artist.ImageSource,
+                                                            //artist.ImageSource,
                                                             artist.Manager.Id);
                 this.ExecInsert(Query);
                 EmailSender.ArtistAdd(artist);
+            } catch (SqlException ex) {
+                throw new SqlParsedException(ex.Number, ex.Message);
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public void Edit(Artist artist)
+        {
+            try {
+                this.Edit((AbstractUser)artist);
+                String QueryTemplate = "UPDATE {0} SET Alias = '{1}' WHERE Id = {2}";
+                String Query = String.Format(QueryTemplate, this.Table, artist.Alias, artist.Id);
+                this.ExecUpdate(Query);
             } catch (SqlException ex) {
                 throw new SqlParsedException(ex.Number, ex.Message);
             } catch (Exception ex) {
@@ -61,6 +77,41 @@ namespace Repository
                 if (0 == Id) return null;
 
                 String Query = String.Format("SELECT TOP 1 * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE U.Status = 'A' AND A.Id = {1}", this.Table, Id);
+                this.ExecSelect(Query);
+                this.SqlDataReader.Read();
+
+                return this.GetRowCasted(this.GetRowCasted());
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public List<Artist> FindAllByManagerId(int ManagerId)
+        {
+            try {
+                if (0 == ManagerId) return null;
+
+                String Query = String.Format("SELECT * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE A.Manager = {1}", this.Table, ManagerId);
+                this.ExecSelect(Query);
+                List<Artist> artists = new List<Artist>();
+
+                while (this.SqlDataReader.Read())
+                    artists.Add(this.GetRowCasted(this.GetRowCasted()));
+
+                return artists;
+            } catch (Exception ex) {
+                throw ex;
+            } finally {
+                this.SqlConnection.Close();
+            }
+        }
+
+        public Artist FindByManagerIdAndArtistId(int ManagerId, int ArtistId)
+        {
+            try {
+                String Query = String.Format("SELECT TOP 1 * FROM {0} A INNER JOIN Users U ON A.Id = U.Id WHERE A.Manager = {1} AND A.Id = {2}", this.Table, ManagerId, ArtistId);
                 this.ExecSelect(Query);
                 this.SqlDataReader.Read();
 

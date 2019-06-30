@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-12">
-                <base-button type="success" icon="ni ni-bold-left"@click="$router.back()">Atrás</base-button>
+                <base-button type="success" icon="ni ni-bold-left"@click="$router.back()">Volver</base-button>
             </div>
         </div>
         <div class="row mt-5">

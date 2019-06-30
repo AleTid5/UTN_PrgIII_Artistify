@@ -97,8 +97,26 @@ const route = new Router({
       children: [
         {
           path: '/manager/dashboard',
-          name: 'dashboard Manager',
+          name: 'Dashboard',
           component: () => import('./views/Manager/Dashboard.vue'),
+          beforeEnter: validateRouteManager
+        },
+        {
+          path: '/manager/artists',
+          name: 'Lista de Artistas',
+          component: () => import('./views/Manager/Artists/List.vue'),
+          beforeEnter: validateRouteManager
+        },
+        {
+          path: '/manager/artists/add',
+          name: 'Agregar artista',
+          component: () => import('./views/Manager/Artists/Add.vue'),
+          beforeEnter: validateRouteManager
+        },
+        {
+          path: '/manager/artists/edit/:artistId',
+          name: 'Editar artista',
+          component: () => import('./views/Manager/Artists/Edit.vue'),
           beforeEnter: validateRouteManager
         },
       ]

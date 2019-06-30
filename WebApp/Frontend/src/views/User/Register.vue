@@ -1,5 +1,13 @@
 <template>
     <div class="row justify-content-center">
+        <message-error :hasError="! response.Status" :message="response.Data"></message-error>
+        <base-alert type="danger" dismissible style="position:fixed;top: 25px; right: 25px;z-index: 1" v-if="! response.Status">
+            <span class="alert-inner--icon"><i class="fa fa-exclamation-circle"></i></span>
+            <span class="alert-inner--text"><strong> Error!</strong> {{ response.Data }}</span>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </base-alert>
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
@@ -89,10 +97,11 @@
     import api from '@/api';
     import flatPicker from "vue-flatpickr-component";
     import "flatpickr/dist/flatpickr.css";
+    import MessageError from "../../components/Messages/Error";
 
     export default {
         name: 'register',
-        components: {flatPicker},
+        components: {MessageError, flatPicker},
         data() {
             return {
                 model: {
@@ -103,15 +112,18 @@
                     telephone: null,
                     email: null,
                     password: null
+                },
+                response: {
+                    Status: true,
+                    Data: null
                 }
             }
         },
         methods: {
             async register() {
-                const response = await api.userRegister(this.model);
+                this.response = await api.userRegister(this.model);
 
-                if (! response.Status) {
-                    // Todo: Error
+                if (! this.response.Status) {
                     return;
                 }
 

@@ -52,6 +52,22 @@ export default {
         return this.execute("POST", "/artist/register", data);
     },
 
+    artistEdit(data) {
+        return this.execute("POST", "/artist/edit", data);
+    },
+
+    artistRemove(data) {
+        return this.execute("DELETE", "/artist/" + data);
+    },
+
+    artistFindAll(data) {
+        return this.execute("GET", "/artist/" + data);
+    },
+
+    artistFindById(managerId, artistId) {
+        return this.execute("GET", "/artist/" + managerId + "/" + artistId);
+    },
+
     // *****************************************************************************************************************
     // Manager
     // *****************************************************************************************************************

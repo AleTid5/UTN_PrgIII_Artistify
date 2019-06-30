@@ -1,5 +1,6 @@
 <template>
     <div class="row justify-content-center">
+        <message-error :hasError="! response.Status" :message="response.Data"></message-error>
         <div class="col-lg-5 col-md-7">
             <div class="card bg-secondary shadow border-0">
                 <div class="card-body px-lg-5 py-lg-5">
@@ -95,10 +96,11 @@
     import api from '@/api';
     import flatPicker from "vue-flatpickr-component";
     import "flatpickr/dist/flatpickr.css";
+    import MessageError from "../../components/Messages/Error";
 
     export default {
         name: 'register',
-        components: {flatPicker},
+        components: {MessageError, flatPicker},
         data() {
             return {
                 model: {
@@ -110,15 +112,18 @@
                     cuit: null,
                     email: null,
                     password: null
+                },
+                response: {
+                    Status: true,
+                    Data: null
                 }
             }
         },
         methods: {
             async register() {
-                const response = await api.managerRegister(this.model);
+                this.response = await api.managerRegister(this.model);
 
-                if (! response.Status) {
-                    // Todo: Error
+                if (! this.response.Status) {
                     return;
                 }
 
