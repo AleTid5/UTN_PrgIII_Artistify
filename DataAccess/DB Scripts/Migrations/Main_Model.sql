@@ -817,21 +817,11 @@ alter table Media_Musics drop constraint Media_Musics_Albums_Id_fk
 go
 
 alter table Media_Musics
-	add constraint Media_Musics_Albums_Id_fk
-		foreign key (Album) references Albums
-go
-
-alter table Media_Musics
 	add constraint Media_Musics_Media_Id_fk
 		foreign key (Id) references Media
 go
 
 alter table Media_Videos drop constraint Media_Videos_Albums_Id_fk
-go
-
-alter table Media_Videos
-	add constraint Media_Videos_Albums_Id_fk
-		foreign key (Album) references Albums
 go
 
 alter table Media_Videos
@@ -964,3 +954,6 @@ alter table Media
 			add constraint Media_Albums_Id_fk
 			foreign key (Album) references Albums;
 GO
+
+alter table Media_Books drop column Pages
+go
