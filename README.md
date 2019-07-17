@@ -1,5 +1,7 @@
 # TPC_Tidele
-TP Cuatrimestral UTN FRGP. Desarrollo: Aplicación de contenido digital (Musica, Video, Libros e Imágenes)
+TP Cuatrimestral UTN FRGP. Desarrollo: Aplicación de contenido digital (Musica, Video, Libros e Imágenes).
+
+Está desarrollado en C# y Vue.js. Se compone de una app de escritorio (únicamente en Windows) y una app web.
 # 
 Para crear el esqueleto de la base de datos se debe ir a [DataAccess/DB Scripts/Migrations](DataAccess/DB%20Scripts/Migrations) y ejecutar [Main_Model.sql](DataAccess/DB%20Scripts/Migrations/Main_Model.sql)
 
