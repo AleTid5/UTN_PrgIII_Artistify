@@ -1,4 +1,4 @@
-# TPC_Tidele
+# ARTISTIFY
 TP Cuatrimestral UTN FRGP. Desarrollo: Aplicación de contenido digital (Musica, Video, Libros e Imágenes).
 
 Está desarrollado en C# y Vue.js. Se compone de una app de escritorio (únicamente en Windows) y una app web.
